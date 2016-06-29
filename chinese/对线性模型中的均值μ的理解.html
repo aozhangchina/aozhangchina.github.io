@@ -1,0 +1,266 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset='UTF-8'>
+	<meta name='viewport' content='width=device-width initial-scale=1'>
+	<title>对线性模型中的均值μ的理解.md</title>
+	<link rel="stylesheet" type="text/css" href="..\styles\Github.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'></head>
+<body class='typora-export ' >
+	<div  id='write'  class = 'is-node'>
+		<h1>
+			<a name='header-c1518' class='md-header-anchor '></a>
+			对线性模型中的均值μ的理解
+		</h1>
+		<p>假设我们有一组数据，大致可能是这样的（随机生成，请勿当真）：</p>
+		<table>
+			<thead>
+				<tr>
+					<th>replicate</th>
+					<th>y</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>102</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>98</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>100</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>98</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>101</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>101</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>101</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>100</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>101</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>101</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>98</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>101</td>
+				</tr>
+			</tbody>
+		</table>
+		<p>在做分析的时候，我们一般会用到混合线性模型，该模型很可能是这样的：</p>
+		<p>y = μ + replicate + error</p>
+		<p>
+			其中y是因变量，replicate是独立的自变量。另一种叫法是y是replicate的函数。我们最终需要根据replicate的值来预测y。这很好理解。
+		</p>
+		<p>error是误差，服从正态分布，均值是0，标准差恒定。</p>
+		<p>在这个模型中，出现了一个均值μ，这个μ到底是做什么用的呢？</p>
+		<p>我们利用R来理解这个问题：</p>
+		<pre class="md-fences md-end-block"> <div class="CodeMirror cm-s-inner CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"></div><div class="CodeMirror-hscrollbar" style="left: 0px;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-vscrollbar"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre>
+	</div>
+	<div class="CodeMirror-measure"></div>
+	<div style="position: relative; z-index: 1;"></div>
+	<div class="CodeMirror-code">
+		<div class="CodeMirror-activeline" style="position: relative;">
+			<div class="CodeMirror-activeline-background CodeMirror-linebackground"></div>
+			<pre class=""><span style="padding-right: 0.1px;"><span class="cm-comment"># 建立矩阵</span></span></pre>
+		</div>
+		<pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">a</span> <span class="cm-arrow">&lt;-</span> <span class="cm-variable">c</span>(<span class="cm-variable">rep</span>(<span class="cm-number">1</span><span class="cm-operator">:</span><span class="cm-number">3</span>,<span class="cm-number">4</span>),<span class="cm-number">102</span>,<span class="cm-number">98</span>,<span class="cm-number">100</span>,<span class="cm-number">98</span>,<span class="cm-number">101</span>,<span class="cm-number">101</span>,<span class="cm-number">101</span>,<span class="cm-number">100</span>,<span class="cm-number">101</span>,<span class="cm-number">101</span>,<span class="cm-number">98</span>,<span class="cm-number">101</span>)</span></pre>
+		<pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">m</span> <span class="cm-arrow">&lt;-</span> <span class="cm-variable">matrix</span>(<span class="cm-variable">a</span>, <span class="cm-number">12</span>)</span></pre>
+		<pre class=""><span style="padding-right: 0.1px;"><span class="cm-comment"># 转换为数据框</span></span></pre>
+		<pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">m</span> <span class="cm-arrow">&lt;-</span> <span class="cm-variable">as.data.frame</span>(<span class="cm-variable">m</span>)</span></pre>
+		<pre class=""><span style="padding-right: 0.1px;"><span class="cm-comment"># 给数据的列命名</span></span></pre>
+		<pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">colnames</span>(<span class="cm-variable">m</span>)<span class="cm-arrow">&lt;-</span> <span class="cm-variable">c</span>(<span class="cm-string">"rep"</span>, <span class="cm-string">"y"</span>)</span></pre>
+		<pre class=""><span style="padding-right: 0.1px;"><span class="cm-comment"># 输入模型</span></span></pre>
+		<pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">model</span> <span class="cm-arrow">&lt;-</span> <span class="cm-variable">lm</span>(<span class="cm-variable">y</span> <span class="cm-operator">~</span> <span class="cm-variable">rep</span>, <span class="cm-variable">m</span>)</span></pre>
+		<pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">model</span></span></pre>
+	</div>
+</div>
+</div>
+</div>
+</div>
+<div style="position: absolute; height: 30px; width: 1px; top: 0px;"></div>
+<div class="CodeMirror-gutters" style="display: none; height: 224px;"></div>
+</div>
+</div>
+</pre>
+<p>结果1：</p>
+<hr />
+<p>
+Call:
+lm(formula = y ~ rep, data = m)
+</p>
+<p>
+Coefficients:
+(Intercept)         rep2         rep3
+<br/>
+​       100.50        -1.25         0.25
+<br/>
+</p>
+<hr />
+<ul>
+<li>Call里面显示的是我们输入的模型。</li>
+<li>Coefficients列出了截距以及其他因子距离截距的差。</li>
+</ul>
+<p>
+我们看到，截距是100.5。在模型中，μ作为一个常数项，只可能影响截距，不会对斜率造成影响，那么这个截距是否就是均值μ呢？
+</p>
+<p>我们计算一下均值：</p>
+<pre class="md-fences md-end-block"> <div class="CodeMirror cm-s-inner CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"></div><div class="CodeMirror-hscrollbar" style="left: 0px;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-vscrollbar"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre>
+</div>
+<div class="CodeMirror-measure"></div>
+<div style="position: relative; z-index: 1;"></div>
+<div class="CodeMirror-code">
+<div class="CodeMirror-activeline" style="position: relative;">
+<div class="CodeMirror-activeline-background CodeMirror-linebackground"></div>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-comment"># 计算y的均值</span></span></pre>
+</div>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">mean</span>(<span class="cm-variable">m</span><span class="cm-dollar">$</span><span class="cm-variable">y</span>)</span></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="position: absolute; height: 30px; width: 1px; top: 0px;"></div>
+<div class="CodeMirror-gutters" style="display: none; height: 45px;"></div>
+</div>
+</div>
+</pre>
+<p>结果2：</p>
+<hr />
+<p>[1] 100.1667</p>
+<hr />
+<p>很明显，截距并不等于均值μ，那么新的问题来了，这个截距100.5是怎么来的？</p>
+<p>
+在结果1的Coefficients中，列名是这样的：(Intercept)，rep2，rep3。那么我们就可以推测(Intercept)=rep1，即rep=1的均值。再次用R进行验证：
+</p>
+<pre class="md-fences md-end-block"> <div class="CodeMirror cm-s-inner CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"></div><div class="CodeMirror-hscrollbar" style="left: 0px;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-vscrollbar"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre>
+</div>
+<div class="CodeMirror-measure"></div>
+<div style="position: relative; z-index: 1;"></div>
+<div class="CodeMirror-code">
+<div class="CodeMirror-activeline" style="position: relative;">
+<div class="CodeMirror-activeline-background CodeMirror-linebackground"></div>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-comment"># 计算rep=1时，y的均值</span></span></pre>
+</div>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">mean</span>(<span class="cm-variable">m</span><span class="cm-dollar">$</span><span class="cm-variable">y</span>[<span class="cm-variable">which</span>(<span class="cm-variable">m</span><span class="cm-dollar">$</span><span class="cm-variable">rep</span><span class="cm-arg-is">==</span><span class="cm-number">1</span>)])</span></pre>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-comment"># 顺便，计算rep=2时，y的均值（-1.25是相对值，在结果1中）</span></span></pre>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">mean</span>(<span class="cm-variable">m</span><span class="cm-dollar">$</span><span class="cm-variable">y</span>[<span class="cm-variable">which</span>(<span class="cm-variable">m</span><span class="cm-dollar">$</span><span class="cm-variable">rep</span><span class="cm-arg-is">==</span><span class="cm-number">1</span>)]) <span class="cm-operator">-</span> <span class="cm-number">1.25</span></span></pre>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-comment"># rep=3时，y的均值（0.25是相对值，在结果1中）</span></span></pre>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">mean</span>(<span class="cm-variable">m</span><span class="cm-dollar">$</span><span class="cm-variable">y</span>[<span class="cm-variable">which</span>(<span class="cm-variable">m</span><span class="cm-dollar">$</span><span class="cm-variable">rep</span><span class="cm-arg-is">==</span><span class="cm-number">1</span>)]) <span class="cm-operator">+</span> <span class="cm-number">0.25</span></span></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="position: absolute; height: 30px; width: 1px; top: 0px;"></div>
+<div class="CodeMirror-gutters" style="display: none; height: 134px;"></div>
+</div>
+</div>
+</pre>
+<p>结果3：</p>
+<hr />
+<p>[1] 100.5</p>
+<p>[1] 99.25</p>
+<p>[1] 100.75</p>
+<hr />
+<p>结果刚好等于100.5，说明截距就是rep1。</p>
+<p>如果对以上数据作图，我们可以获得一条回归线：</p>
+<pre class="md-fences md-end-block"> <div class="CodeMirror cm-s-inner CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"></div><div class="CodeMirror-hscrollbar" style="left: 0px;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-vscrollbar"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre>
+</div>
+<div class="CodeMirror-measure"></div>
+<div style="position: relative; z-index: 1;"></div>
+<div class="CodeMirror-code">
+<div class="CodeMirror-activeline" style="position: relative;">
+<div class="CodeMirror-activeline-background CodeMirror-linebackground"></div>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-comment"># 画散点图</span></span></pre>
+</div>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">plot</span>(<span class="cm-variable">m</span><span class="cm-dollar">$</span><span class="cm-variable">rep</span>, <span class="cm-variable">m</span><span class="cm-dollar">$</span><span class="cm-variable">y</span>)</span></pre>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-comment"># 画回归线</span></span></pre>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">abline</span>(<span class="cm-variable">model</span>)</span></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="position: absolute; height: 30px; width: 1px; top: 0px;"></div>
+<div class="CodeMirror-gutters" style="display: none; height: 90px;"></div>
+</div>
+</div>
+</pre>
+<p>结果4（图1）：</p>
+<hr />
+<p>
+<img src='image\对线性模型中的均值μ的理解_1.png' alt='对线性模型中的均值μ的理解_1' />
+</p>
+<hr />
+<p>
+此图线如果还用原来的公式理解的话（y = μ + replicate + error），μ=0，ε=0，rep1=100.5，rep2=99.25，rep3=100.75。
+</p>
+<p>
+我们将μ=100.2带入模型，则会得到μ=100.2，ε=0，rep1=100.5-100.2=0.3，rep2=99.25-100.2=-0.94，0.55。我们重新画图。
+</p>
+<pre class="md-fences md-end-block"> <div class="CodeMirror cm-s-inner CodeMirror-wrap"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 4px;"></div><div class="CodeMirror-hscrollbar" style="left: 0px;"><div style="height: 100%; min-height: 1px; width: 0px;"></div></div><div class="CodeMirror-vscrollbar"><div style="min-width: 1px; height: 0px;"></div></div><div class="CodeMirror-scrollbar-filler"></div><div class="CodeMirror-gutter-filler"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; min-height: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines"><div style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre>
+</div>
+<div class="CodeMirror-measure"></div>
+<div style="position: relative; z-index: 1;"></div>
+<div class="CodeMirror-code">
+<div class="CodeMirror-activeline" style="position: relative;">
+<div class="CodeMirror-activeline-background CodeMirror-linebackground"></div>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-comment"># y-μ</span></span></pre>
+</div>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">m2</span> <span class="cm-arrow">&lt;-</span> <span class="cm-variable">m</span></span></pre>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">m2</span><span class="cm-dollar">$</span><span class="cm-variable">y</span> <span class="cm-arrow">&lt;-</span> <span class="cm-variable">m2</span><span class="cm-dollar">$</span><span class="cm-variable">y</span> <span class="cm-operator">-</span> <span class="cm-number">100.2</span></span></pre>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-comment"># 输入模型</span></span></pre>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">model2</span> <span class="cm-arrow">&lt;-</span> <span class="cm-variable">lm</span>(<span class="cm-variable">y</span> <span class="cm-operator">~</span> <span class="cm-variable">rep</span>, <span class="cm-variable">m2</span>)</span></pre>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-comment"># 画散点图</span></span></pre>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">plot</span>(<span class="cm-variable">m2</span><span class="cm-dollar">$</span><span class="cm-variable">rep</span>, <span class="cm-variable">m2</span><span class="cm-dollar">$</span><span class="cm-variable">y</span>)</span></pre>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-comment"># 画回归线</span></span></pre>
+<pre class=""><span style="padding-right: 0.1px;"><span class="cm-variable">abline</span>(<span class="cm-variable">model2</span>)</span></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="position: absolute; height: 30px; width: 1px; top: 0px;"></div>
+<div class="CodeMirror-gutters" style="display: none; height: 202px;"></div>
+</div>
+</div>
+</pre>
+<p>结果5（图2）：</p>
+<hr />
+<p>
+<img src='image\对线性模型中的均值μ的理解_2.png' alt='对线性模型中的均值μ的理解_2' />
+</p>
+<hr />
+<p>对比结果4和结果5，不难发现，除了纵坐标不同，两张图片是完全一样的。因此，μ的作用也就有了答案：</p>
+<p>
+μ的实际作用就是设定一个截距，当然这个截距不一定非要由μ来承担：截距可以任意指定，比如说y中的任意值，例如，R中的截距选择的是y的第一个因子的均值；SAS中选择的是y中的最后一个因子的均值，这样做的目的是使曲线接近测定值。而使用均值μ，则是最简化的公式，即曲线最接近0，此时计算起来速度更快，数据量越大体现的越明显。
+</p>
+<p>对模型来说，截距并不十分重要，重要的是斜率，改变截距不会对斜率造成任何影响。</p>
+</div>
+</body>
+</html>
