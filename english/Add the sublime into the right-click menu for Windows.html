@@ -1,0 +1,12 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>Add the sublime into the right-click menu for Windows.md</title>
+<link rel="stylesheet" type="text/css" href="..\styles\Github.css"> 
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+</head>
+<body class='typora-export ' >
+<div  id='write'  class = 'is-node'><h1><a name='header-c1' class='md-header-anchor '></a>Add the sublime into the right-click menu for Windows</h1><ol><li>Open the regedit.</li><li>Spread out <code>HKEY_CLASSES_ROOT</code>, <code>*</code>, <code>shell</code>.</li><li>Right-click on the <code>shell</code>, <code>New</code>, <code>Key</code>, named <strong>Sublime 3</strong>.</li><li>Double-click the Mouse on <code>(Default)</code> in the right side, and write down <code>Edit with Sublime 3</code>.</li><li>Right-click in the right side, <code>New</code>, <code>String Value</code>, named <code>Icon</code>.</li><li>Double-click the Mouse on <code>Icon</code>, write down <code>C:\Program Files\Sublime Text 3\sublime_text.exe,0</code>(Modify your installation directory).</li><li>Right-click the <code>Sublime 3</code> in the left side, <code>New</code>, <code>Key</code>, named <strong>command</strong>.</li><li>Double-click the Mouse on <code>command</code>, write down <code>C:\Program Files\Sublime Text 3\sublime_text.exe %1</code>(Modify your installation directory).</li><li>Ok, done!</li></ol></div>
+</body>
+</html>
