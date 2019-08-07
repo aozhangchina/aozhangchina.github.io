@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>字数统计工具 by 张敖</title>
+<style type="text/css">
+	#content{
+		height:300px;
+		width:600px;
+	}
+</style>
+<script language="JavaScript">
+<!--
+function a(){
+        var main = document.getElementById ('content').value;
+		document.getElementById ('num').innerHTML=main.length;
+}
+//-->
+</script>
+</head>
+<body>
+	<textarea id="content" onKeyUp="a()"></textarea>
+<p>字数：<span id="num">0</span></p><br />
+统计标准，每个字符（包括中英文）都算1个字，标点符号算1个字，换行算1个字。
