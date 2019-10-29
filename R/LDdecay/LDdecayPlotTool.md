@@ -2,19 +2,27 @@
 
 [TOC]
 
-**制作：张敖 https://datahold.cn**
+**制作：张敖** **[https://datahold.cn](https://datahold.cn/)** 
 
 ## 鸣谢
 
 张学才，CIMMYT，指导
 
-曹士亮 ，黑龙江农科院，测试
+曹士亮 ，黑龙江农科院，测试玉米基因组
 
-袁一冰，四川省农科院，测试
+袁一冰，四川省农科院，测试玉米基因组
 
-宋俊乔，安阳市农科院，测试
+宋俊乔，安阳市农科院，测试玉米基因组
+
+Rahul， Indian Agricultural Research Institute，测试小麦基因组
 
 ## 最新更新
+
+【2019-10-29】
+
+增加了对小麦基因组的支持。理论上，适合任何基因组的绘制。可能需要多次调节参数。
+
+增加了错误返回值，用于判断如何设置LD阈值。
 
 【2019-10-08】
 
@@ -118,18 +126,19 @@
 推荐将所有文件（包括r文件和LD衰减文件）放在同一个目录下，然后在R Studio中运行下列代码。
 
 ```r
-coordinateScale <- c(0, 500, 1000, 2000, 5000, 10000, 20000, 30000, 50000)   # 坐标x轴,按照pb填写
-unit <- "Kb"   # 单位："Kb" or "bp"
+rm(list=ls())   # Clear the Environment Variables 清空环境变量 
+coordinateScale <- c(0, 500, 1000, 2000, 5000, 10000, 20000, 30000, 50000)   # x coordinate axis, unit is bp 坐标x轴,按照pb填写
+unit <- "Kb"   # Units on the image: "Kb" or "bp" 图像单位
 pop.name <- "DTMA"    # The population's name 群体名称
-plotTitle <- "LD Decay Plot"   # The title of plot  图标标题
+plotTitle <- "LD Decay Plot"   # The title of plot  图表标题
 lineWidth <- 2   # the width of line  线宽
 lineColor <- "blue"   # The color of line 线颜色
 #lineColor <- "blue","brown","green","gray","gold","darkblue","lightblue","red","orange","tan","yellowgreen")   # The color of line 线颜色
 dot <- "o"   # "o" is true, "l" is false 线型："l"是折线，"o"是带点的折线
 dottedLine <- TRUE # TRUE or FALSE 
-dividingLine <- c(0.1,0.2)   # 0.1 or 0.2 or c(0.1,0.2)
-plotChrR2 <- TRUE   # 全染色体图例中是否显示r^2值，TURE：显示，FLASE：不显示
-source("https://aozhangchina.github.io/R/LDdecay/LDdecayV3.r",encoding = "utf-8")   # 加载程序文件，需要联网
+dividingLine <- c(0.1)   # 0.1 or 0.2 or c(0.1,0.2)
+plotChrR2 <- TRUE   # R^2 value display 全染色体图例中是否显示r^2值，TURE：显示，FLASE：不显示
+source("https://aozhangchina.github.io/R/LDdecay/LDdecayV4.r",encoding = "utf-8")   # 加载程序文件，需要联网
 ```
 
 > 然后选择LD数据文件，如：allLD.csv。
