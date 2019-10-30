@@ -20,7 +20,7 @@
 
 ## 使用方法
 
-将下列代码复制到Rstudio，请修改下面全选运行。
+将下列代码复制到Rstudio，请修改下面第一行，然后全选运行。
 
 ```
 HMP <- TRUE   #? TRUE of FLASE, TRUE is generating a usable format for TASSEL
