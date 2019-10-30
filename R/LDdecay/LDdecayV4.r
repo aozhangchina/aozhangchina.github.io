@@ -69,11 +69,13 @@ print(round(myScale,2))
 
 op<-par(no.readonly=TRUE)
 par(op)
+par(mar=c(5.1,5.1,4.1,2.1))
+
 
 if (unit=="Kb"){
-  plot(myScale$Scale,myScale$Mean,xaxt="n",yaxt="n",type=dot,lwd=lineWidth, col=lineColor,main=paste(plotTitle,sep=' '), ylim = c(0,1) ,xlab=expression("Physical Distance (Kb)"), ylab=expression("r"^" 2"))
+  plot(myScale$Scale,myScale$Mean,xaxt="n",yaxt="n",type=dot,lwd=lineWidth, cex=1.6, col=lineColor,main=paste(plotTitle,sep=' '), cex.main=1.6, cex.lab=1.6,cex.axis=1.6, ylim = c(0,1), xlab=expression("Physical Distance (Kb)"), ylab=expression("r"^" 2"))
 }else{
-  plot(myScale$Scale,myScale$Mean,xaxt="n",yaxt="n",type=dot,lwd=lineWidth, col=lineColor,main=paste(plotTitle,sep=' '), ylim = c(0,1) ,xlab=expression("Physical Distance (bp)"), ylab=expression("r"^" 2"))  
+  plot(myScale$Scale,myScale$Mean,xaxt="n",yaxt="n",type=dot,lwd=lineWidth, cex=1.6, col=lineColor,main=paste(plotTitle,sep=' '), cex.main=1.6, cex.lab=1.6, cex.axis=1.6, ylim = c(0,1), xlab=expression("Physical Distance (bp)"), ylab=expression("r"^" 2"))  
 }
 
 #  acc <- ac[-c(which(ac>0&ac<5000))]
@@ -81,14 +83,14 @@ ad <- seq(1000,4000,1000)
 acc <- c(ac[1:2],ac[6:9])
 
 if(unit=="Kb"){
-  axis(side=1,at=acc/1000)
-  axis(side=1,at=ad/1000,labels=FALSE)
+  axis(side=1,at=acc/1000,cex.axis=1.6)
+  axis(side=1,at=ad/1000,labels=FALSE,cex.axis=1.6)
 }else{
-  axis(side=1,at=acc)
-  axis(side=1,at=ad,labels=FALSE)
+  axis(side=1,at=acc,cex.axis=1.6)
+  axis(side=1,at=ad,labels=FALSE,cex.axis=1.6)
 }
 
-axis(side=2,at=seq(0.0,1.0,0.1))
+axis(side=2,at=seq(0.0,1.0,0.1),cex.axis=1.6)
 if (dottedLine == TRUE){
   abline(h=dividingLine,lty=2,col="red")
 }
@@ -130,23 +132,24 @@ if (unit=="Kb"){
 
 LDPoint <- LDDecay$LDDecayValue[dim(LDDecay)[1]]
 midax <- myScale$Scale[dim(myScale)[1]]/2-strwidth("r2=0.1, xxxx Kb")/2
-text(midax,0.5, expression(r^2),adj = c(0,0))
+text(midax,0.5, expression(r^2),adj = c(0,0),cex=1.6)
 srt<-strwidth("r2")
-text(midax+srt,0.5,paste("= ",dividingLine[1],", ",LDPoint," ",unit,sep=""),adj=c(0,0))
+text(midax+srt,0.5,paste("= ",dividingLine[1],", ",LDPoint," ",unit,sep=""),adj=c(0,0),cex=1.6)
 cat(paste("The estimate value of LD decay is",round(LDDecay$LDDecayValue[dim(LDDecay)[1]],2),"\n"))
 
 dev.new()
-plot(myScale$Scale,myScale$Mean,xaxt="n",yaxt="n",type=dot,lwd=lineWidth, ylim=c(0,1),col=lineColor[1],main=paste(plotTitle,sep=' '), xlab=expression("Physical Distance (Kb)"), ylab=expression("r"^" 2"))
+par(mar=c(5.1,5.1,4.1,2.1))
+plot(myScale$Scale,myScale$Mean,xaxt="n",yaxt="n",cex=1.6,cex.lab=1.6,cex.main=1.6,cex.axis=1.6,type=dot,lwd=lineWidth, ylim=c(0,1),col=lineColor[1],main=paste(plotTitle,sep=' '), xlab=expression("Physical Distance (Kb)"), ylab=expression("r"^" 2"))
 if(unit=="Kb"){
-  axis(side=1,at=acc/1000)
-  axis(side=1,at=ad/1000,labels=FALSE)
+  axis(side=1,at=acc/1000,cex.axis=1.6)
+  axis(side=1,at=ad/1000,labels=FALSE,cex.axis=1.6)
 }else{
-  axis(side=1,at=acc)
-  axis(side=1,at=ad/1000,labels=FALSE)
+  axis(side=1,at=acc,cex=1.6)
+  axis(side=1,at=ad/1000,labels=FALSE,cex.axis=1.6)
 }
-axis(side=2,at=seq(0,1,0.1))
+axis(side=2,at=seq(0,1,0.1),cex.lab=1.6,cex.axis=1.6,lwd=1.5)
 if (dottedLine == TRUE){
-  abline(h=dividingLine,lty=2,col="red")
+  abline(h=dividingLine,lty=2,col="red",lwd=1.5)
 }
 for (i in 2:(ncol(myScale)-1)){
   lines(myScale[,1],myScale[,i],type=dot,col=lineColor[i])
