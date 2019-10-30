@@ -50,6 +50,7 @@ writeHMP <- function(wData,fName){
   print(getwd())
 }
 
+cat("This tool coding by Zhang Ao. Update: 2019-10-30. \nhttps://datahold.cn/\n")
 
 fileInfo <- getFileInfo()
 setwd(fileInfo$f.dir[1])
