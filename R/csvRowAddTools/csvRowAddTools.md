@@ -42,6 +42,8 @@ csv文件2：
 
 将下列代码复制到Rstudio，请按需求修改下面第一行，然后全选运行。期间会弹出对话框，一次性选择所有需要合并的文件文件即可。
 
+合并完成后，请手动选择文件生成目录。
+
 ```r
 source("https://aozhangchina.github.io/R/csvRowAddTools/csvRowAddTools.r")   # 加载程序文件，需要联网
 xx1 <- combineFile()
