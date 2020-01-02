@@ -23,6 +23,7 @@
 
 
 rm(list=ls())
+cat("Please choose a CSV file. You can get help at datahold.cn.\n")
 fn <- file.choose()
 bn <- basename(fn)
 nameOutput <- paste0(bn,"_transform.csv")
