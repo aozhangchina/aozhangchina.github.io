@@ -43,7 +43,7 @@
 source("https://aozhangchina.github.io/R/GOMultiRowintoOneRow/GOMultiRowintoOneRow.r")   # 加载程序文件，需要联网
 ```
 
-> 运行后需要选择你要转换的CSV文件，实例文件下载：[【点此下载】](https://github.com/aozhangchina/aozhangchina.github.io/tree/master/R/GOMultiRowintoOneRow/test.csv)。
+> 运行后需要选择你要转换的CSV文件，实例文件下载：[【点此下载】](https://aozhangchina.github.io/R/GOMultiRowintoOneRow/test.csv)。
 >
 > 程序自动运行直至全部完毕，结果文件及生成目录会在console提示。
 >
