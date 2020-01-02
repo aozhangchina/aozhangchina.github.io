@@ -84,9 +84,9 @@ cat("   $$ |/$$$$$$  |/$$$$$$  |$$ |              Updated: 01/02/2020\n")
 cat("   $$ |$$ |  $$ |$$ |  $$ |$$ |\n")
 cat("   $$ |$$ \\__$$ |$$ \\__$$ |$$ |              Website: datahold.cn\n")
 cat("   $$ |$$    $$/ $$    $$/ $$ |\n")
-cat("   $$/  $$$$$$/   $$$$$$/  $$/ \n")
+cat("   $$/  $$$$$$/   $$$$$$/  $$/ \n\n")
   
 
 # Output file
 write.table(dataF,nameOutput,row.names = F,col.names = F,sep = ",")
-cat(paste("File directory:\n"),getwd(),"\n","File name:\n",nameOutput,"\n")
+cat(paste(" [File directory]\t"),getwd(),"\n","[File name]\t\t",nameOutput,"\n")
