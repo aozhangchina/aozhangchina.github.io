@@ -71,22 +71,22 @@ a <- readFiles(header=TRUE,fname=fn) # reading the file
 temp1 <- data.frame("SNP"=a$Marker,"Chromosome"=a$Chr,"Position"=a$Pos,"name"=a$Trait,"trait"=a$p)
 
 temp2 <- temp1[order(temp1$Chromosome,temp1$Position),]
+temp2 <- temp2[-which(temp2$SNP=="None"),]   # delete the line of None
 
 paintData <- temp2[,1:3]
 paintData <- temp2[!duplicated(temp2[,1:3]),1:3]
 
-
-
-if (length(levels(a$Trait))>1){
-for (i in 1:length(levels(a$Trait))){
-  cat(paste0("trait",i,"=",levels(a$Trait)[i],"\n"))
-  indexI <- which(temp2$name==levels(temp2$name)[i])
+if (length(unique(a$Trait))>1){
+for (i in 1:length(unique(a$Trait))){
+  cat(paste0("trait",i,"=",unique(a$Trait)[i],"\n"))
+  indexI <- which(temp2$name==unique(temp2$name)[i])
   txt <- paste0("paintData$trait",i,"<-temp2$trait[indexI]")
   eval(parse(text=txt))
 }
 }else{
   txt <- paste0("paintData$trait","<-temp2$trait")
   eval(parse(text=txt))
+  paintData$trait <- temp2$trait
 }
 
 
