@@ -76,9 +76,34 @@ temp2 <- temp2[-which(temp2$SNP=="None"),]   # delete the line of None
 paintData <- temp2[,1:3]
 paintData <- temp2[!duplicated(temp2[,1:3]),1:3]
 
+cat("  ______                   ________  __                                     __        \n")
+cat(" /      \\                 /        |/  |                                   /  |       \n")
+cat("/$$$$$$  |  ______        $$$$$$$$/ $$ |____    ______   _______    ______ $$/_______ \n")
+cat("$$ |__$$ | /      \\           /$$/  $$      \\  /      \\ /       \\  /      \\$//       |\n")
+cat("$$    $$ |/$$$$$$  |         /$$/   $$$$$$$  | $$$$$$  |$$$$$$$  |/$$$$$$  |/$$$$$$$/ \n")
+cat("$$$$$$$$ |$$ |  $$ |        /$$/    $$ |  $$ | /    $$ |$$ |  $$ |$$ |  $$ |$$      \\ \n")
+cat("$$ |  $$ |$$ \\__$$ |       /$$/____ $$ |  $$ |/$$$$$$$ |$$ |  $$ |$$ \\__$$ | $$$$$$  |\n")
+cat("$$ |  $$ |$$    $$/       /$$      |$$ |  $$ |$$    $$ |$$ |  $$ |$$    $$ |/     $$/ \n")
+cat("$$/   $$/  $$$$$$/        $$$$$$$$/ $$/   $$/  $$$$$$$/ $$/   $$/  $$$$$$$ |$$$$$$$/  \n")
+cat("                                                                  /  \\__$$ |          \n")
+cat("                                                                  $$    $$/           \n")
+cat("                                                                   $$$$$$/            \n")
+cat(" ________                   __ \n")
+cat("/        |                 /  |                                                       \n")
+cat("$$$$$$$$/______    ______  $$ |              Tool name: manhattanPlotforTassel.r\n")
+cat("   $$ | /      \\  /      \\ $$ |\n")
+cat("   $$ |/$$$$$$  |/$$$$$$  |$$ |              Updated: 01/14/2020\n")
+cat("   $$ |$$ |  $$ |$$ |  $$ |$$ |\n")
+cat("   $$ |$$ \\__$$ |$$ \\__$$ |$$ |              Website: datahold.cn\n")
+cat("   $$ |$$    $$/ $$    $$/ $$ |\n")
+cat("   $$/  $$$$$$/   $$$$$$/  $$/ \n\n")
+
+tp <- NULL
+  
 if (length(unique(a$Trait))>1){
 for (i in 1:length(unique(a$Trait))){
   cat(paste0("trait",i,"=",unique(a$Trait)[i],"\n"))
+  tp <- c(tp,unique(a$Trait)[i])
   indexI <- which(temp2$name==unique(temp2$name)[i])
   txt <- paste0("paintData$trait",i,"<-temp2$trait[indexI]")
   eval(parse(text=txt))
@@ -89,6 +114,9 @@ for (i in 1:length(unique(a$Trait))){
   paintData$trait <- temp2$trait
 }
 
-
 CMplot(paintData,plot.type="m",LOG10=TRUE,threshold=NULL,chr.den.col=NULL,file="jpg",memo=fn,file.output=TRUE,verbose=TRUE)
 
+b <- dir(pattern="Rectangular-Manhattan")
+for (i in 1:length(b)){
+  file.rename(b[i],paste0(fn,"_",tp[i],".jpg"))
+}
