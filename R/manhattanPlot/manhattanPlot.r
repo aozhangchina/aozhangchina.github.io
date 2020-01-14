@@ -31,12 +31,42 @@ if(!"CMplot" %in% installed.packages()) {
   library(CMplot)
 }
 
+# The funtion of reading files
+readFiles <- function(header=TRUE,choose=FALSE,fname){
+  if(!"readr" %in% installed.packages()) {
+    install.packages("readr")
+    library(readr)
+  }else{
+    library(readr)
+  }
+  if (choose==TRUE){
+    myFileName <- file.choose()
+  }else{
+    myFileName <- fname
+  }
+  if (grepl("\\.csv$",myFileName)){
+    if (header==TRUE){
+      myFile <- read_csv(myFileName, col_names = TRUE)
+    }else{
+      myFile <- read_csv(myFileName, col_names = FALSE)
+    }
+  }else{
+    if (header==TRUE){
+      myFile <- read_tsv(myFileName, col_names = TRUE)
+    }else{
+      myFile <- read_tsv(myFileName, col_names = FALSE)
+    }
+  }
+  return(myFile)
+}
+# Reading File
+
 cf <- choose.files()
 fn <- basename(cf)
 setwd(dirname(cf))
 getwd()
 
-a <- read.table(cf,header=T)
+a <- readFiles(header=TRUE,fname=fn) # reading the file
 
 temp1 <- data.frame("SNP"=a$Marker,"Chromosome"=a$Chr,"Position"=a$Pos,"name"=a$Trait,"trait"=a$p)
 
@@ -47,15 +77,18 @@ paintData <- temp2[!duplicated(temp2[,1:3]),1:3]
 
 
 
-if (length(levels(a$Trait))!=1){
+if (length(levels(a$Trait))>1){
 for (i in 1:length(levels(a$Trait))){
   cat(paste0("trait",i,"=",levels(a$Trait)[i],"\n"))
   indexI <- which(temp2$name==levels(temp2$name)[i])
   txt <- paste0("paintData$trait",i,"<-temp2$trait[indexI]")
   eval(parse(text=txt))
 }
+}else{
+  txt <- paste0("paintData$trait","<-temp2$trait")
+  eval(parse(text=txt))
 }
 
 
-CMplot(paintData,plot.type="m",LOG10=TRUE,threshold=NULL,chr.den.col=NULL,file="jpg",file.output=TRUE,verbose=TRUE)
+CMplot(paintData,plot.type="m",LOG10=TRUE,threshold=NULL,chr.den.col=NULL,file="jpg",memo=fn,file.output=TRUE,verbose=TRUE)
 
