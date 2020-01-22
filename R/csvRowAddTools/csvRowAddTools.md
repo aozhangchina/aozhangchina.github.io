@@ -6,7 +6,11 @@
 
 ## 最新更新
 
-【2019-12-3】
+【2020-01-22】
+
+增加记录文件目录。
+
+【2019-12-03】
 
 编写完成，一次性选择多个文件合并。
 
@@ -47,6 +51,6 @@ csv文件2：
 ```r
 source("https://aozhangchina.github.io/R/csvRowAddTools/csvRowAddTools.r")   # 加载程序文件，需要联网
 xx1 <- combineFile()
-write.csv(xx1,paste0(file=choose.dir(),"/","GY_11&12_2017.csv"),row.names = F)   #? 请修改【GY_11&12_2017.csv】为你自己的文件名。
+write.csv(xx1,paste0("GY_11&12_2017.csv"),row.names = F)   #? 请修改【GY_11&12_2017.csv】为你自己的文件名。
 ```
 

@@ -1,5 +1,6 @@
 combineFile <- function(){
 tempfile <- choose.files()
+setwd(dirname(tempfile[1]))
 for (i in 1:length(tempfile)){
   ttt <- paste0("file",i,"<- read.csv(tempfile[i],header=T,stringsAsFactors = F)")
   eval(parse(text=ttt))
