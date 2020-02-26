@@ -8,23 +8,37 @@
 
 ## 最新更新
 
+【2020-02-25】
+
+修正只产生一条数据的BUG。
+
+增加显示每个材料的标记数量。
+
+增加显示重复的材料名，用于手动删除。
+
+增加可选项，delRep <- TRUE，删除重复材料（保留第一个）。
+
 【2019-10-30】
 
 编写完成。 可将两个基因型文件整合成一个。
 
 ## 功能
 
-1. 将两个HMP文件或其他标准基因型合成为一个文件，并对齐标记名。
-2. 两个文件必须有相同的标记名和不同的材料个体名。
-3. 可以选择是否生成TASSEL能打开的HMP文件，只针对HMP文件。
+1. 将多个HMP文件或其他标准基因型合成为一个文件，并对齐标记名。
+2. 文件的标记必须有相同的部分。例如A文件标记名：A1,A2,A3,A5；B文件标记名：A2,A3,A4,A5。
+3. 可以选择是否将重复的材料删掉（保留第一个）。
+4. 可以选择是否生成TASSEL能打开的HMP文件，只针对HMP文件。
 
 ## 使用方法
 
-将下列代码复制到Rstudio，请修改下面第一行，然后全选运行。
+将下列代码复制到Rstudio，请按需求修改下面第一行，然后全选运行。期间会弹出对话框，选择2个要合并的基因型文件即可。
+
+合并后的文件命名为【combineGenoData.txt】或【combineGenoData.hmp.txt】。
 
 ```
-HMP <- TRUE   #? TRUE of FLASE, TRUE is generating a usable format for TASSEL
+HMP <- TRUE   #? TRUE or FALSE, TRUE is generating a usable format for TASSEL
+delRep <- TRUE  #? TRUE or FALSE, TRUE is Auto-delete duplicates
 # Please choose two marker files once
-source("https://aozhangchina.github.io/R/MerkerDataCombineTool/MerkerDataCombineTool.R")   # 加载程序文件，需要联网
+source("https://aozhangchina.github.io/R/MerkerDataCombineTool/MerkerDataCombineTool.r")   # 加载程序文件，需要联网
 ```
 

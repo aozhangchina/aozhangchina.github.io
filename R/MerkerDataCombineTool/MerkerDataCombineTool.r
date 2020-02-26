@@ -50,12 +50,13 @@ writeHMP <- function(wData,fName){
   print(getwd())
 }
 
-cat("This tool coding by Zhang Ao. Update: 2019-10-30. \nhttps://datahold.cn/\n")
+cat("This tool coding by Zhang Ao. Update: 2020-02-25. \nhttps://datahold.cn/\n")
 
 fileInfo <- getFileInfo()
 setwd(fileInfo$f.dir[1])
 cat(paste0("Work Space:\n",getwd()))
 
+# read files
 for (i in 1:length(fileInfo$f.name)){
   genotext <- paste0("geno",i," <- readFiles(header=T,fname='",fileInfo$f.name[i],"')")
   eval(parse(text=genotext))
@@ -63,26 +64,48 @@ for (i in 1:length(fileInfo$f.name)){
   eval(parse(text=genotext))
 }
 
-
-n1 <- as.character(geno1[,1])
-length(n1)
-n2 <- as.character(geno2[,1])
-length(n2)
-nintersect <- intersect(n1,n2)
-length(nintersect)
-
-index1 <- n1 %in% nintersect
-index2 <- n2 %in% nintersect
-
-geno1 <- geno1[index1,]
-geno2 <- geno2[index2,]
-
-geno <- cbind(geno1,geno2)
-
-if (length(unique(names(geno)))<length(names(geno))){
-  geno <- geno[,!duplicated(names(geno))]
+cat("The number of markers are:\n")
+for (j in 1: length(fileInfo$f.name)){
+  ntext <- paste0("print(length(n",j," <- names(geno", j,")))\n")
+  eval(parse(text=ntext))
 }
 
+for (k in 2: length(fileInfo$f.name)){
+  nintersecttext <- paste0("nintersect <- intersect(n",k,",n",(k-1),")")
+  eval(parse(text=nintersecttext))
+}
+
+cat("The number of final markers: \n")
+cat(length(nintersect))
+
+for (kk in 1:length(fileInfo$f.name)){
+  indexMtext <- paste0("index",kk," <- n",kk," %in% nintersect")
+  eval(parse(text=indexMtext))
+  genoMtext <- paste0("genoM",kk," <- geno",kk,"[,index",kk,"]")
+  eval(parse(text=genoMtext))
+}
+
+
+geno <- "" # Initialization
+# combine all materials
+for (l in 1:length(fileInfo$f.name)){
+  combinetext <- paste0("geno <- rbind(genoM",l,",geno)")
+  eval(parse(text=combinetext))
+}
+if (length(which(geno[,1]==""))>0){
+geno <- geno[-which(geno[,1]==""),]
+}
+
+if (length(unique(geno[,1]))<length(geno[,1])){
+  cat("There are some repeat materials:\n")
+  repGeno <- which(duplicated(geno[,1]))
+  print(geno[repGeno,1])
+  cat("You can set 'delRep <- TRUE' to auto-delete duplicates.")
+}
+
+if (delRep==TRUE & length(which(duplicated(geno[,1])))){
+  geno <- geno[-which(duplicated(geno[,1])),]
+}
 
 if (HMP==TRUE){
   writeHMP(geno,"combineGenoData")
