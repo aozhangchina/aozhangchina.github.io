@@ -6,6 +6,12 @@
 
 **制作：张敖 [https://datahold.cn](https://datahold.cn/)** 
 
+# 鸣谢
+
+张学才，CIMMYT，指导
+
+扈光辉，黑龙江农科院，测试
+
 ## 最新更新
 
 【2020-02-25】
