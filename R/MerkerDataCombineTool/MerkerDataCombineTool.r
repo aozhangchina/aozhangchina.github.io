@@ -100,7 +100,7 @@ if (length(unique(geno[,1]))<length(geno[,1])){
   cat("There are some repeat materials:\n")
   repGeno <- which(duplicated(geno[,1]))
   print(geno[repGeno,1])
-  cat("You can set 'delRep <- TRUE' to auto-delete duplicates.")
+  if (delRep != TRUE){cat("You can set 'delRep <- TRUE' to auto-delete duplicates.")}
 }
 
 if (delRep==TRUE & length(which(duplicated(geno[,1])))){
