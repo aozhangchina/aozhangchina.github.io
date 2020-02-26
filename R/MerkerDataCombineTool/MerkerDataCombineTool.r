@@ -62,7 +62,7 @@ for (i in 1:length(fileInfo$f.name)){
   eval(parse(text=genotext))
 }
 
-cat("This tool coding by Zhang Ao. Update: 2020-02-25. \nhttps://datahold.cn/\n")
+cat("This tool is made by Zhang Ao. Update: 2020-02-25. \nhttps://datahold.cn/\n")
 cat("The number of markers are:\n")
 for (j in 1: length(fileInfo$f.name)){
   ntext <- paste0("print(length(n",j," <- names(geno", j,")))\n")
