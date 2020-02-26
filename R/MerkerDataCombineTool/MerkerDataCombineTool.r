@@ -41,20 +41,18 @@ writeHMP <- function(wData,fName){
   chromAndPos <- data.frame(chrom=wData$chrom,pos=wData$pos)
   chromAndPos <- as.matrix(chromAndPos)
   chromAndPosNA <- which(is.na(chromAndPos))
-  chromAndPos[chromAndPosNA] <- "NA"   # 将NA转化为"NA"
+  chromAndPos[chromAndPosNA] <- "NA"   # 将NA转化�?"NA"
   chromAndPos <- as.data.frame(chromAndPos)
-  temp <- wData[order(chromAndPos$chrom,chromAndPos$pos),]   # 排列非数字内容
+  temp <- wData[order(chromAndPos$chrom,chromAndPos$pos),]   # 排列非数字内�?
   sortResult <- temp[order(as.numeric(as.character(temp$chrom)),as.numeric(as.character(temp$pos))),] 
   write.table(sortResult,paste0(fName,".hmp.txt"),sep="\t", quote =F,row.names = F)   # 输出hmp文件
   print("directory:")
   print(getwd())
 }
 
-cat("This tool coding by Zhang Ao. Update: 2020-02-25. \nhttps://datahold.cn/\n")
-
 fileInfo <- getFileInfo()
 setwd(fileInfo$f.dir[1])
-cat(paste0("Work Space:\n",getwd()))
+cat(paste0("Work Space:\n",getwd(),"\n"))
 
 # read files
 for (i in 1:length(fileInfo$f.name)){
@@ -64,6 +62,7 @@ for (i in 1:length(fileInfo$f.name)){
   eval(parse(text=genotext))
 }
 
+cat("This tool coding by Zhang Ao. Update: 2020-02-25. \nhttps://datahold.cn/\n")
 cat("The number of markers are:\n")
 for (j in 1: length(fileInfo$f.name)){
   ntext <- paste0("print(length(n",j," <- names(geno", j,")))\n")
@@ -77,7 +76,7 @@ for (k in 2: length(fileInfo$f.name)){
 }
 
 cat("The number of final markers: \n")
-cat(length(nintersect))
+cat(paste(length(nintersect),"\n"))
 
 for (kk in 1:length(fileInfo$f.name)){
   indexMtext <- paste0("index",kk," <- n",kk," %in% nintersect")
