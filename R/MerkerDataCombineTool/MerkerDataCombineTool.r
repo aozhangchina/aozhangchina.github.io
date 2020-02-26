@@ -70,8 +70,9 @@ for (j in 1: length(fileInfo$f.name)){
   eval(parse(text=ntext))
 }
 
+nintersect <- n1   # initialize ninterect
 for (k in 2: length(fileInfo$f.name)){
-  nintersecttext <- paste0("nintersect <- intersect(n",k,",n",(k-1),")")
+  nintersecttext <- paste0("nintersect <- intersect(n",k,",nintersect)")
   eval(parse(text=nintersecttext))
 }
 
