@@ -76,16 +76,16 @@ probability_impute <- function(myVector){
 }
 # 结合上面两个步骤的自动化函数
 impute_prob <- function(myMatrix){
-  cat("Status:正在去除无多态性标记!\n")
+  cat("Status: Removing polymorphism markers.\n")
   system.time(index_monomorphic <- apply(geno,2,delet_monomorphic))  # 获得无多态性标记索引
   X_without_monomorphic <- geno[,index_monomorphic==0]
   print_info <- data.frame("Individual"=dim(X_without_monomorphic)[1],"Markers"=dim(X_without_monomorphic)[2])
   print(print_info)
   numbersOfNA <- data.frame("NA"=length(which(is.na(X_without_monomorphic))))
   print(numbersOfNA)
-  cat("Status:正在执行Imputation!\n")
+  cat("Status: Imputating!\n")
   impu_prob_value <- apply(X_without_monomorphic,2,probability_impute)
-  cat("Status:Imputation complete!\n")
+  cat("Status: Imputation complete!\n")
   return(impu_prob_value)
 }
 
