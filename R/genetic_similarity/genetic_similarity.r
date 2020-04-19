@@ -27,12 +27,6 @@ readFiles <- function(header=TRUE,choose=FALSE,fname){
   return(myFile)
 }
 
-compareTwoSets <- function(a,b){
-  same_a_b <- length(a==b)
-  percentage <- same_a_b/length(a)
-  return(percentage)
-}
-
 cat("Please choose a HMP file. \nPlease make sure your file dont't have NA.")
 fDir <- choose.files()
 setwd(dirname(fDir))
@@ -50,7 +44,6 @@ rownames(genetic_similarity) <- names(HMP_file_content)
 for (i in 1:ncol(genetic_similarity)){
     tempi <- HMP_file_content[i,]
     cat(paste0(i,"/",length(tempi),"\n"))
-    apply(HMP_file_content,1,which(tempi==HMP_file_content))
     for (k in 1:ncol(genetic_similarity)){
         tempk <- HMP_file_content[k,]
         genetic_similarity_value <- length(which(tempi==tempk))/length(tempi)
