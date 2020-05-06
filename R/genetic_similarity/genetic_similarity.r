@@ -1,3 +1,4 @@
+rm(list=ls())
 # Read files
 readFiles <- function(header=TRUE,choose=FALSE,fname){
   if(!"readr" %in% installed.packages()) {
@@ -27,27 +28,35 @@ readFiles <- function(header=TRUE,choose=FALSE,fname){
   return(myFile)
 }
 
-cat("Please choose a HMP file. \nPlease make sure your file dont't have NA.")
+cat("Please choose a HMP file. \nPlease make sure your file dont't have NA.\n")
 fDir <- choose.files()
 setwd(dirname(fDir))
 cat(paste0("Workspace:",getwd(),"\n"))
 HMP_file <- readFiles(header=TRUE,choose=FALSE,basename(fDir))
 # View(HMP_file)
 HMP_file_name <- as.character(HMP_file[,1])
-HMP_file_content <- HMP_file[,12:ncol(HMP_file)]
-# View(HMP_file_content)
-# Initialize a matrix
-genetic_similarity <- matrix(NA,ncol(HMP_file_content),ncol(HMP_file_content))
-colnames(genetic_similarity) <- names(HMP_file_content)
-rownames(genetic_similarity) <- names(HMP_file_content)
-# View(genetic_similarity)
-for (i in 1:ncol(genetic_similarity)){
-    tempi <- HMP_file_content[i,]
-    cat(paste0(i,"/",length(tempi),"\n"))
-    for (k in 1:ncol(genetic_similarity)){
-        tempk <- HMP_file_content[k,]
-        genetic_similarity_value <- length(which(tempi==tempk))/length(tempi)
-        genetic_similarity[k,i] <- genetic_similarity_value
-    }
+HMP_file_content <- as.data.frame(HMP_file[,12:ncol(HMP_file)])
+
+# check NA
+if (any(is.na(HMP_file_content))){
+  stop("Have NA.\n")
 }
+
+
+# the function of get the same line number
+myFuncGetSameLineNo <- function(y){
+  x <- tempi
+  length(which(x==y))/nrow(x)
+}
+
+# initiallize matrix
+genetic_similarity <- NULL
+for (i in 1:ncol(HMP_file_content)){
+  cat(paste0(i,"/",ncol(HMP_file_content),"\n"))
+  tempi <- HMP_file_content[i]
+    tempii <- apply(HMP_file_content,2,myFuncGetSameLineNo)
+    genetic_similarity <- rbind(genetic_similarity,tempii)
+}
+row.names(genetic_similarity) <- names(HMP_file_content)
+
 write.table(genetic_similarity,paste0("genetic_similarity_",basename(fDir),".txt"),quote=FALSE,row.names = T,sep="\t")
