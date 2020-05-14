@@ -185,7 +185,7 @@ if (length(fgroup) == 0){
 
 pcagroup <- as.character(group[,2])
 
-mycolor <- c("black","#E94B35","#2C97De","#00BD9C","9C56B8")
+mycolor <- c("black","#E94B35","#2C97De","#00BD9C","#9C56B8")
 mypch <- c(21,22,23,24,25)
 
 colour_group <- mycolor[1:length(unique(pcagroup))]
