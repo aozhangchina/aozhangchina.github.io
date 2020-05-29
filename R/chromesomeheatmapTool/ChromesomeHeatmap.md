@@ -1,5 +1,7 @@
 ## ChromesomeHeatmapTool
 
+[toc]
+
 **制作：张敖 [https://datahold.cn](https://datahold.cn/)**
 
 ## 鸣谢
