@@ -1,4 +1,4 @@
-## ChromesomeHeatmap
+## ChromesomeHeatmapTool
 
 **制作：张敖 [https://datahold.cn](https://datahold.cn/)**
 
@@ -29,6 +29,6 @@
 ```R
 rm(list=ls())
 plotcolor <- c("#4575b4", "#ffffbf", "#d73027")   #? 颜色 c("#e5f5f9", "#99d8c9", "#2ca25f")
-source("https://aozhangchina.github.io/R/chromesomeheatmap/chromesomeheatmap")   # 加载程序文件，需要联网
+source("https://aozhangchina.github.io/R/chromesomeheatmapTool/chromesomeheatmap.r")   # 加载程序文件，需要联网
 ```
 
