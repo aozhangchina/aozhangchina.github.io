@@ -14,15 +14,13 @@
 #  /        |                 /  |
 #  $$$$$$$$/______    ______  $$ |              Tool name: manhattanPlotforTassel.r
 #     $$ | /      \  /      \ $$ |
-#     $$ |/$$$$$$  |/$$$$$$  |$$ |              Updated: 01/13/2020
+#     $$ |/$$$$$$  |/$$$$$$  |$$ |              Updated: 06/16/2020
 #     $$ |$$ |  $$ |$$ |  $$ |$$ |
 #     $$ |$$ \__$$ |$$ \__$$ |$$ |              Website: datahold.cn
 #     $$ |$$    $$/ $$    $$/ $$ |
 #     $$/  $$$$$$/   $$$$$$/  $$/ 
 #    
 
-
-rm(list=ls())
 
 if(!"CMplot" %in% installed.packages()) {
   install.packages("CMplot")
@@ -73,6 +71,8 @@ temp1 <- data.frame("SNP"=a$Marker,"Chromosome"=a$Chr,"Position"=a$Pos,"name"=a$
 temp2 <- temp1[order(temp1$Chromosome,temp1$Position),]
 temp2 <- temp2[-which(temp2$SNP=="None"),]   # delete the line of None
 
+temp2 <- temp2[-which(is.na(temp2$SNP)),]
+
 paintData <- temp2[,1:3]
 paintData <- temp2[!duplicated(temp2[,1:3]),1:3]
 
@@ -92,7 +92,7 @@ cat(" ________                   __ \n")
 cat("/        |                 /  |                                                       \n")
 cat("$$$$$$$$/______    ______  $$ |              Tool name: manhattanPlotforTassel.r\n")
 cat("   $$ | /      \\  /      \\ $$ |\n")
-cat("   $$ |/$$$$$$  |/$$$$$$  |$$ |              Updated: 01/14/2020\n")
+cat("   $$ |/$$$$$$  |/$$$$$$  |$$ |              Updated: 06/16/2020\n")
 cat("   $$ |$$ |  $$ |$$ |  $$ |$$ |\n")
 cat("   $$ |$$ \\__$$ |$$ \\__$$ |$$ |              Website: datahold.cn\n")
 cat("   $$ |$$    $$/ $$    $$/ $$ |\n")
@@ -100,7 +100,7 @@ cat("   $$/  $$$$$$/   $$$$$$/  $$/ \n\n")
 
 tp <- NULL
   
-if (length(unique(a$Trait))>1){
+if (length(unique(paintData$Trait))>1){
 for (i in 1:length(unique(a$Trait))){
   cat(paste0("trait",i,"=",unique(a$Trait)[i],"\n"))
   tp <- c(tp,unique(a$Trait)[i])
@@ -114,7 +114,7 @@ for (i in 1:length(unique(a$Trait))){
   paintData$trait <- temp2$trait
 }
 
-CMplot(paintData,plot.type="m",LOG10=TRUE,threshold=NULL,chr.den.col=NULL,file="jpg",memo=fn,file.output=TRUE,verbose=TRUE)
+CMplot(paintData,plot.type="m",LOG10=TRUE,threshold=threshold_line,chr.den.col=NULL,file="jpg",memo=fn,file.output=TRUE,verbose=TRUE)
 
 b <- dir(pattern="Rectangular-Manhattan")
 for (i in 1:length(b)){
