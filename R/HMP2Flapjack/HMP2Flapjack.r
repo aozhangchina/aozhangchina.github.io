@@ -61,7 +61,6 @@ geno <- geno[,-useless_column]
 # Transpose geno
 geno_t <- t(geno)
 rownames_geno_t <- row.names(geno_t)
-names_geno_t[1] <- NA
 colnames_geno_t <- geno_t[1,]
 geno_t <- geno_t[-1,]
 
