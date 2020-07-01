@@ -69,9 +69,15 @@ a <- readFiles(header=TRUE,fname=fn) # reading the file
 temp1 <- data.frame("SNP"=a$Marker,"Chromosome"=a$Chr,"Position"=a$Pos,"name"=a$Trait,"trait"=a$p)
 
 temp2 <- temp1[order(temp1$Chromosome,temp1$Position),]
-temp2 <- temp2[-which(temp2$SNP=="None"),]   # delete the line of None
 
-temp2 <- temp2[-which(is.na(temp2$SNP)),]
+if (length(which(temp2$SNP=="None"))>0){
+  temp2 <- temp2[-which(temp2$SNP=="None"),]   # delete the line of None
+}
+
+if (length(which(is.na(temp2$SNP)))>0){
+  temp2 <- temp2[-which(is.na(temp2$SNP)),]
+}
+
 
 paintData <- temp2[,1:3]
 paintData <- temp2[!duplicated(temp2[,1:3]),1:3]
@@ -120,3 +126,4 @@ b <- dir(pattern="Rectangular-Manhattan")
 for (i in 1:length(b)){
   file.rename(b[i],paste0(fn,"_",tp[i],".jpg"))
 }
+
