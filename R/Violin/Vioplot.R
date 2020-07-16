@@ -23,7 +23,6 @@ if (!exists("plotcolor")) {
    tempPlotcolor <- sub(",$","",tempPlotcolor)
    tempPlotcolor <- paste0(tempPlotcolor,")")
 }
-}
 if (!exists("Ylim")) {
    Ylim <- NULL
 }
