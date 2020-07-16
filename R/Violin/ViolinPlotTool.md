@@ -57,6 +57,7 @@
 将下列代码复制到Rstudio，根据需要，自行修改下面代码的前三行，全选运行。
 
 ```r
+rm(list=ls())   # remove objects
 Xlab <- "Locations"   #? X轴标题
 Ylab <- "SRF sorse"   #? Y轴标题
 Ylim <- c(35,70)   #? Y轴范围，程序自动计算请写NULL
