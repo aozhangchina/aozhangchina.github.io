@@ -6,7 +6,6 @@
 # Made by Ao Zhang
 # Updata:7/16/2020
 #################### 头部信息结束 ####################
-plotcolor <- c("lightgreen", "lightblue","gray")
 if (!exists("Xlab")) {
    Xlab <- "Xlab"
 }
