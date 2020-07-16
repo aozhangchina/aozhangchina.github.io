@@ -6,7 +6,7 @@
 # Made by Ao Zhang
 # Updata:7/16/2020
 #################### 头部信息结束 ####################
-
+plotcolor <- c("lightgreen", "lightblue","gray")
 if (!exists("Xlab")) {
    Xlab <- "Xlab"
 }
@@ -14,7 +14,15 @@ if (!exists("Ylab")) {
    Ylab <- "Ylab"
 }
 if (!exists("plotcolor")) {
-   plotcolor <- "gray"
+   tempPlotcolor <- paste0("'gray'")
+}else if (length(plotcolor)>=1) {
+  tempPlotcolor <- "c("
+   for (plotcolor_n in 1:length(plotcolor)) {
+      tempPlotcolor <- paste0(tempPlotcolor,"'",plotcolor[plotcolor_n],"',")
+   }
+   tempPlotcolor <- sub(",$","",tempPlotcolor)
+   tempPlotcolor <- paste0(tempPlotcolor,")")
+}
 }
 if (!exists("Ylim")) {
    Ylim <- NULL
@@ -61,15 +69,15 @@ if(length(Ylim)==0){
                                ", xlab = '",Xlab,
                                "', ylab='",Ylab,
                                "', names=",xnames2,
-                                ",col='",plotcolor,
-                               "')"))
+                                ",col=",tempPlotcolor,
+                               ")"))
 }else{
   runfile <- parse(text=paste0("vioplot(",xnames1,
                                ", xlab = '",Xlab,
                                "', ylab='",Ylab,
                                "', names=",xnames2,
-                                ",col='",plotcolor,
-                                "',ylim=c(",Ylim[1],",",Ylim[2],
+                                ",col=",tempPlotcolor,
+                                ",ylim=c(",Ylim[1],",",Ylim[2],
                                "))"))
 }
 eval(runfile)
