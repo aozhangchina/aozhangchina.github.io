@@ -1,11 +1,25 @@
 #################### 头部信息开始 ####################
 # 功能：提琴图制作工具
 # 制作人：张敖（Ao Zhang）
-# 更新日期： 2019-10-10 
+# 更新日期： 2020-07-16
 # Violin Plot tool
 # Made by Ao Zhang
-# Updata:10/10/2019
+# Updata:7/16/2020
 #################### 头部信息结束 ####################
+
+if (!exists("Xlab")) {
+   Xlab <- "Xlab"
+}
+if (!exists("Ylab")) {
+   Ylab <- "Ylab"
+}
+if (!exists("plotcolor")) {
+   plotcolor <- "gray"
+}
+if (!exists("Ylim")) {
+   Ylim <- NULL
+}
+
 
 # install and load vioplot  package
 if(!"vioplot" %in% installed.packages()) {
@@ -19,7 +33,7 @@ if(!"vioplot" %in% installed.packages()) {
 stringAddQuotation <- function(theVector=theVector,sep=",",sepIn="'",pre_element="",bac_element="",first="'",last="'"){
   # 前、中、后，解向量
   theVector <- paste0(pre_element,theVector,bac_element,collapse = sep)
-  # 内部,变成','，基于first
+  # 内部,变成‘，
   sep_in <- paste0(sepIn,sep,sepIn)
   # 分割符号前，增加引号
   theVector <- gsub(sep,sep_in,theVector)
@@ -35,15 +49,27 @@ str(usefiles)
 setwd(dirname(datainfo))
 xnames <- names(usefiles)
 
+for (i in 1:ncol(usefiles)){
+  usefiles[,i] <- as.numeric(usefiles[,i])
+}
+
 xnames1 <- stringAddQuotation(xnames,",","","usefiles$","","","")
 xnames2 <- stringAddQuotation(xnames,",","'","","","c('","')")
 
-
-runfile <- parse(text=paste0("vioplot(",xnames1,
+if(length(Ylim)==0){
+  runfile <- parse(text=paste0("vioplot(",xnames1,
                                ", xlab = '",Xlab,
                                "', ylab='",Ylab,
                                "', names=",xnames2,
-                               ",col='",plotcolor,
+                                ",col='",plotcolor,
                                "')"))
-
+}else{
+  runfile <- parse(text=paste0("vioplot(",xnames1,
+                               ", xlab = '",Xlab,
+                               "', ylab='",Ylab,
+                               "', names=",xnames2,
+                                ",col='",plotcolor,
+                                "',ylim=c(",Ylim[1],",",Ylim[2],
+                               "))"))
+}
 eval(runfile)
