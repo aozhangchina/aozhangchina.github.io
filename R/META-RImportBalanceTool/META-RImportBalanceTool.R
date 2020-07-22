@@ -21,3 +21,4 @@ for (i in 1:length(varList)){
 txt <- paste0("resultFile <- fileA[which(fileA$",var_material," %in% finalMaterial),]")
 eval(parse(text=txt))
 write.table(resultFile, paste0(dirname(fn),"/",fnWithoutCSV,"_balance.csv"), quote = F, row.names = F, sep = ",")
+cat("Done!\n",dirname(fn),"/",fnWithoutCSV,"_balance.csv\n",sep = "")
