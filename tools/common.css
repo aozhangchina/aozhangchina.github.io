@@ -1,0 +1,74 @@
+body
+{
+
+line-height: 1.5;
+background-color: #CCCCCC;
+text-align:center;/*与下面margin：aoto；配合使用，使div模块垂直居中显示*/
+}
+table
+{
+width: 100%;
+border-style:solid;
+border-width:1px;
+}
+table.neibu
+{
+	border-style:none;
+}
+tr#neibu
+{
+width:30px;
+}
+td#neibu
+{
+width:20%;
+}
+.textareasize{
+	width:90%;
+	height: 300px;
+}
+.inputsize{
+	width:50%;
+}
+td{
+width:100px;
+}
+td#huanhang{
+	word-break:break-all
+}
+div
+{
+MARGIN:auto;
+background:white;
+width:600px;
+border:1px solid #a1a1a1;
+padding:20px 40px; 
+border-radius:15px;
+box-shadow: 3px 3px 3px #888888;
+-moz-border-radius:15px; /* 老的 Firefox */
+}
+input
+{
+width:30px;
+}
+p
+{
+text-align:left;
+}
+li
+{
+text-align:left;
+}
+.trouble
+{
+font-weight: bold;
+}
+img.pic
+{
+width: 340px;
+}
+video
+{
+height:240px;
+width:340px;
+}
