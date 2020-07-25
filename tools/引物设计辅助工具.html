@@ -1,0 +1,105 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>引物设计辅助工具</title>
+<link rel="stylesheet" type="text/css" href="common.css" />
+<body>
+<div>
+<SCRIPT LANGUAGE="JavaScript">
+function myFunctionV9(){
+var all_sequence=document.getElementById("$Ww").value;
+var all_length=all_sequence.length;
+var sequence_1=document.getElementById("$W_1").value;
+var sequence_2=document.getElementById("$W_2").value;
+var sequence_3=document.getElementById("$W_3").value;
+var se_length=sequence_1.length+sequence_2.length+sequence_3.length;
+var f_sequence=document.getElementById("$WF").value;
+var f_sequence=f_sequence.replace(/[^A-Z]/g,"");
+var f_length=f_sequence.length;
+var r_sequence=document.getElementById("$WR").value;
+var r_sequence=r_sequence.replace(/[^A-Z]/g,"");
+var r_length=r_sequence.length;
+var html_sequence=all_sequence;
+var flag=0;
+var sx1_1;
+if(all_sequence.search(sequence_1)<0){
+alert("目的片段1不存在");
+}else if(all_sequence.search(sequence_1)>0){
+flag=1;
+html_sequence=html_sequence.replace(sequence_1,"<font color=orange>"+sequence_1+"</font>");
+}
+if(all_sequence.search(sequence_2)<0){
+alert("目的片段2不存在");
+}else if(all_sequence.search(sequence_2)>0){
+flag=2;
+html_sequence=html_sequence.replace(sequence_2,"<font color=orange>"+sequence_2+"</font>");
+}
+if(all_sequence.search(sequence_3)<0){
+alert("目的片段3不存在");
+}else if(all_sequence.search(sequence_3)>0){
+flag=3;
+html_sequence=html_sequence.replace(sequence_3,"<font color=orange>"+sequence_3+"</font>");
+}
+
+if(all_sequence.search(f_sequence)<0){
+alert("上游引物不存在");
+}else if(all_sequence.search(f_sequence)>0){
+html_sequence=html_sequence.replace(f_sequence,"<font color=green>"+f_sequence+"</font>");
+}
+
+re_sequence=r_sequence.split("").reverse().join("");
+re_sequence=re_sequence.replace(/A/g,"K");
+re_sequence=re_sequence.replace(/G/g,"Q");
+re_sequence=re_sequence.replace(/C/g,"G");
+re_sequence=re_sequence.replace(/T/g,"A");
+re_sequence=re_sequence.replace(/K/g,"T");
+re_sequence=re_sequence.replace(/Q/g,"C");
+if(all_sequence.search(re_sequence)<0){
+alert("下游引物不存在");
+}else if(all_sequence.search(re_sequence)>0){
+html_sequence=html_sequence.replace(re_sequence,"<font color=green>"+re_sequence+"</font>");
+}
+var sx1=all_sequence.search(sequence_1)+1;
+switch (flag){
+case 3:
+sx1_1=all_sequence.search(sequence_3)+1+sequence_3.length;
+break;
+case 2:
+sx1_1=all_sequence.search(sequence_2)+1+sequence_2.length;
+break;
+case 1:
+sx1_1=all_sequence.search(sequence_1)+1+sequence_1.length;
+break;
+}
+var sx2=all_sequence.search(f_sequence)+1;
+var sx3=all_sequence.search(re_sequence)+1;
+var f_rlength=r_length-f_length+sx3;
+
+
+
+
+
+
+
+z=document.getElementById("SD");
+z.innerHTML="总长度："+all_length+
+"<br />目的片段长度："+se_length+ ",位置:" + sx1 + "-" + sx1_1 +
+"<br />上游引物长度："+f_length + ",位置:" + sx2 +
+"<br />下游引物长度："+r_length + ",位置:" + sx3 + 
+"<br />截取片段长度："+f_rlength + 
+"<br /><table><tr><td id=huanhang>"+html_sequence+
+"<br />"+document.getElementById("$WF").value+
+"<br />"+document.getElementById("$WR").value+"</td></tr></table>";
+}
+
+</SCRIPT>
+<textarea class="textareasize" id="$Ww" type="int" onkeydown='if(event.keyCode==13){v99.click()}' onmouseover="select()" value="总长"></textarea><br />
+目的片段1：<input class="inputsize" id="$W_1" type="int" onkeydown='if(event.keyCode==13){v99.click()}' onmouseover="select()"><br />
+目的片段2：<input class="inputsize" id="$W_2" type="int" onkeydown='if(event.keyCode==13){v99.click()}' onmouseover="select()"><br />
+目的片段3：<input class="inputsize" id="$W_3" type="int" onkeydown='if(event.keyCode==13){v99.click()}' onmouseover="select()"><br />
+上游引物：<input class="inputsize" id="$WF" type="int" onkeydown='if(event.keyCode==13){v99.click()}' onmouseover="select()"><br />
+下游引物：<input class="inputsize" id="$WR" type="int" onkeydown='if(event.keyCode==13){v99.click()}' onmouseover="select()"><br />
+<button type="button" onClick="myFunctionV9()" id="v99">开整</button>
+<p id="SD"></p>	
+</div>
+</body>
+</html>
