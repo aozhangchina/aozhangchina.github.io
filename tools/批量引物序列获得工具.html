@@ -1,0 +1,29 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>引物序列获得工具</title>
+<link rel="stylesheet" type="text/css" href="common.css" />
+<body>
+<div>
+<SCRIPT LANGUAGE="JavaScript">
+function myFunctionV9(){
+var all_str=document.getElementById("$WK").value;
+var qukongge=all_str.replace(/\s/g,"");
+var n=qukongge.match(/(@.{10,45}3')/g);
+var k=n.join();
+var jieguo=k.replace(/,/g,"\n");
+var all_primers=jieguo.replace(/(@.{3,15}5')/g,"");
+all_primers=all_primers.replace(/3'/g,"");
+var all_number=jieguo.replace(/(5'.{15,38}3')/g,"");
+all_number=all_number.replace(/@/g,"");
+document.getElementById("$WK").value=jieguo;
+z=document.getElementById("SD");
+z.innerHTML="<textarea  class='textareasize' type='int' onkeydown='if(event.keyCode==13){v99.click()}' onmouseover='select()'>"+all_primers+"</textarea><br /><textarea  class='textareasize' type='int' onkeydown='if(event.keyCode==13){v99.click()}' onmouseover='select()'>"+all_number+"</textarea><br />";
+}
+
+</SCRIPT>
+<textarea class="textareasize" id="$WK" type="int" onkeydown='if(event.keyCode==13){v99.click()}' onmouseover='select()'></textarea><br />
+<button type="button" onClick="myFunctionV9()" id="v99">获得引物序列</button>
+<p id="SD">请在引物前面加上@符号</p>	
+</div>
+</body>
+</html>
