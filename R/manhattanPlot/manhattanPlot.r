@@ -86,7 +86,7 @@ if (length(which(is.na(temp2$Chromosome)))>0){
   temp2 <- temp2[-which(is.na(temp2$Chromosome)),]
 }
 
-titles <- unique(a$Trait)
+titles <- unique(temp2$name)
 
 paintData <- temp2[,1:3]
 paintData <- temp2[!duplicated(temp2[,1:3]),1:3]
@@ -115,10 +115,10 @@ cat("   $$/  $$$$$$/   $$$$$$/  $$/ \n\n")
 
 tp <- NULL
   
-if (length(unique(a$Trait))>1){
-for (i in 1:length(unique(a$Trait))){
-  cat(paste0("trait",i,"=",unique(a$Trait)[i],"\n"))
-  tp <- c(tp,unique(a$Trait)[i])
+if (length(unique(temp2$name))>1){
+for (i in 1:length(unique(temp2$name))){
+  cat(paste0("trait",i,"=",unique(temp2$name)[i],"\n"))
+  tp <- c(tp,unique(temp2$name)[i])
   indexI <- which(temp2$name==unique(temp2$name)[i])
   txt <- paste0("paintData$trait",i,"<-temp2$trait[indexI]")
   eval(parse(text=txt))
