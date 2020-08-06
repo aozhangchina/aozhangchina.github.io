@@ -14,7 +14,7 @@
 #  /        |                 /  |
 #  $$$$$$$$/______    ______  $$ |              Tool name: manhattanPlotforTassel.r
 #     $$ | /      \  /      \ $$ |
-#     $$ |/$$$$$$  |/$$$$$$  |$$ |              Updated: 07/30/2020
+#     $$ |/$$$$$$  |/$$$$$$  |$$ |              Updated: 08/06/2020
 #     $$ |$$ |  $$ |$$ |  $$ |$$ |
 #     $$ |$$ \__$$ |$$ \__$$ |$$ |              Website: datahold.cn
 #     $$ |$$    $$/ $$    $$/ $$ |
@@ -107,7 +107,7 @@ cat(" ________                   __ \n")
 cat("/        |                 /  |                                                       \n")
 cat("$$$$$$$$/______    ______  $$ |              Tool name: manhattanPlotforTassel.r\n")
 cat("   $$ | /      \\  /      \\ $$ |\n")
-cat("   $$ |/$$$$$$  |/$$$$$$  |$$ |              Updated: 07/30/2020\n")
+cat("   $$ |/$$$$$$  |/$$$$$$  |$$ |              Updated: 08/06/2020\n")
 cat("   $$ |$$ |  $$ |$$ |  $$ |$$ |\n")
 cat("   $$ |$$ \\__$$ |$$ \\__$$ |$$ |              Website: datahold.cn\n")
 cat("   $$ |$$    $$/ $$    $$/ $$ |\n")
@@ -138,3 +138,9 @@ for (i in 1:length(b)){
   file.rename(b[i],paste0(fn,"_",tp[i],".jpg"))
 }
 
+CMplot(paintData, plot.type='q',conf.int.col=NULL, box=TRUE, file="jpg", memo='',dpi=300, file.output= TRUE, verbose= TRUE)
+
+bq <- dir(pattern="QQplot")
+for (i in 1:length(bq)){
+  file.rename(bq[i],paste0(fn,"_",tp[i],"_QQplot.jpg"))
+}
