@@ -14,6 +14,10 @@
 
 ## 最新更新
 
+【2020-08-17】
+
+增加国内线路。
+
 【2020-02-25】
 
 修正只产生一条数据的BUG。
@@ -41,10 +45,21 @@
 
 合并后的文件命名为【combineGenoData.txt】或【combineGenoData.hmp.txt】。
 
-```
+海外：
+
+```R
 HMP <- TRUE   #? TRUE or FALSE, TRUE is generating a usable format for TASSEL
 delRep <- TRUE  #? TRUE or FALSE, TRUE is Auto-delete duplicates
 # Please choose two marker files once
 source("https://aozhangchina.github.io/R/MerkerDataCombineTool/MerkerDataCombineTool.r")   # 加载程序文件，需要联网
+```
+
+国内：
+
+```R
+HMP <- TRUE   #? TRUE or FALSE, TRUE is generating a usable format for TASSEL
+delRep <- TRUE  #? TRUE or FALSE, TRUE is Auto-delete duplicates
+# Please choose two marker files once
+source("https://dataholdcn.cn/R/MerkerDataCombineTool/MerkerDataCombineTool.r")   # 加载程序文件，需要联网
 ```
 
