@@ -14,6 +14,10 @@
 
 ## 最新更新
 
+【2020-08-17】
+
+增加国内线路。
+
 【2020-07-16】
 
 增加可以为每一个子图设置颜色。
@@ -59,6 +63,8 @@
 
 将下列代码复制到RStudio，根据需要，自行修改下面代码的第2到第4行，全选运行。
 
+海外：
+
 ```r
 rm(list=ls())   # remove objects
 Xlab <- "Locations"   #? X轴标题
@@ -70,6 +76,21 @@ source("https://aozhangchina.github.io/R/Violin/Vioplot.R", encoding = "utf-8") 
 
 ```r
 source("https://aozhangchina.github.io/R/Violin/Vioplot.R")   # 非RStudio运行
+```
+
+国内：
+
+```R
+rm(list=ls())   # remove objects
+Xlab <- "Locations"   #? X轴标题
+Ylab <- "SRF sorse"   #? Y轴标题
+Ylim <- c(35,70)   #? Y轴范围，程序自动计算请写NULL
+plotcolor <- "gray"   #? 颜色 "tomato" c("lightgreen", "lightblue")
+source("https://dataholdcn.cn/R/Violin/Vioplot.R", encoding = "utf-8")   # 加载程序文件，需要联网
+```
+
+```R
+source("https://dataholdcn.cn/R/Violin/Vioplot.R")   # 非RStudio运行
 ```
 
 
