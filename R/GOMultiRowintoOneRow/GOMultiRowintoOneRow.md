@@ -10,6 +10,10 @@
 
 ## 最新更新
 
+【2020-08-17】
+
+增加国内线路。
+
 【2020-01-02】
 
 功能实现。
@@ -39,9 +43,19 @@
 
 在R Studio中运行下列代码。
 
+海外：
+
 ```r
 source("https://aozhangchina.github.io/R/GOMultiRowintoOneRow/GOMultiRowintoOneRow.r")   # 加载程序文件，需要联网
 ```
+
+国内：
+
+```R
+source("https://dataholdcn.cn/R/GOMultiRowintoOneRow/GOMultiRowintoOneRow.r")   # 加载程序文件，需要联网
+```
+
+
 
 > 运行后需要选择你要转换的CSV文件，实例文件下载：[【点此下载】](https://aozhangchina.github.io/R/GOMultiRowintoOneRow/test.csv)。
 >
