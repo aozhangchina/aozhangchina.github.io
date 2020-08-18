@@ -14,6 +14,10 @@
 
 ## 最新更新
 
+【2020-08-17】
+
+增加了国内线路。
+
 【2020-05-14】
 
 修正了一个颜色组错误。
@@ -36,7 +40,15 @@
 
 将下列代码复制到Rstudio，然后全选运行。期间会弹出对话框，先选择hmp格式的基因型文件，再选择分组文件（**注意**：没有分组文件点取消|**注意：文件名和路径不要包含中文**）。
 
+海外：
+
 ```
 source("https://aozhangchina.github.io/R/GMatrixToMakePCA/GMatrixToMakePCA.r")   # 加载程序文件，需要联网
+```
+
+国内：
+
+```R
+source("https://dataholdcn.cn/R/GMatrixToMakePCA/GMatrixToMakePCA.r")   # 加载程序文件，需要联网
 ```
 
