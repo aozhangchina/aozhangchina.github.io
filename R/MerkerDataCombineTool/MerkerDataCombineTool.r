@@ -1,3 +1,5 @@
+if (!exists('HMP')) {HMP <- TRUE} #? TRUE or FALSE, TRUE is generating a usable format for TASSEL
+if (!exists('delRep')) {delRep <- TRUE} #? TRUE or FALSE, TRUE is Auto-delete duplicates
 # Read files
 readFiles <- function(header=TRUE,choose=FALSE,fname){
   if(!"readr" %in% installed.packages()) {
@@ -41,9 +43,9 @@ writeHMP <- function(wData,fName){
   chromAndPos <- data.frame(chrom=wData$chrom,pos=wData$pos)
   chromAndPos <- as.matrix(chromAndPos)
   chromAndPosNA <- which(is.na(chromAndPos))
-  chromAndPos[chromAndPosNA] <- "NA"   # 将NA转化�?"NA"
+  chromAndPos[chromAndPosNA] <- "NA"   # 将NA转化???"NA"
   chromAndPos <- as.data.frame(chromAndPos)
-  temp <- wData[order(chromAndPos$chrom,chromAndPos$pos),]   # 排列非数字内�?
+  temp <- wData[order(chromAndPos$chrom,chromAndPos$pos),]   # 排列非数字内???
   sortResult <- temp[order(as.numeric(as.character(temp$chrom)),as.numeric(as.character(temp$pos))),] 
   write.table(sortResult,paste0(fName,".hmp.txt"),sep="\t", quote =F,row.names = F)   # 输出hmp文件
   print("directory:")
@@ -63,7 +65,7 @@ for (i in 1:length(fileInfo$f.name)){
 }
 
 cat("This tool is made by Zhang Ao. Update: 2020-02-25. \nhttps://datahold.cn/\n")
-cat("The number of markers are:\n")
+cat("The number of individuals are:\n")
 for (j in 1: length(fileInfo$f.name)){
   ntext <- paste0("print(length(n",j," <- names(geno", j,")))\n")
   eval(parse(text=ntext))
@@ -75,21 +77,35 @@ for (k in 2: length(fileInfo$f.name)){
   eval(parse(text=nintersecttext))
 }
 
-cat("The number of final markers: \n")
-cat(paste(length(nintersect),"\n"))
-
-for (kk in 1:length(fileInfo$f.name)){
-  indexMtext <- paste0("index",kk," <- n",kk," %in% nintersect")
-  eval(parse(text=indexMtext))
-  genoMtext <- paste0("genoM",kk," <- geno",kk,"[,index",kk,"]")
-  eval(parse(text=genoMtext))
+if (length(nintersect)==11){
+  cat("Pass!\n",nintersect)
+}else{
+  cat("Warning!\n",nintersect)
 }
 
+n2intersect <- geno1[,1]
+for (k2 in 2: length(fileInfo$f.name)){
+  n2intersecttext <- paste0("n2intersect <- intersect(geno",k2,"[,1],n2intersect)")
+  eval(parse(text=n2intersecttext))
+}
 
-geno <- "" # Initialization
+for (k3 in 1:length(fileInfo$f.name)){
+  txt <- paste0("index <- geno",k3,"[,1] %in% n2intersect")
+  eval(parse(text=txt))
+  txt <- paste0("geno",k3," <- geno",k3,"[index,]")
+  eval(parse(text=txt))
+}
+
+cat("The number of final markers: \n",length(n2intersect),"\n")
+
+geno <- geno1 # Initialization
 # combine all materials
-for (l in 1:length(fileInfo$f.name)){
-  combinetext <- paste0("geno <- rbind(genoM",l,",geno)")
+for (l in 2:length(fileInfo$f.name)){
+  txt <- paste0("index <- names(geno",l,") %in% nintersect")
+  eval(parse(text=txt))
+  txt <- paste0("geno",l," <- geno",l,"[,!index]")
+  eval(parse(text=txt))
+  combinetext <- paste0("geno <- cbind(geno,geno",l,")")
   eval(parse(text=combinetext))
 }
 if (length(which(geno[,1]==""))>0){
@@ -97,9 +113,15 @@ geno <- geno[-which(geno[,1]==""),]
 }
 
 if (length(unique(geno[,1]))<length(geno[,1])){
-  cat("There are some repeat materials:\n")
+  cat("There are some repeat markers:\n")
   repGeno <- which(duplicated(geno[,1]))
   print(geno[repGeno,1])
+}
+
+if (length(unique(names(geno)))<length(names(geno))){
+  cat("There are some repeat material:\n")
+  repGeno <- which(duplicated(names(geno)))
+  print(names(geno)[repGeno])
 }
 
 if (delRep==TRUE & length(which(duplicated(geno[,1])))){
@@ -113,3 +135,4 @@ if (HMP==TRUE){
 }else{
   write.table(geno,"combineGenoData.txt",sep="\t",row.names=F,quote=F)
 }
+
