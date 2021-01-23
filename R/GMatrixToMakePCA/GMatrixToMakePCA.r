@@ -112,7 +112,7 @@ geno <- cbind(Gx,Gy)
 
 GT= t(geno[1,-(1:11)])   # 获得性状数据框
 colnames(GT)="Taxa"   # 性状数据框列名修改
-GT <- sub(":.*","",GT)   ### 此处可以修改，简化群体名称
+#GT <- sub(":.*","",GT)   ### 此处可以修改，简化群体名称
 Marker= geno[-1,c(1,3,4)]   # 获得标记数据框 
 colnames(Marker)=c("SNP","Chromosome","Position")   # 修改标记数据框列名
 GD= as.matrix(geno[-1,-(1:11)])   # get genotype matrix   获得基因型矩阵
@@ -180,10 +180,11 @@ str(pcageno$rotation)
 if (length(fgroup) == 0){
   group <- data.frame(Gystr,rep(1,nrow(G)))
 }else{
-  group <- read.table(fgroup,header=F)
+  group <- as.data.frame(readFiles(header=FALSE,fname=fgroup))
+  group <- group[order(group[,1]),]
 }
 
-pcagroup <- as.character(group[,2])
+pcagroup <- as.factor(group[,2])
 
 mycolor <- c("black","#E94B35","#2C97De","#00BD9C","#9C56B8")
 mypch <- c(21,22,23,24,25)
@@ -191,12 +192,13 @@ mypch <- c(21,22,23,24,25)
 colour_group <- mycolor[1:length(unique(pcagroup))]
 pch_group <- mypch[1:length(unique(pcagroup))]
 
-colour<-colour_group[as.numeric(factor(pcagroup))]
+colour<-colour_group[as.numeric(pcagroup)]
 pch <- pch_group[as.numeric(factor(pcagroup))]
 
 pve <- pcageno$sdev^2/sum(pcageno$sdev^2)
 plot(pcageno$x[,1:2],col=colour,pch=pch,xlab=paste0("PC1 (",round(pve[1],2)*100,"%)"),ylab=paste0("PC2 (",round(pve[2],2)*100,"%)"))
 
 if (length(fgroup)!=0){
-  legend("topleft", pch=pch_group, horiz=TRUE, bty="n",col=colour_group, legend=unique(pcagroup)) 
+  legend("topright", pch=pch_group, horiz=TRUE, bty="n",col=colour_group, legend=levels(pcagroup))
 }
+
