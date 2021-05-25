@@ -10,7 +10,17 @@
 
 ## 最新更新
 
-【2020年5月29日】
+【2021-05-25】
+
+修正了未安装RIdeogram无法绘图的BUG。
+
+修正了染色体出现NA无法绘图的BUG。
+
+【2020-08-17】
+
+增加国内线路。
+
+【2020-05-29】
 
 编写完成，选择一个HMP格式的文件即可生成图片。
 
@@ -28,9 +38,19 @@
 
 将下列代码复制到Rstudio，根据需要，自行修改下面代码的第二行，全选运行。
 
+海外：
+
 ```R
 rm(list=ls())
 plotcolor <- c("#4575b4", "#ffffbf", "#d73027")   #? 颜色 c("#e5f5f9", "#99d8c9", "#2ca25f")
 source("https://aozhangchina.github.io/R/chromesomeheatmapTool/chromesomeheatmap.r")   # 加载程序文件，需要联网r
+```
+
+国内：
+
+```R
+rm(list=ls())
+plotcolor <- c("#4575b4", "#ffffbf", "#d73027")   #? 颜色 c("#e5f5f9", "#99d8c9", "#2ca25f")
+source("https://dataholdcn.cn/R/chromesomeheatmapTool/chromesomeheatmap.r")   # 加载程序文件，需要联网r
 ```
 

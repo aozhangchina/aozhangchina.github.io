@@ -1,9 +1,10 @@
+source("https://dataholdcn.cn/R/GBIT/GBIT.R")
 if(exists("worksp")==F){
   worksp_f <- choose.files()
   setwd(dirname(worksp_f))
 }
 
-library(readr)
+GBIT.library("readr")
 MyGeno <- read.delim(worksp_f,nrows =1)
 MyGenoName <- names(MyGeno[3:4])
 MyGeno <-  read_delim(worksp_f,delim="\t")
@@ -31,7 +32,10 @@ myDf <- data.frame(Chr=NA,Start=0,End=c(307041717,
                                                                 41550000))
 myDf$CE_end <- myDf$CE_start + 5000000
 
-MyGeno <- MyGeno[-which(is.na(MyGeno$chrom)),]
+if(length(which(is.na(MyGeno$chrom)==TRUE))>0){
+  MyGeno <- MyGeno[-which(is.na(MyGeno$chrom)),]
+}
+
 MyGeno$chrom <- as.character(MyGeno$chrom)
 
 if (identical(unique(MyGeno$chrom),as.character(1:10))){
@@ -57,7 +61,7 @@ for (i in 1:nrow(myDf)){
 
 labelmyDensity <- cbind(myDensity,Color="fc8d62")
 
-library(RIdeogram)
+GBIT.library("RIdeogram")
 
 ideogram(karyotype = myDf, overlaid = myDensity, colorset1 = plotcolor)
 convertSVG("chromosome.svg", device="png")
