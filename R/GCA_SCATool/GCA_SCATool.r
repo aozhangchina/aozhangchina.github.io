@@ -1,3 +1,4 @@
+if (!exists('output_f')) {output_f = F} #? T 输出结果，F 不输出
 source("https://dataholdcn.cn/R/GBIT/GBIT.R")
 cat("Work space.\n")
 GBIT.setwd(choose.dir())

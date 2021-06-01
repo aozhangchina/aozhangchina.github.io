@@ -34,13 +34,15 @@
 
 海外：
 
-```
+```R
+output_f <- TRUE   # TRUE 输出结果，FLASE不输出结果
 source("https://aozhangchina.github.io/R/GCA_SCATool/GCA_SCATool.r")   # 加载程序文件，需要联网
 ```
 
 国内：
 
 ```R
+output_f <- TRUE   # TRUE 输出结果，FLASE不输出结果
 source("https://dataholdcn.cn/R/GCA_SCATool/GCA_SCATool.r")   # 加载程序文件，需要联网
 ```
 
