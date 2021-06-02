@@ -1,0 +1,17 @@
+source("https://dataholdcn.cn/R/GBIT/GBIT.R")
+cat("Work space. A folder.\n")
+GBIT.setwd(choose.dir())
+cat("Genotype. (*.hmp.txt)\n")
+geno.info <- choose.files()
+cat("Phenotype.\n")
+pheno.info <- choose.files()
+cat("A list of SNP.\n")
+slist.info <- choose.files()
+
+geno <- GBIT.readFile(header=T,fname = geno.info)
+pheno <- GBIT.readFile(header=T,fname = pheno.info)
+slist <- GBIT.readFile(header=F,fname = slist.info)
+
+myPVE <- GBIT.get.PVE(geno,pheno,slist)
+cat("The results of PVEs are in your clipboard.\n")
+write.table(myPVE,"clipboard",col.names=FALSE,sep="\t")
