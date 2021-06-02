@@ -14,4 +14,5 @@ slist <- GBIT.readFile(header=F,fname = slist.info)
 
 myPVE <- GBIT.get.PVE(geno,pheno,slist)
 cat("The results of PVEs are in your clipboard.\n")
+write.table(myPVE,"GBIT\\PVE.txt",col.names=FALSE,sep="\t",quote=FALSE)
 write.table(myPVE,"clipboard",col.names=FALSE,sep="\t")
