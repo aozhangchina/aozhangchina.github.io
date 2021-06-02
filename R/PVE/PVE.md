@@ -22,7 +22,7 @@
 
 1. 计算全过程，请保证网络通畅。
 
-2. 准备显著SNP标记列表，每行一个，不含标题。【[示例文件.txt](https://aozhangchina.github.io/R/PVE/PVE.txt)】
+2. 准备显著SNP标记列表，每行一个，不含标题。【[示例文件.txt](https://dataholdcn.cn/R/PVE/slist.txt)】
 
    S6_145529216
    S3_140023577
