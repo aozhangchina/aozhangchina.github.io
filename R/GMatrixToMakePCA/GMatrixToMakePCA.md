@@ -16,6 +16,18 @@
 
 ## 最新更新
 
+【2021-06-10】
+
+增加画3D图。
+
+增加图例和颜色的个性化设置。
+
+修改了部分配色。
+
+【2021-04-23】
+
+增加了画每个PC变异情况的图。
+
 【2021-01-23】
 
 修正了分组文件使用csv格式报错的问题。
@@ -56,13 +68,19 @@ HMP文件如果过大，会导致程序非常慢，建议先用TASSEL筛选后�
 
 海外：
 
-```
+```R
+mycolor <- c("black","#E94B35","#2C97De","#FFB900","#9C56B8","#80CFBE","#357E94")   # 修改分组颜色
+mypch <- c(21,22,23,24,25,20,19)   # 修改点的形状
+legend_position <- "bottomleft"   # 修改图例位置 2D图有效
 source("https://aozhangchina.github.io/R/GMatrixToMakePCA/GMatrixToMakePCA.r")   # 加载程序文件，需要联网
 ```
 
 国内：
 
 ```R
+mycolor <- c("black","#E94B35","#2C97De","#FFB900","#9C56B8","#80CFBE","#357E94")   # 修改分组颜色
+mypch <- c(21,22,23,24,25,20,19)   # 修改点的形状
+legend_position <- "bottomleft"   # 修改图例位置 2D图有效
 source("https://dataholdcn.cn/R/GMatrixToMakePCA/GMatrixToMakePCA.r")   # 加载程序文件，需要联网
 ```
 

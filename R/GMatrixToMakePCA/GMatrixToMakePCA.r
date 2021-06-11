@@ -1,3 +1,14 @@
+source("https://dataholdcn.cn/R/GBIT/GBIT.R")
+if (!exists('mycolor')){
+  mycolor <- c("black","#E94B35","#2C97De","#FFB900","#9C56B8","#80CFBE","#357E94")
+}
+if (!exists('mypch')){
+  mypch <- c(21,22,23,24,25,20,19)
+}
+if(!exists('legend_position')){
+  legend_position <- "bottomleft"
+}
+
 # Read files
 readFiles <- function(header=TRUE,choose=FALSE,fname){
   if(!"readr" %in% installed.packages()) {
@@ -36,7 +47,7 @@ f <- list(f.name=f.name,f.dir=f.dir)
 return(f)
 }
 
-#! 功能函数： 缺失值转换为NA
+#! 功能函数,缺失值转换为NA
 genoImputeM <- function(x) {
   len <- c( length(x[x=="A"]), length(x[x=="T"]), length(x[x=="C"]),length(x[x=="G"]))   # ATCG个数
   len1 <- order(len,na.last=F, decreasing = T)   # 降序排列
@@ -59,9 +70,9 @@ delet_monomorphic <- function(myVector){
   monomorphic <- numeric()
   if(length(as.numeric(table(myVector)))==1)
   {
-    monomorphic <- 1   # 1表示无多态性
+    monomorphic <- 1   # 1表示无多态???
   }else{
-    monomorphic <- 0  # 0表示有多态性
+    monomorphic <- 0  # 0表示有多态???
   }
   return(monomorphic)
 }
@@ -77,7 +88,7 @@ probability_impute <- function(myVector){
 # 结合上面两个步骤的自动化函数
 impute_prob <- function(myMatrix){
   cat("Status: Removing polymorphism markers.\n")
-  system.time(index_monomorphic <- apply(geno,2,delet_monomorphic))  # 获得无多态性标记索引
+  system.time(index_monomorphic <- apply(geno,2,delet_monomorphic))  # 获得无多态性标记索???
   X_without_monomorphic <- geno[,index_monomorphic==0]
   print_info <- data.frame("Individual"=dim(X_without_monomorphic)[1],"Markers"=dim(X_without_monomorphic)[2])
   print(print_info)
@@ -110,12 +121,12 @@ Gystr <- as.character(Gy[1,])
 Gy <- Gy[,order(Gystr)]
 geno <- cbind(Gx,Gy)
 
-GT= t(geno[1,-(1:11)])   # 获得性状数据框
-colnames(GT)="Taxa"   # 性状数据框列名修改
-#GT <- sub(":.*","",GT)   ### 此处可以修改，简化群体名称
-Marker= geno[-1,c(1,3,4)]   # 获得标记数据框 
-colnames(Marker)=c("SNP","Chromosome","Position")   # 修改标记数据框列名
-GD= as.matrix(geno[-1,-(1:11)])   # get genotype matrix   获得基因型矩阵
+GT= t(geno[1,-(1:11)])   # 获得性状数据???
+colnames(GT)="Taxa"   # 性状数据框列名修???
+#GT <- sub(":.*","",GT)   ### 此处可以修改，简化群体名???
+Marker= geno[-1,c(1,3,4)]   # 获得标记数据??? 
+colnames(Marker)=c("SNP","Chromosome","Position")   # 修改标记数据框列???
+GD= as.matrix(geno[-1,-(1:11)])   # get genotype matrix   获得基因型矩???
 
 ## 数字转换部分
 GD2 = NULL   # 初始化GD2变量
@@ -135,13 +146,13 @@ write_csv(GD3,paste0(fileInfo[1],".NumericGenoForGS.csv"),na="")
 
 geno <- GD3
 genoID <- as.matrix(geno[,1])   # 获取材料名称
-geno <- geno[,-1]   # 去掉材料名
+geno <- geno[,-1]   # 去掉材料???
 geno <- as.matrix(geno)   # 变为矩阵
 row.names(geno) <- genoID   # 获得行名
 
-geno=2*geno   #? 如果矩阵是0,0.5,1，则变为0,1,2
+geno=2*geno   #? 如果矩阵???0,0.5,1，则变为0,1,2
 freqNA <- colSums(is.na(geno))/nrow(geno)   # NA频率
-hist(freqNA)   # NA直方图
+hist(freqNA)   # NA直方???
 summary(freqNA)   # NA基本信息
 
 # 补缺失
@@ -153,21 +164,21 @@ system.time(X <- impute_prob(geno))   # 补缺
 # 检查是否还有NA
 if(any(is.na(X))) {stop("")}else{cat("No NA! Pass!\n")}
 
-# 计算最小等位基因频率
-phat <- colMeans(X)/2   # 计算每列的均均值
+# 计算最小等位基因频???
+phat <- colMeans(X)/2   # 计算每列的均均???
 maf <- ifelse(phat<0.5,phat,1-phat)   # 计算最小等位基因频
 hist(maf,xlab="Minor allele frequency")   # 绘制最小等位基因频率图
 summary(maf)   # MAF基本信息
 
-# 根据MAF筛选
-index <- maf>0.05   #? 获得MAF筛选索引
+# 根据MAF筛???
+index <- maf>0.05   #? 获得MAF筛选索???
 X <- X[,index]   # 按MAF筛选基因型数据
 maf <- maf[index]   # 按MAF筛选maf
 
 # 检查NA情况
 if(any(is.na(X))) stop("You still have missing values\n")
 
-# 遗传相关矩阵G，用标记的方差-协方差矩阵表示，=ZZ'
+# 遗传相关矩阵G，用标记的方???-协方差矩阵表示，=ZZ'
 Z <- scale(X,center=TRUE,scale=TRUE)   # 筛选后的数据进行中心化和标准化
 G <- tcrossprod(Z)/ncol(Z)   # 标记矩阵自乘，变成方形矩阵,降维
 
@@ -175,6 +186,13 @@ G <- tcrossprod(Z)/ncol(Z)   # 标记矩阵自乘，变成方形矩阵,降维
 # PCA
 pcageno <- prcomp(G,scale=TRUE)
 str(pcageno$rotation)
+
+# 获得特征值
+eigenvalues <- pcageno$sdev^2
+evp <- eigenvalues/sum(eigenvalues)
+nout <- min(10,length(evp))
+xout <- 1:nout
+plot(xout,eigenvalues[xout],type="b",col="blue",xlab="Principal components",ylab="Variance")
 
 
 if (length(fgroup) == 0){
@@ -184,10 +202,18 @@ if (length(fgroup) == 0){
   group <- group[order(group[,1]),]
 }
 
-pcagroup <- as.factor(group[,2])
+if (length(group$X1)!=length(rownames(G))){
+  index <- group$X1 %in% intersect(group$X1,rownames(G))
+  group <- group[index,]
+  index <- rownames(G) %in% intersect(group$X1,rownames(G))
+  G <- G[index,index]
+}
 
-mycolor <- c("black","#E94B35","#2C97De","#00BD9C","#9C56B8")
-mypch <- c(21,22,23,24,25)
+if (!identical(group$X1,rownames(G))){
+  group <- group[order(group$X1),]
+}
+
+pcagroup <- as.factor(group[,2])
 
 colour_group <- mycolor[1:length(unique(pcagroup))]
 pch_group <- mypch[1:length(unique(pcagroup))]
@@ -199,6 +225,24 @@ pve <- pcageno$sdev^2/sum(pcageno$sdev^2)
 plot(pcageno$x[,1:2],col=colour,pch=pch,xlab=paste0("PC1 (",round(pve[1],2)*100,"%)"),ylab=paste0("PC2 (",round(pve[2],2)*100,"%)"))
 
 if (length(fgroup)!=0){
-  legend("topright", pch=pch_group, horiz=TRUE, bty="n",col=colour_group, legend=levels(pcagroup))
+  legend(legend_position, pch=pch_group, horiz=FALSE, bty="n",col=colour_group, legend=levels(pcagroup))
 }
 
+# 3d plot
+GBIT.setwd(getwd())
+GBIT.library("scatterplot3d")
+
+if (identical(group$X1,rownames(pcageno$x))){
+  pca <- cbind(group,pcageno$x[,1:3],colour)
+  pca <- pca[order(pca$X1,pca$X2),]
+}
+
+if (length(fgroup)!=0){
+  group_group <- unique(pca$X2)
+  group_group <- cbind(group_group=unique(pca$X2),colour_group=unique(pca$colour),pch=unique(pch))
+  group_group <- group_group[order(group_group[,1]),]
+}
+
+s3d <-scatterplot3d(pcageno$x[, 1], pcageno$x[, 2],pcageno$x[, 3],xlab="PC1",ylab="PC2", zlab="PC3", pch = 16,color=colour)
+legend("topleft", legend = group_group[,"group_group"],
+       col =  group_group[,"colour_group"], pch = 16)
