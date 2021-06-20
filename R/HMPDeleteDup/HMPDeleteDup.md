@@ -37,6 +37,7 @@ source("https://aozhangchina.github.io/R/HMPDeleteDup/HMPDeleteDup.r")   # 加�
 国内：
 
 ```R
+fName <- "newMyGeno"   # 修改为自己的文件名称
 source("https://dataholdcn.cn/R/HMPDeleteDup/HMPDeleteDup.r")   # 加载程序文件，需要联网
 ```
 
