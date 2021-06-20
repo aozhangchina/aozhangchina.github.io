@@ -10,7 +10,7 @@ write.csv(myGenoHeaderTwo,paste0("GBIT/",fName,".name.compare.csv"),row.names=FA
 
 myGenoHeaderRep <- GBIT.geno.delDup(myGenoHeaderClean)
 
-index <- which(duplicated(myGenoHeaderClean))
+index <- which(duplicated(names(myGenoHeaderClean)))
 myGeno <- myGeno[,-index]
 
 GBIT.writeHMP(myGeno,fName)
