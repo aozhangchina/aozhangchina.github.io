@@ -1,5 +1,5 @@
 if(!exists("fName")){fName <- "newMyGeno"}
-if(!exists("subtext")){subtext <- ":.*|-.*"}
+if(!exists("subtext")){subtext <- ":.*"}
 source("https://dataholdcn.cn/R/GBIT/GBIT.R")
 GBIT.setwd(choose.dir())
 myGeno <- GBIT.readFile(choose= T,header = T)
@@ -14,6 +14,8 @@ myGenoHeaderRep <- GBIT.geno.delDup(myGenoHeaderClean)
 names(myGeno) <- names(myGenoHeaderClean)
 
 index <- which(duplicated(names(myGenoHeaderClean)))
-myGeno <- myGeno[,-index]
+if (length(index)>0){
+  myGeno2 <- myGeno[,-index]
+}
 
 GBIT.writeHMP(myGeno,fName)
