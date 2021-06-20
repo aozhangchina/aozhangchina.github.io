@@ -10,6 +10,8 @@ write.table(myGenoHeaderTwo,paste0("GBIT/",fName,".name.compare.csv"),sep=",",ro
 
 myGenoHeaderRep <- GBIT.geno.delDup(myGenoHeaderClean)
 
+names(myGeno) <- names(myGenoHeaderClean)
+
 index <- which(duplicated(names(myGenoHeaderClean)))
 myGeno <- myGeno[,-index]
 
