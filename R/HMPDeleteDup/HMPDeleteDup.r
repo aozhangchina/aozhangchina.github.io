@@ -6,7 +6,7 @@ myGeno <- GBIT.readFile(choose= T,header = T)
 myGenoHeaderClean <- GBIT.geno.simplifiedName(myGeno,subtext = ":.*|-.*")
 
 myGenoHeaderTwo <- cbind(names(myGeno),names(myGenoHeaderClean))
-write.csv(myGenoHeaderTwo,paste0("GBIT/",fName,".name.compare.csv"),row.names=FALSE,col.names = NULL)
+write.table(myGenoHeaderTwo,paste0("GBIT/",fName,".name.compare.csv"),sep=",",row.names=FALSE,col.names = FALSE,quote = FALSE)
 
 myGenoHeaderRep <- GBIT.geno.delDup(myGenoHeaderClean)
 
