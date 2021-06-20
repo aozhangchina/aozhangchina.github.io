@@ -31,7 +31,7 @@ fName.geno <- "myGeno"   # 修改为要生成的基因型文件名
 fName.Pheno <- "myPheno"   # 修改为要生成的表型文件名
 ID <- "GenoID"   # 设置基因型和表型共有的ID名称，即表型文件中的列名
 subtext <- ":.*|-.*"   # 缩短材料名，去除无用信息用，多个处理用|隔开
-source("https://aozhangchina.github.io/R/matchPhenoGeno/matchPhenoGeno")   # 加载程序文件，需要联网
+source("https://aozhangchina.github.io/R/matchPhenoGeno/matchPhenoGeno.r")   # 加载程序文件，需要联网
 ```
 
 国内：
@@ -41,6 +41,6 @@ fName.geno <- "myGeno"   # 修改为要生成的基因型文件名
 fName.Pheno <- "myPheno"   # 修改为要生成的表型文件名
 ID <- "GenoID"   # 设置基因型和表型共有的ID名称，即表型文件中的列名
 subtext <- ":.*|-.*"   # 缩短材料名，去除无用信息用，多个处理用|隔开
-source("https://dataholdcn.cn/R/matchPhenoGeno/matchPhenoGeno")   # 加载程序文件，需要联网
+source("https://dataholdcn.cn/R/matchPhenoGeno/matchPhenoGeno.r")   # 加载程序文件，需要联网
 ```
 
