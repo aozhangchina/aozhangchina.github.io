@@ -1,9 +1,10 @@
 if(!exists("fName")){fName <- "newMyGeno"}
+if(!exists("subtext")){subtext <- ":.*|-.*"}
 source("https://dataholdcn.cn/R/GBIT/GBIT.R")
 GBIT.setwd(choose.dir())
 myGeno <- GBIT.readFile(choose= T,header = T)
 
-myGenoHeaderClean <- GBIT.geno.simplifiedName(myGeno,subtext = ":.*|-.*")
+myGenoHeaderClean <- GBIT.geno.simplifiedName(myGeno,subtext = subtext)
 
 myGenoHeaderTwo <- cbind(names(myGeno),names(myGenoHeaderClean))
 write.table(myGenoHeaderTwo,paste0("GBIT/",fName,".name.compare.csv"),sep=",",row.names=FALSE,col.names = FALSE,quote = FALSE)

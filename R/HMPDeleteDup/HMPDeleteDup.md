@@ -31,6 +31,7 @@
 
 ```R
 fName <- "newMyGeno"   # 修改为自己的文件名称
+subtext <- ":.*|-.*"   # 缩短材料名，去除无用信息用，多个处理用|隔开
 source("https://aozhangchina.github.io/R/HMPDeleteDup/HMPDeleteDup.r")   # 加载程序文件，需要联网
 ```
 
@@ -38,6 +39,7 @@ source("https://aozhangchina.github.io/R/HMPDeleteDup/HMPDeleteDup.r")   # 加�
 
 ```R
 fName <- "newMyGeno"   # 修改为自己的文件名称
+subtext <- ":.*|-.*"   # 缩短材料名，去除无用信息用，多个处理用|隔开
 source("https://dataholdcn.cn/R/HMPDeleteDup/HMPDeleteDup.r")   # 加载程序文件，需要联网
 ```
 
