@@ -5,8 +5,12 @@ if(!exists("ID")){ID <- "GenoID"}
 if(!exists("subtext")){subtext <- ":.*|-.*"}
 
 GBIT.setwd(choose.dir())
-myGeno <- GBIT.readFile(choose = T,header = T)
-myPheno <- GBIT.readFile(choose = T,header = T)
+cat("Geno\n")
+myGeno.f <- choose.files()
+cat("Pheno\n")
+myPheno.f <- choose.files()
+myGeno <- GBIT.readFile(choose = F,header = T,fname = myGeno.f)
+myPheno <- GBIT.readFile(choose = F,header = T,fname = myPheno.f)
 
 myGeno_head <- myGeno[,1:11]
 
