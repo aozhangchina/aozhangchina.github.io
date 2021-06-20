@@ -18,14 +18,14 @@ myPhenoClean <- GBIT.pheno.simplifiedName(myPheno,which(names(myPheno)==ID),subt
 
 myGenoHeaderClean <- GBIT.geno.simplifiedName(myGeno,subtext = subtext)
 
-all_material <- intersect(names(myGenoHeaderClean),myPhenoClean$GenoID)
+all_material <- intersect(names(myGenoHeaderClean),myPhenoClean[,ID])
 
 cat(length(all_material)," individuals were matched.\n")
 cat("Geno: ",setdiff(names(myGenoHeaderClean)[-c(1:11)],all_material),".\n")
-cat("Pheno: ",setdiff(myPhenoClean$GenoID,all_material),".\n")
+cat("Pheno: ",setdiff(myPhenoClean[,ID],all_material),".\n")
 
 myGeno <- cbind(myGeno_head,myGenoHeaderClean[,all_material])
-myPheno <- myPhenoClean[-which(myPhenoClean$GenoID %in% setdiff(myPhenoClean$GenoID,all_material)),]
+myPheno <- myPhenoClean[-which(myPhenoClean[,ID] %in% setdiff(myPhenoClean[,ID],all_material)),]
 
 write.table(myPheno,paste0(fName.pheno,".csv"),sep = ",",quote = F,col.names = T,row.names = F)
 GBIT.writeHMP(wData = myGeno,fName = paste0(fName.geno,"_",(ncol(myGeno)-11),"_",nrow(myGeno)))
