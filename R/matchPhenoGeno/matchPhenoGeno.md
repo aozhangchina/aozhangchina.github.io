@@ -10,6 +10,10 @@
 
 ## 最新更新
 
+【2021-06-20 12:55:41】
+
+修正文件名中材料数不正确的Bug。
+
 【2021-06-19 23:44:23】
 
 功能完成。
@@ -28,7 +32,7 @@
 
 ```R
 fName.geno <- "myGeno"   # 修改为要生成的基因型文件名
-fName.Pheno <- "myPheno"   # 修改为要生成的表型文件名
+fName.Pheno <- "myPheno META-R import"   # 修改为要生成的表型文件名
 ID <- "GenoID"   # 设置基因型和表型共有的ID名称，即表型文件中的列名
 subtext <- ":.*|-.*"   # 缩短材料名，去除无用信息用，多个处理用|隔开
 source("https://aozhangchina.github.io/R/matchPhenoGeno/matchPhenoGeno.r")   # 加载程序文件，需要联网
@@ -38,7 +42,7 @@ source("https://aozhangchina.github.io/R/matchPhenoGeno/matchPhenoGeno.r")   # �
 
 ```R
 fName.geno <- "myGeno"   # 修改为要生成的基因型文件名
-fName.Pheno <- "myPheno"   # 修改为要生成的表型文件名
+fName.Pheno <- "myPheno META-R import"   # 修改为要生成的表型文件名
 ID <- "GenoID"   # 设置基因型和表型共有的ID名称，即表型文件中的列名
 subtext <- ":.*|-.*"   # 缩短材料名，去除无用信息用，多个处理用|隔开
 source("https://dataholdcn.cn/R/matchPhenoGeno/matchPhenoGeno.r")   # 加载程序文件，需要联网

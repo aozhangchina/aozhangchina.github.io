@@ -28,4 +28,4 @@ myGeno <- cbind(myGeno_head,myGenoHeaderClean[,all_material])
 myPheno <- myPhenoClean[-which(myPhenoClean$GeneID %in% setdiff(myPhenoClean$GeneID,all_material)),]
 
 write.table(myPheno,paste0(fName.Pheno,".csv"),sep = ",",quote = F,col.names = T,row.names = F)
-GBIT.writeHMP(wData = myGeno,fName = paste0(fName.geno,"_",ncol(myGeno),"_",nrow(myGeno)))
+GBIT.writeHMP(wData = myGeno,fName = paste0(fName.geno,"_",(ncol(myGeno)-11),"_",nrow(myGeno)))
