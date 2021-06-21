@@ -1,3 +1,4 @@
+source("https://dataholdcn.cn/R/GBIT/GBIT.R")
 if (!exists('HMP')) {HMP <- TRUE} #? TRUE or FALSE, TRUE is generating a usable format for TASSEL
 if (!exists('delRep')) {delRep <- TRUE} #? TRUE or FALSE, TRUE is Auto-delete duplicates
 # Read files
@@ -36,20 +37,6 @@ f.name <- basename(myFileName)
 f.dir <- dirname(myFileName)
 f <- list(f.name=f.name,f.dir=f.dir)
 return(f)
-}
-
-# 将Tassel不能打开的HMP文件转换成Tassel能够打开的HMP文件
-writeHMP <- function(wData,fName){
-  chromAndPos <- data.frame(chrom=wData$chrom,pos=wData$pos)
-  chromAndPos <- as.matrix(chromAndPos)
-  chromAndPosNA <- which(is.na(chromAndPos))
-  chromAndPos[chromAndPosNA] <- "NA"   # 将NA转化???"NA"
-  chromAndPos <- as.data.frame(chromAndPos)
-  temp <- wData[order(chromAndPos$chrom,chromAndPos$pos),]   # 排列非数字内???
-  sortResult <- temp[order(as.numeric(as.character(temp$chrom)),as.numeric(as.character(temp$pos))),] 
-  write.table(sortResult,paste0(fName,".hmp.txt"),sep="\t", quote =F,row.names = F)   # 输出hmp文件
-  print("directory:")
-  print(getwd())
 }
 
 fileInfo <- getFileInfo()
@@ -131,7 +118,7 @@ if (delRep==TRUE & length(which(duplicated(geno[,1])))){
 }
 
 if (HMP==TRUE){
-  writeHMP(geno,"combineGenoData")
+  GBIT.writeHMP(geno,"combineGenoData")
 }else{
   write.table(geno,"combineGenoData.txt",sep="\t",row.names=F,quote=F)
 }
