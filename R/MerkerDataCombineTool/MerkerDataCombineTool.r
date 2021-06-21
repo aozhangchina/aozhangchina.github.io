@@ -94,7 +94,10 @@ for (l in 2:length(fileInfo$f.name)){
   eval(parse(text=txt))
   combinetext <- paste0("geno <- cbind(geno,geno",l,")")
   eval(parse(text=combinetext))
+  txt <- paste0("rm(geno",l,")")
+  eval(parse(text=txt))
 }
+rm(geno1)
 if (length(which(geno[,1]==""))>0){
 geno <- geno[-which(geno[,1]==""),]
 }
@@ -111,8 +114,8 @@ if (length(unique(names(geno)))<length(names(geno))){
   print(names(geno)[repGeno])
 }
 
-if (delRep==TRUE & length(which(duplicated(geno[,1])))){
-  geno <- geno[-which(duplicated(geno[,1])),]
+if (delRep==TRUE & length(which(duplicated(names(geno))))){
+  geno <- geno[,-which(duplicated(names(geno)))]
 }else{
   cat("You can set 'delRep <- TRUE' to auto-delete duplicates.\n")
 }
