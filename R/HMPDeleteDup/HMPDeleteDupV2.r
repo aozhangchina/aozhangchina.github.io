@@ -27,7 +27,7 @@ myGenoHeaderClean <- GBIT.geno.simplifiedName(myGeno,subtext = subtext)
 myGenoHeaderTwo <- cbind(names(myGeno),names(myGenoHeaderClean))
 write.table(myGenoHeaderTwo,paste0("GBIT/",fName,".name.compare.csv"),sep=",",row.names=FALSE,col.names = FALSE,quote = FALSE)
 
-myGenoHeaderRep <- GBIT.geno.delDup(myGenoHeaderClean)
+myGenoHeaderRep <- unique(GBIT.geno.delDup(myGenoHeaderClean))
 
 names(myGeno) <- names(myGenoHeaderClean)
 
