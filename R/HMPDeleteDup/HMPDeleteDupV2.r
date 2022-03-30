@@ -72,6 +72,7 @@ if (chooseOne==TRUE){
   index <- which(names(myGenoHeaderClean) %in% myGenoHeaderRep)
   myGeno2 <- myGeno[,-index]
   for (i in myGenoHeaderRep){
+      cat("Calculating ",i,"\n")
   tempA <- which(names(myGeno) == i)
   tempB <- as.matrix(cbind(myGeno[tempA]))
   tempB <- as.data.frame(tempB)
