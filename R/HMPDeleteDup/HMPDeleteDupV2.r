@@ -82,7 +82,8 @@ if (chooseOne==TRUE){
   system.time(tempC<- apply(tempB,1,integratingMarkers))
   tempC1 <- cbind(tempC1,tempC)
   }
-  names(tempC1) <- myGenoHeaderRep
+  colnames(tempC1) <- myGenoHeaderRep
+  
   myGeno2 <- cbind(myGeno2,tempC1)
 }
 
