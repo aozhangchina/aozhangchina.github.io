@@ -1,6 +1,6 @@
 # Get a snp file for WinIciMapping from a HMP file
 # Made by Zhang Ao
-# Updated 20220401 18:12:34
+# Updated 20220401 21:51:58
 if(!exists("f_name")){f_name <- "my_icimapping_data"}
 if(!exists("first_change")){first_change <- FALSE}
 if(!exists("Eliminate_heterozygous_bases")){Eliminate_heterozygous_bases <- TRUE}
