@@ -15,8 +15,9 @@ myPheno <- GBIT.readFile(choose = T,header = T)
 if (exists("myPheno")){
     # View(myPheno)
     myPheno2 <- myPheno[c("Genotype",pheno_colname)]
-    myPheno2 <- myPheno2[-which(is.na(myPheno2[,1])),]
-
+    if (length(is.na(which(is.na(myPheno2[,1]))))>0){
+        myPheno2 <- myPheno2[-which(is.na(myPheno2[,1])),]
+    }
     geno_part1 <- myGeno[,1:11]
     geno_part2 <- myGeno[,12:dim(myGeno)[2]]
     if (!identical(names(geno_part2),myPheno2[,1])){
