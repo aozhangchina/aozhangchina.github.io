@@ -147,7 +147,7 @@ if (exists("myPheno")){
     write.table(ch, paste0("GBIT/",f_name,".bip"), sep = "\t", col.names = F, row.names = F, append =T, quote = F)
 
     bip_base_LinkageMap <- cbind(taxa[,2],myGeno[,c("chrom","pos")])
-    # bip_base_LinkageMap$pos <- round(bip_base_LinkageMap$pos/100000,3)
+    bip_base_LinkageMap$pos <- bip_base_LinkageMap$pos/100000
     write.table(bip_base_LinkageMap, "GBIT/bip_LinkageMap.txt", sep = "\t", col.names = F, row.names = F, quote = F)
     write.table(bip_base_LinkageMap, paste0("GBIT/",f_name,".bip"), sep = "\t", col.names = F, row.names = F, quote = F, append = T)
     write.table("", paste0("GBIT/",f_name,".bip"), sep = "\t", col.names = F, row.names = F, append = T, quote = F)
