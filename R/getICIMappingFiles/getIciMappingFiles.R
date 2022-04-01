@@ -34,7 +34,7 @@ if (exists("myPheno")){
 ## Recode marker names
 taxa <- myGeno[,1]
 taxa <- cbind(taxa,paste0("M",1:length(taxa)))
-write.table(taxa, "GBIT/taxa.txt", sep = "\t", col.names = F, row.names = F)
+write.table(taxa, "GBIT/marker_rename.txt", sep = "\t", col.names = F, row.names = F)
 
 # myGeno[1:15, 1:15]
 ## snp_GeneralInfo
