@@ -30,12 +30,6 @@ write.table(myGenoHeaderTwo,paste0("GBIT/",fName,".name.compare.csv"),sep=",",ro
 
 myGenoHeaderRep <- unique(GBIT.geno.delDup(myGenoHeaderClean))
 
-if (length(myGenoHeaderRep)>0){
-  names(myGeno) <- names(myGenoHeaderClean)
-
-vlist <- as.data.frame(cbind(myGenoHeaderRep,c(1:length(myGenoHeaderRep))))
-names(vlist) <- c("Names","GID")
-
 same <- function(ss){
   if (ss[1]==ss[2]&(ss[1]!="N"|ss[2]!="N")){
     ind <- TRUE
@@ -50,6 +44,12 @@ noNA <- function(ss){
     ind <- FALSE
   }
 }
+
+if (length(myGenoHeaderRep)>0){
+  names(myGeno) <- names(myGenoHeaderClean)
+
+vlist <- as.data.frame(cbind(myGenoHeaderRep,c(1:length(myGenoHeaderRep))))
+names(vlist) <- c("Names","GID")
 
 res <- numeric()
 for (i in 1:length(unique(vlist$GID))){
@@ -90,5 +90,6 @@ if (chooseOne==TRUE){
 
   GBIT.writeHMP(myGeno2,fName)
 }else{
+  GBIT.writeHMP(myGenoHeaderClean,fName)
   cat("No duplicate material was found.\n")
 }
