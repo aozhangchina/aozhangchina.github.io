@@ -201,6 +201,7 @@ if (length(fgroup) == 0){
   group <- as.data.frame(readFiles(header=FALSE,fname=fgroup))
   group <- group[order(group[,1]),]
 }
+names(group) <-c("X1","X2")
 
 if (length(group$X1)!=length(rownames(G))){
   index <- group$X1 %in% intersect(group$X1,rownames(G))
@@ -241,8 +242,14 @@ if (length(fgroup)!=0){
   group_group <- unique(pca$X2)
   group_group <- cbind(group_group=unique(pca$X2),colour_group=unique(pca$colour),pch=unique(pch))
   group_group <- group_group[order(group_group[,1]),]
+  s3d <-scatterplot3d(pcageno$x[, 1], pcageno$x[, 2],pcageno$x[, 3],xlab=paste0("PC1 (",round(pve[1],2)*100,"%)"),ylab=paste0("PC2 (",round(pve[2],2)*100,"%)"), zlab=paste0("PC3 (",round(pve[3],2)*100,"%)"), pch = 16,color=colour)
+  legend("topleft", legend = group_group[,"group_group"],
+         col =  group_group[,"colour_group"], pch = 16)
+}else{
+  s3d <-scatterplot3d(pcageno$x[, 1], pcageno$x[, 2],pcageno$x[, 3],xlab=paste0("PC1 (",round(pve[1],2)*100,"%)"),ylab=paste0("PC2 (",round(pve[2],2)*100,"%)"), zlab=paste0("PC3 (",round(pve[3],2)*100,"%)"), pch = 16,color=colour)
+  legend("topleft", legend = group_group[,"group_group"],
+         col =  group_group[,"colour_group"], pch = 16)
 }
 
-s3d <-scatterplot3d(pcageno$x[, 1], pcageno$x[, 2],pcageno$x[, 3],xlab=paste0("PC1 (",round(pve[1],2)*100,"%)"),ylab=paste0("PC2 (",round(pve[2],2)*100,"%)"), zlab=paste0("PC3 (",round(pve[3],2)*100,"%)"), pch = 16,color=colour)
-legend("topleft", legend = group_group[,"group_group"],
-       col =  group_group[,"colour_group"], pch = 16)
+
+
