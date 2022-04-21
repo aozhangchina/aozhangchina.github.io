@@ -1,10 +1,16 @@
 source("https://dataholdcn.cn/R/GBIT/GBIT.R")
+if (exists("chr_size")){chr_size <- "value"}
 if(exists("worksp")==F){
   worksp_f <- choose.files()
   setwd(dirname(worksp_f))
 }
 
 GBIT.library("readr")
+info_chr <- choose.files()
+if (length(info_chr)>0){
+  info_chr_f <- read.delim(info_chr)
+}
+
 MyGeno <- read.delim(worksp_f,nrows =1)
 MyGenoName <- names(MyGeno[3:4])
 MyGeno <-  read_delim(worksp_f,delim="\t")
@@ -42,6 +48,28 @@ if (identical(unique(MyGeno$chrom),as.character(1:10))){
   myDf$Chr <- unique(MyGeno$chrom)
 }
 
+if (length(info_chr)>0){
+  for (i in 2:5){
+    if (!any(is.na(info_chr_f[,i]))){
+      for (j in 1:nrow(myDf)){
+        myDf[which(myDf$Chr==info_chr_f[j,1]),i] <- info_chr_f[j,i]
+      }
+    }
+    
+  }
+}
+
+for (i in 1:nrow(myDf)){
+  if (myDf$End[i] - max(MyGeno$pos[which(MyGeno$chrom==i)]) > 0){
+    if (myDf$End[i] - max(MyGeno$pos[which(MyGeno$chrom==i)]) < 1000000){
+      myDf$End[i] <- myDf$End[i] + 1000000
+    }
+  }else{
+    cat("The chr ",i," position size is not enough.\n")
+  }
+}
+
+
 myDensity <- NULL
 
 for (i in 1:nrow(myDf)){
@@ -56,6 +84,13 @@ for (i in 1:nrow(myDf)){
     myDensity <- getHistInfo
   }else{
     myDensity <- rbind(myDensity,getHistInfo)
+  }
+}
+
+if (chr_size == "auto"){
+  for (i in 1:nrow(myDf)){
+    temp <- subset(MyGeno,chrom==i)
+    myDf$End[i] <- max(temp$pos) + 1000000
   }
 }
 
