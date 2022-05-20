@@ -142,7 +142,7 @@ names(GD3) <- Marker2
 GD3 <- cbind(GT,GD3)
 #system.time(write.table(GD3, paste(fileInfo[2],".NumericGenoForGS.csv",sep=""), 
 #            quote = FALSE, sep = ",", row.names = FALSE,col.names = TRUE, na=""))
-# write_csv(GD3,paste0(fileInfo[1],".NumericGenoForGS.csv"),na="")
+write_csv(GD3,paste0(fileInfo[1],".NumericGenoForGS.csv"),na="")
 
 geno <- GD3
 genoID <- as.matrix(geno[,1])   # 获取材料名称
@@ -152,11 +152,8 @@ row.names(geno) <- genoID   # 获得行名
 
 geno=2*geno   #? 如果矩阵???0,0.5,1，则变为0,1,2
 freqNA <- colSums(is.na(geno))/nrow(geno)   # NA频率
-pdf("freqNA.pdf",width=7,height=5)
 hist(freqNA)   # NA直方???
 summary(freqNA)   # NA基本信息
-dev.off()
-
 
 # 补缺失
 set.seed(123)   # 种子点
@@ -164,16 +161,13 @@ index=freqNA<0.15   #? 设置缺失值筛选条件
 geno=geno[,index]   # 筛选缺失值
 system.time(X <- impute_prob(geno))   # 补缺
 
-
 # 检查是否还有NA
 if(any(is.na(X))) {stop("")}else{cat("No NA! Pass!\n")}
 
 # 计算最小等位基因频???
 phat <- colMeans(X)/2   # 计算每列的均均???
 maf <- ifelse(phat<0.5,phat,1-phat)   # 计算最小等位基因频
-pdf("maf.pdf",width=7,height=5)
 hist(maf,xlab="Minor allele frequency")   # 绘制最小等位基因频率图
-dev.off()
 summary(maf)   # MAF基本信息
 
 # 根据MAF筛???
@@ -198,8 +192,8 @@ eigenvalues <- pcageno$sdev^2
 evp <- eigenvalues/sum(eigenvalues)
 nout <- min(10,length(evp))
 xout <- 1:nout
-pdf("pca_k.pdf",width=7,height=5)
 plot(xout,eigenvalues[xout],type="b",col="blue",xlab="Principal components",ylab="Variance")
+
 
 if (length(fgroup) == 0){
   group <- data.frame(Gystr,rep(1,nrow(G)))
@@ -227,21 +221,19 @@ pch_group <- mypch[1:length(unique(pcagroup))]
 
 colour<-colour_group[as.numeric(pcagroup)]
 pch <- pch_group[as.numeric(factor(pcagroup))]
-dev.off()
-pdf("pca2D.pdf",width=7,height=5)
+
 pve <- pcageno$sdev^2/sum(pcageno$sdev^2)
 plot(pcageno$x[,1:2],col=colour,pch=pch,xlab=paste0("PC1 (",round(pve[1],2)*100,"%)"),ylab=paste0("PC2 (",round(pve[2],2)*100,"%)"))
 
 if (length(fgroup)!=0){
   legend(legend_position, pch=pch_group, horiz=FALSE, bty="n",col=colour_group, legend=levels(pcagroup))
 }
-dev.off()
+
 # 3d plot
-pdf("pca3D.pdf",width=7,height=5)
 GBIT.setwd(getwd())
 GBIT.library("scatterplot3d")
 
-if (identical(group$X1,rownames(pcageno$x))){
+if (identical(group$X1,rownames(pcageno$x))|length(fgroup) == 0){
   pca <- cbind(group,pcageno$x[,1:3],colour)
   pca <- pca[order(pca$X1,pca$X2),]
 }
@@ -255,9 +247,7 @@ if (length(fgroup)!=0){
          col =  group_group[,"colour_group"], pch = 16)
 }else{
   s3d <-scatterplot3d(pcageno$x[, 1], pcageno$x[, 2],pcageno$x[, 3],xlab=paste0("PC1 (",round(pve[1],2)*100,"%)"),ylab=paste0("PC2 (",round(pve[2],2)*100,"%)"), zlab=paste0("PC3 (",round(pve[3],2)*100,"%)"), pch = 16,color=colour)
-  legend("topleft", legend = group_group[,"group_group"],
-         col =  group_group[,"colour_group"], pch = 16)
 }
-dev.off()
+
 
 
