@@ -102,3 +102,10 @@ chr_size <- "value"   # "value"表示给定的值，即参考基因组给定大�
 source("https://dataholdcn.cn/R/chromesomeheatmapTool/chromesomeheatmap.r")   # 加载程序文件，需要联网r
 ```
 
+## 讨论/Help&Bugs
+
+国内用户请提交Bug或使用中有任何问题，请发邮件到张敖的邮箱。海外用户请在[chromesomeheatmapTool - lecent.wang](
+https://lecent.wang/d/69-chromesomeheatmaptool)上讨论，我们定期查看。
+
+User in China, please send an e-mail to Ao Zhang to submit a bug. Overseas users please to reply this post ([chromesomeheatmapTool - lecent.wang](
+https://lecent.wang/d/69-chromesomeheatmaptool))to discuss any questions about the linkage disequilibrium decay and plot.
