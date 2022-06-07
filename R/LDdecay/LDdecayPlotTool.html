@@ -2,20 +2,23 @@
 <html>
 <head>
 <meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
-<title>LDdecayPlotTool</title><link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
 html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
-body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
 iframe { margin: auto; }
 a.url { word-break: break-all; }
 a:active, a:hover { outline: 0px; }
 .in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
-#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
 #write.first-line-indent p { text-indent: 2em; }
 #write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
 #write.first-line-indent li { margin-left: 2em; }
 .for-image #write { padding-left: 8px; padding-right: 8px; }
 body.typora-export { padding-left: 30px; padding-right: 30px; }
 .typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
 @media screen and (max-width: 500px) {
   body.typora-export { padding-left: 0px; padding-right: 0px; }
   #write { padding-left: 20px; padding-right: 20px; }
@@ -24,14 +27,14 @@ body.typora-export { padding-left: 30px; padding-right: 30px; }
 }
 #write li > figure:last-child { margin-bottom: 0.5rem; }
 #write ol, #write ul { position: relative; }
-img { max-width: 100%; vertical-align: middle; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
 button, input, select, textarea { color: inherit; font: inherit; }
 input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
 *, ::after, ::before { box-sizing: border-box; }
 #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
 #write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
 p { line-height: inherit; }
-h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 2; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
 p { orphans: 4; }
 h1 { font-size: 2rem; }
 h2 { font-size: 1.8rem; }
@@ -47,7 +50,7 @@ sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); 
 sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
 #write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
 figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
-figure > table { margin: 0px !important; }
+figure > table { margin: 0px; }
 tr { break-inside: avoid; break-after: auto; }
 thead { display: table-header-group; }
 table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
@@ -64,7 +67,7 @@ div.hr:focus { cursor: none; }
 #write pre.ty-contain-cm { white-space: normal; }
 .CodeMirror-gutters { margin-right: 4px; }
 .md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
-.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
 #write .md-fences.mock-cm { white-space: pre-wrap; }
 .md-fences.md-fences-with-lineno { padding-left: 0px; }
 #write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
@@ -76,28 +79,32 @@ div.hr:focus { cursor: none; }
 li div { padding-top: 0px; }
 blockquote { margin: 1rem 0px; }
 li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
 li { margin: 0px; position: relative; }
 blockquote > :last-child { margin-bottom: 0px; }
 blockquote > :first-child, li > :first-child { margin-top: 0px; }
 .footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
 #write .footnote-line { white-space: pre-wrap; }
 @media print {
-  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; }
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
   #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
   .typora-export * { -webkit-print-color-adjust: exact; }
-  html.blink-to-pdf { font-size: 13px; }
-  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write { break-after: avoid; }
   .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
 }
 .footnote-line { margin-top: 0.714em; font-size: 0.7em; }
 a img, img a { cursor: pointer; }
 pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
 p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
 p > .md-image:only-child { display: inline-block; width: 100%; }
 #write .MathJax_Display { margin: 0.8em 0px 0px; }
 .md-math-block { width: 100%; }
 .md-math-block:not(:empty)::after { display: none; }
-[contenteditable="true"]:active, [contenteditable="true"]:focus { outline: 0px; box-shadow: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
 .md-task-list-item { position: relative; list-style-type: none; }
 .task-list-item.md-task-list-item { padding-left: 0px; }
 .md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
@@ -127,27 +134,71 @@ a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; 
 .md-fn-count::after { content: "."; }
 code, pre, samp, tt { font-family: var(--monospace); }
 kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
-.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
 code { text-align: left; vertical-align: initial; }
 a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
-.md-inline-math .MathJax_SVG .noError { display: none !important; }
-.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
-.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
-.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
-.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
-.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
-.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
-.MathJax_SVG * { transition: none 0s ease 0s; }
-.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
 .os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
 .md-diagram-panel > svg { max-width: 100%; }
-[lang="mermaid"] svg, [lang="flow"] svg { max-width: 100%; height: auto; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
 [lang="mermaid"] .node text { font-size: 1rem; }
 table tr th { border-bottom: 0px; }
 video { max-width: 100%; display: block; margin: 0px auto; }
 iframe { max-width: 100%; width: 100%; border: none; }
 .highlight td, .highlight tr { border: 0px; }
-svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
 
 
 .CodeMirror { height: auto; }
@@ -194,12 +245,12 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
 .CodeMirror { position: relative; overflow: hidden; }
 .CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
 .CodeMirror-sizer { position: relative; }
-.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
 .CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
-.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
 .CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
 .CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
-.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
 .CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
 .CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
 .CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
@@ -209,7 +260,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
 .CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
 .CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
 .CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
-.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
 .CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
 .CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
 .CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
@@ -218,87 +269,447 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
 .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
 .CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
 .cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
 @media print {
   .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
 }
 
 
-:root { --side-bar-bg-color: #fafafa; --control-text-color: #777; }
-html { font-size: 16px; }
-body { font-family: "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; color: rgb(51, 51, 51); line-height: 1.6; }
-#write { max-width: 860px; margin: 0px auto; padding: 30px 30px 100px; }
-#write > ul:first-child, #write > ol:first-child { margin-top: 30px; }
-a { color: rgb(65, 131, 196); }
-h1, h2, h3, h4, h5, h6 { position: relative; margin-top: 1rem; margin-bottom: 1rem; font-weight: bold; line-height: 1.4; cursor: text; }
-h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor { text-decoration: none; }
-h1 tt, h1 code { font-size: inherit; }
-h2 tt, h2 code { font-size: inherit; }
-h3 tt, h3 code { font-size: inherit; }
-h4 tt, h4 code { font-size: inherit; }
-h5 tt, h5 code { font-size: inherit; }
-h6 tt, h6 code { font-size: inherit; }
-h1 { padding-bottom: 0.3em; font-size: 2.25em; line-height: 1.2; border-bottom: 1px solid rgb(238, 238, 238); }
-h2 { padding-bottom: 0.3em; font-size: 1.75em; line-height: 1.225; border-bottom: 1px solid rgb(238, 238, 238); }
-h3 { font-size: 1.5em; line-height: 1.43; }
-h4 { font-size: 1.25em; }
-h5 { font-size: 1em; }
-h6 { font-size: 1em; color: rgb(119, 119, 119); }
-p, blockquote, ul, ol, dl, table { margin: 0.8em 0px; }
-li > ol, li > ul { margin: 0px; }
-hr { height: 2px; padding: 0px; margin: 16px 0px; background-color: rgb(231, 231, 231); border: 0px none; overflow: hidden; box-sizing: content-box; }
-li p.first { display: inline-block; }
-ul, ol { padding-left: 30px; }
-ul:first-child, ol:first-child { margin-top: 0px; }
-ul:last-child, ol:last-child { margin-bottom: 0px; }
-blockquote { border-left: 4px solid rgb(223, 226, 229); padding: 0px 15px; color: rgb(119, 119, 119); }
-blockquote blockquote { padding-right: 0px; }
-table { padding: 0px; word-break: initial; }
-table tr { border-top: 1px solid rgb(223, 226, 229); margin: 0px; padding: 0px; }
-table tr:nth-child(2n), thead { background-color: rgb(248, 248, 248); }
-table tr th { font-weight: bold; border-width: 1px 1px 0px; border-top-style: solid; border-right-style: solid; border-left-style: solid; border-top-color: rgb(223, 226, 229); border-right-color: rgb(223, 226, 229); border-left-color: rgb(223, 226, 229); border-image: initial; border-bottom-style: initial; border-bottom-color: initial; margin: 0px; padding: 6px 13px; }
-table tr td { border: 1px solid rgb(223, 226, 229); margin: 0px; padding: 6px 13px; }
-table tr th:first-child, table tr td:first-child { margin-top: 0px; }
-table tr th:last-child, table tr td:last-child { margin-bottom: 0px; }
-.CodeMirror-lines { padding-left: 4px; }
-.code-tooltip { box-shadow: rgba(0, 28, 36, 0.3) 0px 1px 1px 0px; border-top: 1px solid rgb(238, 242, 242); }
-.md-fences, code, tt { border: 1px solid rgb(231, 234, 237); background-color: rgb(248, 248, 248); border-radius: 3px; padding: 2px 4px 0px; font-size: 0.9em; }
-code { background-color: rgb(243, 244, 244); padding: 0px 2px; }
-.md-fences { margin-bottom: 15px; margin-top: 15px; padding-top: 8px; padding-bottom: 6px; }
-.md-task-list-item > input { margin-left: -1.3em; }
-@media print {
-  html { font-size: 13px; }
-  table, pre { break-inside: avoid; }
-  pre { overflow-wrap: break-word; }
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
 }
-.md-fences { background-color: rgb(248, 248, 248); }
-#write pre.md-meta-block { padding: 1rem; font-size: 85%; line-height: 1.45; background-color: rgb(247, 247, 247); border: 0px; border-radius: 3px; color: rgb(119, 119, 119); margin-top: 0px !important; }
-.mathjax-block > .code-tooltip { bottom: 0.375rem; }
-.md-mathjax-midline { background: rgb(250, 250, 250); }
-#write > h3.md-focus::before { left: -1.5625rem; top: 0.375rem; }
-#write > h4.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
-#write > h5.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
-#write > h6.md-focus::before { left: -1.5625rem; top: 0.285714rem; }
-.md-image > .md-meta { border-radius: 3px; padding: 2px 0px 0px 4px; font-size: 0.9em; color: inherit; }
-.md-tag { color: rgb(167, 167, 167); opacity: 1; }
-.md-toc { margin-top: 20px; padding-bottom: 20px; }
-.sidebar-tabs { border-bottom: none; }
-#typora-quick-open { border: 1px solid rgb(221, 221, 221); background-color: rgb(248, 248, 248); }
-#typora-quick-open-item { background-color: rgb(250, 250, 250); border-color: rgb(254, 254, 254) rgb(229, 229, 229) rgb(229, 229, 229) rgb(238, 238, 238); border-style: solid; border-width: 1px; }
-.on-focus-mode blockquote { border-left-color: rgba(85, 85, 85, 0.12); }
-header, .context-menu, .megamenu-content, footer { font-family: "Segoe UI", Arial, sans-serif; }
-.file-node-content:hover .file-node-icon, .file-node-content:hover .file-node-open-state { visibility: visible; }
-.mac-seamless-mode #typora-sidebar { background-color: var(--side-bar-bg-color); }
-.md-lang { color: rgb(180, 101, 77); }
-.html-for-mac .context-menu { --item-hover-bg-color: #E6F0FE; }
-#md-notification .btn { border: 0px; }
-.dropdown-menu .divider { border-color: rgb(229, 229, 229); }
-.ty-preferences .window-content { background-color: rgb(250, 250, 250); }
-.ty-preferences .nav-group-item.active { color: white; background: rgb(153, 153, 153); }
 
- .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
-</style>
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>LDdecayPlotTool</title>
 </head>
-<body class='typora-export os-windows' >
-<div  id='write'  class = 'is-node'><h2><a name="lddecayplottool" class="md-header-anchor"></a><span>LDdecayPlotTool</span></h2><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n0"><a class="md-toc-inner" style="cursor: pointer;" href="#lddecayplottool">LDdecayPlotTool</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" style="cursor: pointer;" href="#鸣谢">鸣谢</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n10"><a class="md-toc-inner" style="cursor: pointer;" href="#最新更新">最新更新</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n38"><a class="md-toc-inner" style="cursor: pointer;" href="#功能">功能</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n52"><a class="md-toc-inner" style="cursor: pointer;" href="#生成图展示">生成图展示</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n53"><a class="md-toc-inner" style="cursor: pointer;" href="#均值图像">均值图像</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n55"><a class="md-toc-inner" style="cursor: pointer;" href="#分染色体图像显示r2）">分染色体图像（显示r^2）</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n57"><a class="md-toc-inner" style="cursor: pointer;" href="#分染色体图像不显示r2）">分染色体图像（不显示r^2）</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n59"><a class="md-toc-inner" style="cursor: pointer;" href="#生成表展示">生成表展示</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n228"><a class="md-toc-inner" style="cursor: pointer;" href="#使用方法">使用方法</a></span></p></div><p><strong><span>制作：张敖</span></strong><span> </span><strong><a href='https://datahold.cn/'><span>https://datahold.cn</span></a></strong><span> </span></p><h2><a name="鸣谢" class="md-header-anchor"></a><span>鸣谢</span></h2><p><span>张学才，CIMMYT，指导</span></p><p><span>曹士亮 ，黑龙江农科院，测试玉米基因组</span></p><p><span>袁一冰，四川省农科院，测试玉米基因组</span></p><p><span>宋俊乔，安阳市农科院，测试玉米基因组</span></p><p><span>Rahul， Indian Agricultural Research Institute，测试小麦基因组</span></p><h2><a name="最新更新" class="md-header-anchor"></a><span>最新更新</span></h2><p><span>【2019-10-29】</span></p><p><span>增加了对小麦基因组的支持。理论上，适合任何基因组的绘制。可能需要多次调节参数。</span></p><p><span>增加了错误返回值，用于判断如何设置LD阈值。</span></p><p><span>【2019-10-08】</span></p><p><span>修正了有时刻度显示不全的BUG。</span></p><p><span>修正了有时单位显示错误的BUG。</span></p><p><span>【2016-11-23】</span></p><p><span>完善x轴刻度。</span></p><p><span>【2016-11-21】</span></p><p><span>可选择单位kb或bp。</span></p><p><span>在图像中心输出r^2^值。</span></p><p><span>去掉ggplot2包，完全使用基础绘图功能，提高兼容性。</span></p><p><span>完善细节。</span></p><p><span>【2016-11-09】</span></p><p><span>在图中标出LD平均LD衰减值。</span></p><p><span>为每一个chr计算LD衰减值，并输出在表LDDecayChr.csv中。</span></p><p><span>去掉分染色体LD衰减图的背景及网络线。</span></p><p><span>【2016-11-02】</span></p><p><span>增加简单线性方程计算，获得比较精确的LD衰减值，仅供参考。</span></p><p><span>【2016-10-31】</span></p><p><span>增加分染色体画图。</span></p><p><span>增加图例。</span></p><p><span>【2016-10-26】</span></p><p><span>根据衰减阈值，画出局部衰减图。</span></p><p><span>增加参数自定义。</span></p><p><span>【2016-10-21】</span></p><p><span>雏形完成，直接读取TESSEL的LD分析文件进行画图。</span></p><h2><a name="功能" class="md-header-anchor"></a><span>功能</span></h2><ol start='' ><li><span>直接利用TASSEL的LD分析生成的文件</span></li><li><span>生成整体的LD衰减图（自行保存为PDF、TIFF、JPG、PNG等格式）</span></li><li><span>生成每条染色体及总体均值的LD衰减图（可自行保存为PDF、TIFF、JPG、PNG等格式）</span></li><li><span>生成可供Excel画图的表格（文件名：群体名称+LD Decay Plot .csv）</span></li><li><span>快速读取大文件，1.4G文件1min内读取完毕。</span></li><li><span>根据简单线性模型，估算比较精确的LD衰减值。</span></li></ol><h2><a name="生成图展示" class="md-header-anchor"></a><span>生成图展示</span></h2><h3><a name="均值图像" class="md-header-anchor"></a><span>均值图像</span></h3><p><span>  </span><img src="image\DTMA LD Decay Plot.png" referrerpolicy="no-referrer" alt="DTMA LD Decay Plot"></p><h3><a name="分染色体图像显示r2）" class="md-header-anchor"></a><span>分染色体图像（显示r^2）</span></h3><p><span>  </span><img src="image\DTMA LD Decay Plot chr.png" referrerpolicy="no-referrer" alt="DTMA LD Decay Plot chr"></p><h3><a name="分染色体图像不显示r2）" class="md-header-anchor"></a><span>分染色体图像（不显示r^2）</span></h3><p><img src="image\DTMA LD Decay Plot chr without r2.png" referrerpolicy="no-referrer" alt="DTMA LD Decay Plot chr without r2"></p><h2><a name="生成表展示" class="md-header-anchor"></a><span>生成表展示</span></h2><figure><table><thead><tr><th><span>Scale Distance  (kb)</span></th><th><span>Chr1</span></th><th><span>Chr2</span></th><th><span>Chr3</span></th><th><span>Chr4</span></th><th><span>Chr5</span></th><th><span>Chr6</span></th><th><span>Chr7</span></th><th><span>Chr8</span></th><th><span>Chr9</span></th><th><span>Chr10</span></th><th><span>Mean</span></th></tr></thead><tbody><tr><td><span>0</span></td><td><span>1</span></td><td><span>1</span></td><td><span>1</span></td><td><span>1</span></td><td><span>1</span></td><td><span>1</span></td><td><span>1</span></td><td><span>1</span></td><td><span>1</span></td><td><span>1</span></td><td><span>1</span></td></tr><tr><td><span>0.5</span></td><td><span>0.36</span></td><td><span>0.35</span></td><td><span>0.35</span></td><td><span>0.38</span></td><td><span>0.36</span></td><td><span>0.35</span></td><td><span>0.34</span></td><td><span>0.36</span></td><td><span>0.36</span></td><td><span>0.36</span></td><td><span>0.36</span></td></tr><tr><td><span>1</span></td><td><span>0.16</span></td><td><span>0.14</span></td><td><span>0.15</span></td><td><span>0.15</span></td><td><span>0.14</span></td><td><span>0.14</span></td><td><span>0.14</span></td><td><span>0.16</span></td><td><span>0.15</span></td><td><span>0.16</span></td><td><span>0.15</span></td></tr><tr><td><span>2</span></td><td><span>0.13</span></td><td><span>0.11</span></td><td><span>0.12</span></td><td><span>0.13</span></td><td><span>0.12</span></td><td><span>0.11</span></td><td><span>0.11</span></td><td><span>0.13</span></td><td><span>0.12</span></td><td><span>0.13</span></td><td><span>0.12</span></td></tr><tr><td><span>5</span></td><td><span>0.11</span></td><td><span>0.1</span></td><td><span>0.1</span></td><td><span>0.1</span></td><td><span>0.09</span></td><td><span>0.09</span></td><td><span>0.09</span></td><td><span>0.11</span></td><td><span>0.1</span></td><td><span>0.1</span></td><td><span>0.1</span></td></tr><tr><td><span>10</span></td><td><span>0.08</span></td><td><span>0.07</span></td><td><span>0.07</span></td><td><span>0.08</span></td><td><span>0.07</span></td><td><span>0.07</span></td><td><span>0.07</span></td><td><span>0.08</span></td><td><span>0.08</span></td><td><span>0.08</span></td><td><span>0.08</span></td></tr><tr><td><span>20</span></td><td><span>0.07</span></td><td><span>0.06</span></td><td><span>0.07</span></td><td><span>0.06</span></td><td><span>0.06</span></td><td><span>0.06</span></td><td><span>0.06</span></td><td><span>0.08</span></td><td><span>0.06</span></td><td><span>0.07</span></td><td><span>0.06</span></td></tr><tr><td><span>30</span></td><td><span>0.07</span></td><td><span>0.05</span></td><td><span>0.06</span></td><td><span>0.06</span></td><td><span>0.05</span></td><td><span>0.06</span></td><td><span>0.06</span></td><td><span>0.06</span></td><td><span>0.05</span></td><td><span>0.06</span></td><td><span>0.06</span></td></tr><tr><td><span>50</span></td><td><span>0.06</span></td><td><span>0.05</span></td><td><span>0.06</span></td><td><span>0.06</span></td><td><span>0.05</span></td><td><span>0.05</span></td><td><span>0.05</span></td><td><span>0.06</span></td><td><span>0.06</span></td><td><span>0.06</span></td><td><span>0.06</span></td></tr></tbody></table></figure><figure><table><thead><tr><th><span>Chromosome</span></th><th><span>LD Decay Distance (kb)</span></th></tr></thead><tbody><tr><td><span>Chr1</span></td><td><span>6.28</span></td></tr><tr><td><span>Chr2</span></td><td><span>4.55</span></td></tr><tr><td><span>Chr3</span></td><td><span>5.73</span></td></tr><tr><td><span>Chr4</span></td><td><span>5.12</span></td></tr><tr><td><span>Chr5</span></td><td><span>4.17</span></td></tr><tr><td><span>Chr6</span></td><td><span>3.74</span></td></tr><tr><td><span>Chr7</span></td><td><span>3.54</span></td></tr><tr><td><span>Chr8</span></td><td><span>6.62</span></td></tr><tr><td><span>Chr9</span></td><td><span>4.55</span></td></tr><tr><td><span>Chr10</span></td><td><span>4.91</span></td></tr><tr><td><span>Mean</span></td><td><span>4.91</span></td></tr></tbody></table></figure><h2><a name="使用方法" class="md-header-anchor"></a><span>使用方法</span></h2><p><span>推荐将所有文件（包括r文件和LD衰减文件）放在同一个目录下，然后在R Studio中运行下列代码。</span></p><pre spellcheck="false" class="md-fences md-end-block ty-contain-cm modeLoaded" lang="r"><div class="CodeMirror cm-s-inner CodeMirror-wrap" lang="r"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 0px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">rm</span>(<span class="cm-builtin">list</span><span class="cm-operator">=</span><span class="cm-variable">ls</span>()) &nbsp; <span class="cm-comment"># Clear the Environment Variables 清空环境变量 </span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">coordinateScale</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">c</span>(<span class="cm-number">0</span>, <span class="cm-number">500</span>, <span class="cm-number">1000</span>, <span class="cm-number">2000</span>, <span class="cm-number">5000</span>, <span class="cm-number">10000</span>, <span class="cm-number">20000</span>, <span class="cm-number">30000</span>, <span class="cm-number">50000</span>) &nbsp; <span class="cm-comment"># x coordinate axis, unit is bp 坐标x轴,按照pb填写</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">unit</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-string">"Kb"</span> &nbsp; <span class="cm-comment"># Units on the image: "Kb" or "bp" 图像单位</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">pop.name</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-string">"DTMA"</span> &nbsp; &nbsp;<span class="cm-comment"># The population's name 群体名称</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">plotTitle</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-string">"LD Decay Plot"</span> &nbsp; <span class="cm-comment"># The title of plot  图表标题</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">lineWidth</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-number">2</span> &nbsp; <span class="cm-comment"># the width of line  线宽</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">lineColor</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-string">"blue"</span> &nbsp; <span class="cm-comment"># The color of line 线颜色</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#lineColor &lt;- "blue","brown","green","gray","gold","darkblue","lightblue","red","orange","tan","yellowgreen") &nbsp; # The color of line 线颜色</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">dot</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-string">"o"</span> &nbsp; <span class="cm-comment"># "o" is true, "l" is false 线型："l"是折线，"o"是带点的折线</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">dottedLine</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">TRUE</span> <span class="cm-comment"># TRUE or FALSE </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">dividingLine</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">c</span>(<span class="cm-number">0.1</span>) &nbsp; <span class="cm-comment"># 0.1 or 0.2 or c(0.1,0.2)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">plotChrR2</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">TRUE</span> &nbsp; <span class="cm-comment"># R^2 value display 全染色体图例中是否显示r^2值，TURE：显示，FLASE：不显示</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">source</span>(<span class="cm-string">"https://aozhangchina.github.io/R/LDdecay/LDdecayV4.r"</span>,<span class="cm-variable">encoding</span> <span class="cm-operator">=</span> <span class="cm-string">"utf-8"</span>) &nbsp; <span class="cm-comment"># 加载程序文件，需要联网</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 414px;"></div><div class="CodeMirror-gutters" style="display: none; height: 414px;"></div></div></div></pre><blockquote><p><span>然后选择LD数据文件，如：allLD.csv。</span></p><p><span>程序自动运行直至全部完毕。</span></p><p><span>最后一行会显示估算的比较精确的LD衰减值，并显示两个图像。</span></p></blockquote><p>&nbsp;</p></div>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h2 id='lddecayplottool'><span>LDdecayPlotTool</span></h2><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n0"><a class="md-toc-inner" href="#lddecayplottool">LDdecayPlotTool</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n4"><a class="md-toc-inner" href="#鸣谢acknowledgement">鸣谢/Acknowledgement</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n12"><a class="md-toc-inner" href="#最新更新updates">最新更新/Updates</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n44"><a class="md-toc-inner" href="#功能features">功能/features</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n58"><a class="md-toc-inner" href="#生成图展示showing-the-plot-of-examples">生成图展示/Showing the plot of examples</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n59"><a class="md-toc-inner" href="#均值图像the-average-ld-decay-plot-across-all-chromosome">均值图像/the average LD Decay plot across all chromosome</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n282"><a class="md-toc-inner" href="#分染色体图像显示r2）the-ld-plot-with-a-r2-value-for-each-chromosome">分染色体图像（显示r^2）/the LD plot with a r<sup>2</sup> value for each chromosome.</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n61"><a class="md-toc-inner" href="#分染色体图像不显示r2）the-chromosomes-plot-without-a-r2-value">分染色体图像（不显示r^2）/the chromosomes plot without a r<sup>2</sup> value</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n63"><a class="md-toc-inner" href="#生成表展示showing-the-example-of-tables">生成表展示/Showing the example of tables</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n232"><a class="md-toc-inner" href="#使用方法how-to-use-it">使用方法/How to use it</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n242"><a class="md-toc-inner" href="#讨论helpbugs">讨论/Help&amp;Bugs</a></span></p></div><p><strong><span>制作：张敖</span></strong><span> </span><strong><a href='https://datahold.cn/'><span>https://datahold.cn</span></a></strong><span> </span>
+<strong><span>Code by Ao Zhang </span><a href='https://datahold.cn/'><span>https://datahold.cn</span></a></strong></p><h2 id='鸣谢acknowledgement'><span>鸣谢/Acknowledgement</span></h2><p><span>张学才，CIMMYT，指导</span>
+<span>Xuecai Zhang, CIMMYT, guide</span></p><p><span>曹士亮 ，黑龙江农科院，测试玉米基因组</span>
+<span>Shiliang Cao, Heilongjiang Academy of Agricultural Sciences, testing maize genome</span></p><p><span>袁一冰，四川省农科院，测试玉米基因组</span>
+<span>Yibing Yuan, Sichuan Academy of Agricultural Sciences, testing maize genome</span></p><p><span>宋俊乔，安阳市农科院，测试玉米基因组</span>
+<span>Junqiao song, Anyang Academy of Agricultural Sciences, testing maize genome</span></p><p><span>冉虎，印度农业研究院，测试小麦基因组</span>
+<span>Rahul, India Agricultrual Research Institute, testing wheat genome</span></p><p><span>陈珊，沈阳农业大学，译成英文</span>
+<span>Shan Chen, Shenyang Agruicultural University, translate into English</span></p><h2 id='最新更新updates'><span>最新更新/Updates</span></h2><p><span>【2022-06.07】</span></p><p><span>增加了英文翻译。</span>
+<span>Added English translation.</span></p><p><span>【2020-08-17】</span></p><p><span>增加了国内线路。</span>
+<span>China server is available.</span></p><p><span>【2019-10-29】</span></p><p><span>增加了对小麦基因组的支持。理论上，适合任何基因组的绘制。可能需要多次调节参数。</span>
+<span>Support wheat genome. Theoretically, it can support any plant.</span></p><p><span>增加了错误返回值，用于判断如何设置LD阈值。</span>
+<span>Added return value of error to select LD threshold.</span></p><p><span>【2019-10-08】</span></p><p><span>修正了有时刻度显示不全的BUG。</span>
+<span>Fixed the bug of incomplete display of coordinate axis scale.</span></p><p><span>修正了有时单位显示错误的BUG。</span>
+<span>Fixed the bug of the unit may be incorrect.</span></p><p><span>【2016-11-23】</span></p><p><span>完善x轴刻度。</span>
+<span>Improved the scale of X axis.</span></p><p><span>【2016-11-21】</span></p><p><span>可选择单位kb或bp。</span>
+<span>Added options of KB and BP units.</span></p><p><span>在图像中心输出r</span><sup><span>2</span></sup><span>值。</span>
+<span>Added r</span><sup><span>2</span></sup><span> value in the center of plot.</span></p><p><span>去掉ggplot2包，完全使用基础绘图功能，提高兼容性。</span>
+<span>No longer use ggplot2 package, improving compatibility.</span></p><p><span>完善细节。</span>
+<span>improved details.</span></p><p><span>【2016-11-09】</span></p><p><span>在图中标出LD平均LD衰减值。</span>
+<span>Added average LD decay in the </span></p><p><span>为每一个chr计算LD衰减值，并输出在表LDDecayChr.csv中。</span>
+<span>Outputing LD decay value into a file named LDDecayChr.csv.</span></p><p><span>去掉分染色体LD衰减图的背景及网络线。</span>
+<span>Removed background and network lines in the </span></p><p><span>【2016-11-02】</span></p><p><span>增加简单线性方程计算，获得比较精确的LD衰减值，仅供参考。</span>
+<span>Using Simple Linear Equation to calculate the LD decay value.</span></p><p><span>【2016-10-31】</span></p><p><span>增加分染色体画图。</span>
+<span>Added the plot of each chromosome.</span></p><p><span>增加图例。</span>
+<span>Added the legend.</span></p><p><span>【2016-10-26】</span></p><p><span>根据衰减阈值，画出局部衰减图。</span>
+<span>According to the attenuation threshold, draw a local attenuation map</span></p><p><span>增加参数自定义。</span>
+<span>Added custom permeters.</span></p><p><span>【2016-10-21】</span></p><p><span>雏形完成，直接读取TESSEL的LD分析文件进行画图。</span>
+<span>Using the result of TASSEL to draw a plot of LD decay.</span></p><h2 id='功能features'><span>功能/features</span></h2><ol start='' ><li><p><span>直接利用TASSEL的LD分析生成的文件。</span>
+<span>The LD decay plot can be drawn directly using the files generated by the LD analysis of TASSEL.</span></p></li><li><p><span>生成整体的LD衰减图（自行保存为PDF、TIFF、JPG、PNG等格式）。</span>
+<span>Generate the overall LD decay map (can be saved as PDF, TIFF, JPG, PNG, etc.).</span></p></li><li><p><span>生成每条染色体及总体均值的LD衰减图（可自行保存为PDF、TIFF、JPG、PNG等格式）。</span>
+<span>Generate the LD decay map of each chromosome and the overall mean (can be saved as PDF, TIFF, JPG, PNG, etc.)</span></p></li><li><p><span>生成可供Excel画图的表格（文件名：群体名称+LD Decay Plot .csv）。</span></p><p><span>Generate a table for Excel to plot (file name: population name + LD Decay Plot .csv).</span></p></li><li><p><span>快速读取大文件，1.4G文件1min内读取完毕。</span>
+<span>Quickly read large files, a 1.4G file can be improve within 1min.</span></p></li><li><p><span>根据简单线性模型，估算比较精确的LD衰减值。</span>
+<span>Using Simple Linear Equation to calculate the LD decay value.</span></p></li></ol><h2 id='生成图展示showing-the-plot-of-examples'><span>生成图展示/Showing the plot of examples</span></h2><h3 id='均值图像the-average-ld-decay-plot-across-all-chromosome'><span>均值图像/the average LD Decay plot across all chromosome</span></h3><p><span>  </span><img src="image\DTMA LD Decay Plot.png" referrerpolicy="no-referrer" alt="DTMA LD Decay Plot"></p><h3 id='分染色体图像显示r2）the-ld-plot-with-a-r2-value-for-each-chromosome'><span>分染色体图像（显示r^2）/the LD plot with a r</span><sup><span>2</span></sup><span> value for each chromosome.</span></h3><p><span>  </span><img src="image\DTMA LD Decay Plot chr.png" referrerpolicy="no-referrer" alt="DTMA LD Decay Plot chr"></p><h3 id='分染色体图像不显示r2）the-chromosomes-plot-without-a-r2-value'><span>分染色体图像（不显示r^2）/the chromosomes plot without a r</span><sup><span>2</span></sup><span> value</span></h3><p><img src="image\DTMA LD Decay Plot chr without r2.png" referrerpolicy="no-referrer" alt="DTMA LD Decay Plot chr without r2"></p><h2 id='生成表展示showing-the-example-of-tables'><span>生成表展示/Showing the example of tables</span></h2><figure><table><thead><tr><th><span>Scale Distance  (kb)</span></th><th><span>Chr1</span></th><th><span>Chr2</span></th><th><span>Chr3</span></th><th><span>Chr4</span></th><th><span>Chr5</span></th><th><span>Chr6</span></th><th><span>Chr7</span></th><th><span>Chr8</span></th><th><span>Chr9</span></th><th><span>Chr10</span></th><th><span>Mean</span></th></tr></thead><tbody><tr><td><span>0</span></td><td><span>1</span></td><td><span>1</span></td><td><span>1</span></td><td><span>1</span></td><td><span>1</span></td><td><span>1</span></td><td><span>1</span></td><td><span>1</span></td><td><span>1</span></td><td><span>1</span></td><td><span>1</span></td></tr><tr><td><span>0.5</span></td><td><span>0.36</span></td><td><span>0.35</span></td><td><span>0.35</span></td><td><span>0.38</span></td><td><span>0.36</span></td><td><span>0.35</span></td><td><span>0.34</span></td><td><span>0.36</span></td><td><span>0.36</span></td><td><span>0.36</span></td><td><span>0.36</span></td></tr><tr><td><span>1</span></td><td><span>0.16</span></td><td><span>0.14</span></td><td><span>0.15</span></td><td><span>0.15</span></td><td><span>0.14</span></td><td><span>0.14</span></td><td><span>0.14</span></td><td><span>0.16</span></td><td><span>0.15</span></td><td><span>0.16</span></td><td><span>0.15</span></td></tr><tr><td><span>2</span></td><td><span>0.13</span></td><td><span>0.11</span></td><td><span>0.12</span></td><td><span>0.13</span></td><td><span>0.12</span></td><td><span>0.11</span></td><td><span>0.11</span></td><td><span>0.13</span></td><td><span>0.12</span></td><td><span>0.13</span></td><td><span>0.12</span></td></tr><tr><td><span>5</span></td><td><span>0.11</span></td><td><span>0.1</span></td><td><span>0.1</span></td><td><span>0.1</span></td><td><span>0.09</span></td><td><span>0.09</span></td><td><span>0.09</span></td><td><span>0.11</span></td><td><span>0.1</span></td><td><span>0.1</span></td><td><span>0.1</span></td></tr><tr><td><span>10</span></td><td><span>0.08</span></td><td><span>0.07</span></td><td><span>0.07</span></td><td><span>0.08</span></td><td><span>0.07</span></td><td><span>0.07</span></td><td><span>0.07</span></td><td><span>0.08</span></td><td><span>0.08</span></td><td><span>0.08</span></td><td><span>0.08</span></td></tr><tr><td><span>20</span></td><td><span>0.07</span></td><td><span>0.06</span></td><td><span>0.07</span></td><td><span>0.06</span></td><td><span>0.06</span></td><td><span>0.06</span></td><td><span>0.06</span></td><td><span>0.08</span></td><td><span>0.06</span></td><td><span>0.07</span></td><td><span>0.06</span></td></tr><tr><td><span>30</span></td><td><span>0.07</span></td><td><span>0.05</span></td><td><span>0.06</span></td><td><span>0.06</span></td><td><span>0.05</span></td><td><span>0.06</span></td><td><span>0.06</span></td><td><span>0.06</span></td><td><span>0.05</span></td><td><span>0.06</span></td><td><span>0.06</span></td></tr><tr><td><span>50</span></td><td><span>0.06</span></td><td><span>0.05</span></td><td><span>0.06</span></td><td><span>0.06</span></td><td><span>0.05</span></td><td><span>0.05</span></td><td><span>0.05</span></td><td><span>0.06</span></td><td><span>0.06</span></td><td><span>0.06</span></td><td><span>0.06</span></td></tr></tbody></table></figure><figure><table><thead><tr><th><span>Chromosome</span></th><th><span>LD Decay Distance (kb)</span></th></tr></thead><tbody><tr><td><span>Chr1</span></td><td><span>6.28</span></td></tr><tr><td><span>Chr2</span></td><td><span>4.55</span></td></tr><tr><td><span>Chr3</span></td><td><span>5.73</span></td></tr><tr><td><span>Chr4</span></td><td><span>5.12</span></td></tr><tr><td><span>Chr5</span></td><td><span>4.17</span></td></tr><tr><td><span>Chr6</span></td><td><span>3.74</span></td></tr><tr><td><span>Chr7</span></td><td><span>3.54</span></td></tr><tr><td><span>Chr8</span></td><td><span>6.62</span></td></tr><tr><td><span>Chr9</span></td><td><span>4.55</span></td></tr><tr><td><span>Chr10</span></td><td><span>4.91</span></td></tr><tr><td><span>Mean</span></td><td><span>4.91</span></td></tr></tbody></table></figure><h2 id='使用方法how-to-use-it'><span>使用方法/How to use it</span></h2><p><span>推荐将所有文件（包括r文件和LD衰减文件）放在同一个目录下，然后在R Studio中运行下列代码。</span>
+<span>Please put all the files in the same folder. Then run the following code in the Rstudio software.</span></p><p><span>海外：</span>
+<span>Overseas:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="r"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="r"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51875px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre>x</pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">rm</span>(<span class="cm-builtin">list</span><span class="cm-operator">=</span><span class="cm-variable">ls</span>()) &nbsp; <span class="cm-comment"># Clear the Environment Variables</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">coordinateScale</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">c</span>(<span class="cm-number">0</span>, <span class="cm-number">500</span>, <span class="cm-number">1000</span>, <span class="cm-number">2000</span>, <span class="cm-number">5000</span>, <span class="cm-number">10000</span>, <span class="cm-number">20000</span>, <span class="cm-number">30000</span>, <span class="cm-number">50000</span>) &nbsp; <span class="cm-comment"># x coordinate axis, unit is bp</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">unit</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-string">"Kb"</span> &nbsp; <span class="cm-comment"># Units on the image: "Kb" or "bp"</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">pop.name</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-string">"DTMA"</span> &nbsp; &nbsp;<span class="cm-comment"># The population's name </span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">plotTitle</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-string">"LD Decay Plot"</span> &nbsp; <span class="cm-comment"># The title of plot &nbsp;</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">lineWidth</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-number">2</span> &nbsp; <span class="cm-comment"># the width of line &nbsp;</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">lineColor</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-string">"blue"</span> &nbsp; <span class="cm-comment"># The color of line </span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#lineColor &lt;- "blue","brown","green","gray","gold","darkblue","lightblue","red","orange","tan","yellowgreen") &nbsp; # The color of line </span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">dot</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-string">"o"</span> &nbsp; <span class="cm-comment"># "o" is true, "l" is false </span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">dottedLine</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">TRUE</span> <span class="cm-comment"># TRUE or FALSE </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">dividingLine</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">c</span>(<span class="cm-number">0.1</span>) &nbsp; <span class="cm-comment"># 0.1 or 0.2 or c(0.1,0.2)</span></span></pre><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">plotChrR2</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">TRUE</span> &nbsp; <span class="cm-comment"># R^2 value display, TRUE represents yes, and F means no.</span></span></pre></div><div class="" style="position: relative;"><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">source</span>(<span class="cm-string">"https://aozhangchina.github.io/R/LDdecay/LDdecayV4.r"</span>,<span class="cm-variable">encoding</span> <span class="cm-operator">=</span> <span class="cm-string">"utf-8"</span>) &nbsp; <span class="cm-comment"># the internet is required.</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 392px;"></div><div class="CodeMirror-gutters" style="display: none; height: 392px;"></div></div></div></pre><p><span>国内：</span>
+<span>China:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="R"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="r"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.51875px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">rm</span>(<span class="cm-builtin">list</span><span class="cm-operator">=</span><span class="cm-variable">ls</span>()) &nbsp; <span class="cm-comment"># Clear the Environment Variables 清空环境变量 </span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">coordinateScale</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">c</span>(<span class="cm-number">0</span>, <span class="cm-number">500</span>, <span class="cm-number">1000</span>, <span class="cm-number">2000</span>, <span class="cm-number">5000</span>, <span class="cm-number">10000</span>, <span class="cm-number">20000</span>, <span class="cm-number">30000</span>, <span class="cm-number">50000</span>) &nbsp; <span class="cm-comment"># x coordinate axis, unit is bp 坐标x轴,按照pb填写</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">unit</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-string">"Kb"</span> &nbsp; <span class="cm-comment"># Units on the image: "Kb" or "bp" 图像单位</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">pop.name</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-string">"DTMA"</span> &nbsp; &nbsp;<span class="cm-comment"># The population's name 群体名称</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">plotTitle</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-string">"LD Decay Plot"</span> &nbsp; <span class="cm-comment"># The title of plot  图表标题</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">lineWidth</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-number">2</span> &nbsp; <span class="cm-comment"># the width of line  线宽</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">lineColor</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-string">"blue"</span> &nbsp; <span class="cm-comment"># The color of line 线颜色</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment">#lineColor &lt;- "blue","brown","green","gray","gold","darkblue","lightblue","red","orange","tan","yellowgreen") &nbsp; # The color of line 线颜色</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">dot</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-string">"o"</span> &nbsp; <span class="cm-comment"># "o" is true, "l" is false 线型："l"是折线，"o"是带点的折线</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">dottedLine</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">TRUE</span> <span class="cm-comment"># TRUE or FALSE </span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">dividingLine</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">c</span>(<span class="cm-number">0.1</span>) &nbsp; <span class="cm-comment"># 0.1 or 0.2 or c(0.1,0.2)</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">plotChrR2</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">TRUE</span> &nbsp; <span class="cm-comment"># R^2 value display 全染色体图例中是否显示r^2值，TURE：显示，FLASE：不显示</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">source</span>(<span class="cm-string">"https://dataholdcn.cn/R/LDdecay/LDdecayV4.r"</span>,<span class="cm-variable">encoding</span> <span class="cm-operator">=</span> <span class="cm-string">"utf-8"</span>) &nbsp; <span class="cm-comment"># 加载程序文件，需要联网</span></span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 415px;"></div><div class="CodeMirror-gutters" style="display: none; height: 415px;"></div></div></div></pre><blockquote><p><span>然后选择LD数据文件，如：allLD.csv。</span>
+<span>Choose a LD file, like [allLD.csv].</span></p><p><span>程序自动运行直至全部完毕。</span></p><p><span>最后一行会显示估算的比较精确的LD衰减值，并显示两个图像。</span></p></blockquote><h2 id='讨论helpbugs'><span>讨论/Help&amp;Bugs</span></h2><p><span>国内用户请提交Bug或使用中有任何问题，请发邮件到张敖的邮箱。海外用户请在</span><a href='https://lecent.wang/d/68-lddecayplottool'><span>LDdecayPlotTool - lecent.wang</span></a><span>上讨论，我们定期查看。</span></p><p><span>User in China, please send an e-mail to Ao Zhang to submit a bug. Overseas users please to reply this post (</span><a href='https://lecent.wang/d/68-lddecayplottool'><span>LDdecayPlotTool - lecent.wang</span></a><span>) to discuss any questions about the linkage disequilibrium decay and plot.</span></p><p>&nbsp;</p></div></div>
 </body>
 </html>
