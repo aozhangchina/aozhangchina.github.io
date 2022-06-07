@@ -217,8 +217,10 @@ source("https://dataholdcn.cn/R/LDdecay/LDdecayV4.r",encoding = "utf-8")   # 加
 > Choose a LD file, like [allLD.csv].
 >
 > 程序自动运行直至全部完毕。
+> Please wait for the program to complete running automatically.
 >
 > 最后一行会显示估算的比较精确的LD衰减值，并显示两个图像。
+> The last line of console will give you a reference value of LD decay. You can also get plots.
 
 ## 讨论/Help&Bugs
 
