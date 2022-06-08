@@ -7,8 +7,8 @@
 
 ## 鸣谢/Acknowledgement
 
-张学才，CIMMYT，指导
-Xuecai Zhang, CIMMYT, guide
+阮燕晔，沈阳农业大学，指导
+Yanye Ruan, Shenyang Agruicultral University, guide
 
 曹慧颖，沈阳农业大学，测试
 Huiying Cao, Shenyang Agruicultral University, testing
