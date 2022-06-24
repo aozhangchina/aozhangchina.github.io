@@ -15,6 +15,9 @@ slist <- GBIT.readFile(header=F,fname = slist.info)
 GBIT.geno.delDup(geno)
 
 geno_name <- names(geno[12:ncol(geno)])
+if(length(pheno[,1])!=length(unique(pheno[,1]))){
+  pheno <- pheno[-which(duplicated(pheno[,1])),]
+}
 pheno_name <- pheno[,1]
 
 ck <- GBIT.matching.test(geno_name,pheno_name)
