@@ -12,9 +12,9 @@
 #                                                                     $$$$$$/            
 #   ________                   __ 
 #  /        |                 /  |
-#  $$$$$$$$/______    ______  $$ |              Tool name: manhattanPlotforTassel.r
+#  $$$$$$$$/______    ______  $$ |              Tool name: manhattanPlot.r
 #     $$ | /      \  /      \ $$ |
-#     $$ |/$$$$$$  |/$$$$$$  |$$ |              Updated: 08/06/2020
+#     $$ |/$$$$$$  |/$$$$$$  |$$ |              Updated: 05/09/2023
 #     $$ |$$ |  $$ |$$ |  $$ |$$ |
 #     $$ |$$ \__$$ |$$ \__$$ |$$ |              Website: datahold.cn
 #     $$ |$$    $$/ $$    $$/ $$ |
@@ -105,40 +105,41 @@ cat("                                                                  $$    $$/
 cat("                                                                   $$$$$$/            \n")
 cat(" ________                   __ \n")
 cat("/        |                 /  |                                                       \n")
-cat("$$$$$$$$/______    ______  $$ |              Tool name: manhattanPlotforTassel.r\n")
+cat("$$$$$$$$/______    ______  $$ |              Tool name: manhattanPlot.r\n")
 cat("   $$ | /      \\  /      \\ $$ |\n")
-cat("   $$ |/$$$$$$  |/$$$$$$  |$$ |              Updated: 08/06/2020\n")
+cat("   $$ |/$$$$$$  |/$$$$$$  |$$ |              Updated: 05/09/2023\n")
 cat("   $$ |$$ |  $$ |$$ |  $$ |$$ |\n")
 cat("   $$ |$$ \\__$$ |$$ \\__$$ |$$ |              Website: datahold.cn\n")
 cat("   $$ |$$    $$/ $$    $$/ $$ |\n")
 cat("   $$/  $$$$$$/   $$$$$$/  $$/ \n\n")
 
 tp <- NULL
-  
+
 if (length(unique(temp2$name))>1){
-for (i in 1:length(unique(temp2$name))){
-  cat(paste0("trait",i,"=",unique(temp2$name)[i],"\n"))
-  tp <- c(tp,unique(temp2$name)[i])
-  indexI <- which(temp2$name==unique(temp2$name)[i])
-  txt <- paste0("paintData$trait",i,"<-temp2$trait[indexI]")
-  eval(parse(text=txt))
-  names(paintData)[3+i] <- titles[i]
-}
+  for (i in 1:length(unique(temp2$name))){
+    cat(paste0("trait",i,"=",unique(temp2$name)[i],"\n"))
+    tp <- c(tp,unique(temp2$name)[i])
+    indexI <- which(temp2$name==unique(temp2$name)[i])
+    txt <- paste0("paintData$trait",i,"<-temp2$trait[indexI]")
+    eval(parse(text=txt))
+    names(paintData)[3+i] <- titles[i]
+  }
 }else{
   txt <- paste0("paintData$trait","<-temp2$trait")
   eval(parse(text=txt))
   paintData$trait <- temp2$trait
   names(paintData)[4] <- titles[1]
+  tp <- titles[1]
 }
 
-CMplot(paintData,plot.type="m",LOG10=TRUE,main=titles,threshold=threshold_line,chr.den.col=NULL,file="jpg",memo=fn,file.output=TRUE,verbose=TRUE)
+CMplot(paintData,plot.type="m",LOG10=TRUE,main=titles,threshold=threshold_line,chr.den.col=NULL,file="jpg",file.name=tp,file.output=TRUE,verbose=TRUE)
 
-b <- dir(pattern="Rectangular-Manhattan")
+b <- dir(pattern="Rect_Manhtn")
 for (i in 1:length(b)){
   file.rename(b[i],paste0(fn,"_",tp[i],".jpg"))
 }
 
-CMplot(paintData, plot.type='q',conf.int.col=NULL, box=TRUE, file="jpg", memo='',dpi=300, file.output= TRUE, verbose= TRUE)
+CMplot(paintData, plot.type='q',conf.int.col=NULL, box=TRUE, file="jpg", file.name=tp,dpi=300, file.output= TRUE, verbose= TRUE)
 
 bq <- dir(pattern="QQplot")
 for (i in 1:length(bq)){
