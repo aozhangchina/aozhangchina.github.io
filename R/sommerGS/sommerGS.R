@@ -10,12 +10,12 @@ if(!exists("cycles")){cycles <- 100}
 if(!exists("get.train_test")){get.train_test <- FALSE}
 if(!exists("A_pred_B")){A_pred_B <- FALSE}   # TRUE means a population predict b population
 if(!exists("group")){group <- NULL}   # c("SYNDH","DTMA")
-  if(!exists("train_pop")){train_pop <- "SYNDH"}
-  if(!exists("test_pop")){test_pop <- "SYNDH"}
+if(!exists("train_pop")){train_pop <- "SYNDH"}
+if(!exists("test_pop")){test_pop <- "SYNDH"}
 if(!exists("K_fold")){K_fold <- 5}
 if(!exists("optimization")){optimization <- NULL}   # NULL,"CDmean"
-  if(!exists("NTrn.Optmize")){NTrn.Optmize <- 20}   # opt trn size
-  if(!exists("nIter")){nIter <- 10000}   # iterative number for CDmean
+if(!exists("NTrn.Optmize")){NTrn.Optmize <- 20}   # opt trn size
+if(!exists("nIter")){nIter <- 10000}   # iterative number for CDmean
 if(!exists("WD")){WD <- NULL}
 source("https://dataholdcn.cn/R/GBIT/GBIT.R")
 
@@ -142,29 +142,29 @@ if (optimization=="CDmean"){
   
   
   trn_new <- sample(CDmean_trn, NTrn.Optmize, replace = F)   # to sample a first trn
-  trn_tst <- c(CDmean_tst, trn_new)   # 娑撳孩绁寸拠鏇㈡肠閸氬牆鎮庨獮?
+  trn_tst <- c(CDmean_tst, trn_new)   # 濞戞挸瀛╃粊瀵告嫚閺囥垺鑲犻柛姘墕閹酣鐛�?
   
-  trn_tst <- Reference[trn_tst]   # 瀵版鍩岄崺鍝勬礈閸ㄥ鎮曠粔?
+  trn_tst <- Reference[trn_tst]   # 鐎电増顨呴崺宀勫春閸濆嫭绀堥柛銊ヮ儏閹洜绮�?
   
-  Gmatrix_new <- Gmatrix[trn_tst, trn_tst]   # 閹绘劕褰囬崣顏呮箒濞村鐦梿鍡欐畱kinship
+  Gmatrix_new <- Gmatrix[trn_tst, trn_tst]   # 闁圭粯鍔曡ぐ鍥矗椤忓懏绠掓繛鏉戭儓閻︻垶姊块崱娆愮暠kinship
   
-  invAt_new <- solve(Gmatrix_new)   # 濞村鐦梿鍡楁値娴滆尙绱崗宕囬兇閻晠妯€閸欐牠鈧棛鐓╅梼?
+  invAt_new <- solve(Gmatrix_new)   # 婵炴潙顑堥惁顖炴⒖閸℃鍊ゅù婊嗗皺缁鳖參宕楀畷鍥厙闁活厸鏅犲Ο鈧柛娆愮墵閳ь剙妫涢悡鈺呮⒓?
   
-  # TT閺勵垰顕В鏃傜叐闂冪绱濆В鏃囩窛
-  TT <- matrix(0,length(rownames(Gmatrix_new)),tst_size)  # 瀵よ櫣鐝涙稉鈧稉?0閻晠妯€閵嗗倿鏆遍弰顖涚ゴ鐠囨洟娉inship閻ㄥ嫯顢戦敍灞藉灙閺勵垰甯ù瀣槸闂嗗棗銇囩亸?
-  TT[1:tst_size,] <- -1/tst_size   # 濮ｅ繗顢?= -1/閸樼喐绁寸拠鏇㈡肠婢堆冪毈
-  # 鐎电顫楃痪璺ㄦ暏1-閻晠妯€
+  # TT闁哄嫷鍨伴顔夹掗弮鍌滃彁闂傚啰顣槐婵喰掗弮鍥╃獩
+  TT <- matrix(0,length(rownames(Gmatrix_new)),tst_size)  # 鐎点倛娅ｉ悵娑欑▔閳ь剚绋�?0闁活厸鏅犲Ο鈧柕鍡楀€块弳閬嶅及椤栨稓銈撮悹鍥ㄦ礋濞夘洃inship闁汇劌瀚、鎴︽晬鐏炶棄鐏欓柡鍕靛灠鐢偄霉鐎ｎ厾妲搁梻鍡楁閵囧洨浜�?
+  TT[1:tst_size,] <- -1/tst_size   # 婵絽绻楅、?= -1/闁告ḿ鍠愮粊瀵告嫚閺囥垺鑲犲鍫嗗啰姣�
+  # 閻庣數顢婇～妤冪棯鐠恒劍鏆�1-闁活厸鏅犲Ο鈧�
   for (i in 1:tst_size) { 
     TT[i,i]=1-1/tst_size 
   }     
   dim(TT) 
   
-  X_trn <- rep(1,trn_size)  # 闁插秴顦叉导妯哄瀵ょ儤膩闂嗗棗鎮庡▎?1
-  Ident_trn <- diag(trn_size)   # 瀵よ櫣鐝涚€电顫楃痪鎸庢Ц1閻ㄥ嫮鐓╅梼?
-  M_trn <- Ident_trn - (X_trn %*% solve(t(X_trn) %*% X_trn) %*% t(X_trn) )  # 閼惧嘲绶辨导妯哄瀵ょ儤膩闂嗗棗鎮庨惃鍕啎鐠侊紕鐓╅梼?
+  X_trn <- rep(1,trn_size)  # 闂佹彃绉撮ˇ鍙夊濡搫顕х€点倗鍎よ啯闂傚棗妫楅幃搴♀枎?1
+  Ident_trn <- diag(trn_size)   # 鐎点倛娅ｉ悵娑氣偓鐢殿攰椤鐥幐搴⑿�1闁汇劌瀚悡鈺呮⒓?
+  M_trn <- Ident_trn - (X_trn %*% solve(t(X_trn) %*% X_trn) %*% t(X_trn) )  # 闁兼儳鍢茬欢杈ㄥ濡搫顕х€点倗鍎よ啯闂傚棗妫楅幃搴ㄦ儍閸曨噮鍟庨悹渚婄磿閻撯晠姊�?
   dim(M_trn)
   
-  # 鐞氼偄缂撳Ο锛勬畱鐠佹崘顓搁惌鈺呮█
+  # 閻炴凹鍋勭紓鎾澄熼敍鍕暠閻犱焦宕橀鎼佹儗閳哄懏鈻�
   Z_trn <- matrix(0,trn_size,trn_size+tst_size) 
   for (i in 1:trn_size){
     Z_trn[i,tst_size+i]=1 
@@ -179,42 +179,42 @@ if (optimization=="CDmean"){
   RawCD <- (t(TT)%*%(Gmatrix_new-lambda*solve(t(Z_trn)%*%M_trn%*%Z_trn + lambda*invAt_new))%*%TT)/(t(TT)%*%Gmatrix_new%*%TT) 
   
   CD <- diag(RawCD)
-  # 閸掓繂顫怌D閸у洤鈧??
+  # 闁告帗绻傞～鎬孌闁秆冩搐閳�??
   CDmeanSave <- mean(CD)
   CDmeanSaveCopy <- mean(CD)
   
-  CDmeanExchange <- rep(NA,nIter)   # CDMean鏉╊厺鍞惌鈺呮█
-  CDmeanExchange[1] <- CDmeanSave   # 1閸欒渹缍呯純顔煎灥婵鈧棿璐烠DMean閸у洤鈧??
+  CDmeanExchange <- rep(NA,nIter)   # CDMean閺夆晩鍘洪崬顒勬儗閳哄懏鈻�
+  CDmeanExchange[1] <- CDmeanSave   # 1闁告瑨娓圭紞鍛磾椤旂厧鐏ュ┑顔碱儏閳ь剟妫跨拹鐑燚Mean闁秆冩搐閳�??
   
   cpt2 <- 1
   cpt <- 0
   
   while (cpt2<=nIter) {
     cpt2 <- cpt2 + 1
-    # 閼惧嘲绶辨稉宥呮躬闂嗗棗鎮庢稉顓犳畱閺夋劖鏋?
+    # 闁兼儳鍢茬欢杈ㄧ▔瀹ュ懏韬梻鍡楁閹孩绋夐鐘崇暠闁哄鍔栭弸?
     PartOfTrainingSet <- CDmean_trn[-match(trn_new,CDmean_trn)] 
     
-    # 閸︺劌缂撳Ο锟犳肠閸氬牅鑵戦梾蹇旀簚闁瀚ㄦ稉鈧稉顏呮綏閺??
+    # 闁革负鍔岀紓鎾澄熼敓鐘宠偁闁告艾鐗呴懙鎴︽⒕韫囨梹绨氶梺顐㈩槹鐎氥劍绋夐埀顒佺▔椤忓懏缍忛柡??
     Sample2 <- sample(trn_new,1)
     
-    # 閸︺劑娼鐑樐侀梿鍡楁値闂呭繑婧€闁瀚ㄦ稉鈧稉顏呮綏閺??
+    # 闁革负鍔戝ḿ顏勵嚈閻戞◥渚€姊块崱妤佸€ら梻鍛箲濠р偓闂侇偄顦扮€氥劍绋夐埀顒佺▔椤忓懏缍忛柡??
     Sample3 <- sample(PartOfTrainingSet,1)
     
-    # 閸樼粯甯€闂呭繑婧€闁瀚ㄩ惃鍕紦濡繝娉﹂崥鍫㈡畱閺佺増宓侀敍灞藉晙閸旂姴鍙嗘稉鈧稉顏呮煀閻ㄥ嫭鏆熼幑顕嗙礉缂佸嫭鍨氶弬鎵畱瀵ょ儤膩闂嗗棗鎮?
+    # 闁告ḿ绮敮鈧梻鍛箲濠р偓闂侇偄顦扮€氥劑鎯冮崟顐ょ处婵☆垽绻濆▔锕傚触閸垺鐣遍柡浣哄瀹撲線鏁嶇仦钘夋櫃闁告梻濮撮崣鍡樼▔閳ь剚绋夐鍛厐闁汇劌瀚弳鐔煎箲椤曞棛绀夌紓浣稿閸ㄦ岸寮幍顔界暠鐎点倗鍎よ啯闂傚棗妫楅幃?
     Sample4 <- c(Sample3,trn_new[trn_new!=Sample2])
     
-    # 缂佸嫬缂撻弬鎵畱濞村鐦梿鍡礄閸樼喖娉﹂崥?+閺傛壆娈戝ù瀣槸闂嗗棗鎮庨敍?
+    # 缂備礁瀚紓鎾诲棘閹殿喗鐣辨繛鏉戭儓閻︻垶姊块崱顓犵闁告ḿ鍠栧▔锕傚触?+闁哄倹澹嗗▓鎴澝圭€ｎ厾妲搁梻鍡楁閹酣鏁�?
     Sample5 <- c(CDmean_tst, Sample4)
     
-    Sample5 <- Reference[Sample5]   # 瀵版鍩屽ù瀣槸闂嗗棗鎮庨惃鍑D閸??
+    Sample5 <- Reference[Sample5]   # 鐎电増顨呴崺灞矫圭€ｎ厾妲搁梻鍡楁閹酣鎯冮崙顤廌闁�??
     
-    ## 瀵版鍩孏matrix, 閸楃牰inship閻晠妯€
+    ## 鐎电増顨呴崺瀛弇atrix, 闁告鐗癷nship闁活厸鏅犲Ο鈧�
     GmAt <- Gmatrix[Sample5, Sample5]
     
-    ## 閻晠妯€閸欐牠鈧??
+    ## 闁活厸鏅犲Ο鈧柛娆愮墵閳�??
     invAt1 <- solve(GmAt)
     
-    ## 鐠侊紕鐣诲В蹇庣鏉烆喚娈慍D閸у洤鈧??
+    ## 閻犱緤绱曢悾璇残掕箛搴ｎ伇閺夌儐鍠氬▓鎱岲闁秆冩搐閳�??
     RawCD2 <- (t(TT)%*%(GmAt-lambda*solve(t(Z_trn)%*%M_trn%*%Z_trn + lambda*invAt1))%*%TT)/(t(TT)%*%GmAt%*%TT)
     
     CD2 <- diag(RawCD2)
@@ -230,11 +230,11 @@ if (optimization=="CDmean"){
   jpeg("CDmeanExchange.jpg",width = 8, height = 5, units = "in", res = 300)
   
   
-  plot(CDmeanExchange) # CDMean閸婅偐鈥樻穱婵囨箒鐡掑啿顧勯惃鍕嚡娴??
+  plot(CDmeanExchange) # CDMean闁稿﹨鍋愰垾妯荤┍濠靛洦绠掗悺鎺戝暱椤у嫰鎯冮崟顔煎殹濞�??
   
   dev.off()
   
-  SampleOptimiz <- trn_new # 娴兼ê瀵查梿鍡楁値
+  SampleOptimiz <- trn_new # 濞村吋锚鐎垫煡姊块崱妤佸€�
   
   ### Subset customized training set from ref
   
@@ -278,36 +278,36 @@ if (optimization=="CDmean"){
   
   Result[,2] <- apply(Result[,1, drop=F], 1, function(x){
     
-    trn_tst <- c(TSTsample, x)   # 寤烘ā闆嗗悎澧炲姞涓€涓潗鏂?
+    trn_tst <- c(TSTsample, x)   # 瀵ょ儤膩闂嗗棗鎮庢晶鐐插娑撯偓娑擃亝娼楅弬?
     
-    trn_tst <- trn_tst[order(trn_tst)]   # 鎺掑簭
+    trn_tst <- trn_tst[order(trn_tst)]   # 閹烘帒绨�
     
-    Reference <- subset(Reference, GID %in% trn_tst)   # 鎻愬彇鍙傝€冧腑鐨凣ID
+    Reference <- subset(Reference, GID %in% trn_tst)   # 閹绘劕褰囬崣鍌濃偓鍐ц厬閻ㄥ嚕ID
     
-    Reference <- Reference[order(Reference$GID), ,drop =F]   # 鎻愬彇鎴愭暟鎹
+    Reference <- Reference[order(Reference$GID), ,drop =F]   # 閹绘劕褰囬幋鎰殶閹诡喗顢�
     
     
-    ### 鑾峰緱寤烘ā闆嗗悎鐨勫叧绯荤煩闃?
+    ### 閼惧嘲绶卞鐑樐侀梿鍡楁値閻ㄥ嫬鍙х化鑽ょ叐闂�?
     Gmatrix <- Gmatrix[trn_tst, trn_tst]
     
-    ## 澧炲姞Ref鐨勫垪锛屽師寤烘ā缇や綋1锛屽叾浠栦负2
-    Reference$Value <- with(Reference, ifelse(GID %in%TSTsample , 1,2))   # 鏍囨敞1锛?2
+    ## 婢х偛濮濺ef閻ㄥ嫬鍨敍灞藉斧瀵ょ儤膩缂囥倓缍�1閿涘苯鍙炬禒鏍﹁礋2
+    Reference$Value <- with(Reference, ifelse(GID %in%TSTsample , 1,2))   # 閺嶅洦鏁�1閿�?2
     refm <- data.frame(GID= Reference$GID, GRM=Reference$Value)
-    refm$GID <- as.character(refm$GID)   # GID鍙樻垚瀛楃涓?
-    ## 灏嗙煩闃佃浆涓轰袱涓ょ粍鍚堢殑褰㈠紡 
+    refm$GID <- as.character(refm$GID)   # GID閸欐ɑ鍨氱€涙顑佹稉?
+    ## 鐏忓棛鐓╅梼浣冩祮娑撹桨琚辨稉銈囩矋閸氬牏娈戣ぐ銏犵础 
     GmatrixL <- reshape2::melt(as.matrix(Gmatrix))   # reshape
-    GmatrixL$Var1 <- as.character(GmatrixL$Var1)   # 杞垚瀛楃涓?
-    GmatrixL$Var2 <- as.character(GmatrixL$Var2)   # 杞垚瀛楃涓?
-    names(GmatrixL) <- c('rowL', 'colL', 'GRM')   # 澧炲姞鍚嶇О
-    GmatrixLR <- merge(refm, GmatrixL, by.x = 'GID', by.y = 'rowL', all = TRUE)   # 鍖归厤绗竴鍒楋紝鐩稿綋浜庢祴璇曠兢浣?
-    GmatrixLR$GID <- as.character(GmatrixLR$GID)   # GID杞垚瀛楃鍨?
-    GmatrixLRC <- merge(refm, GmatrixLR, by.x = 'GID', by.y = 'colL', all = TRUE)   # 鍖归厤绗簩鍒楋紝鐩稿綋浜庡缓妯＄兢浣?
-    GmatrixLRC$GID <- as.character(GmatrixLRC$GID)   # GID杞崲鎴愬瓧绗﹀瀷
-    names(GmatrixLRC) <- c('TST', 'TSTpop', 'TRN', 'TRNpop', 'GRM')   # 缁欐爣棰?
+    GmatrixL$Var1 <- as.character(GmatrixL$Var1)   # 鏉烆剚鍨氱€涙顑佹稉?
+    GmatrixL$Var2 <- as.character(GmatrixL$Var2)   # 鏉烆剚鍨氱€涙顑佹稉?
+    names(GmatrixL) <- c('rowL', 'colL', 'GRM')   # 婢х偛濮為崥宥囆�
+    GmatrixLR <- merge(refm, GmatrixL, by.x = 'GID', by.y = 'rowL', all = TRUE)   # 閸栧綊鍘ょ粭顑跨閸掓绱濋惄绋跨秼娴滃孩绁寸拠鏇犲參娴�?
+    GmatrixLR$GID <- as.character(GmatrixLR$GID)   # GID鏉烆剚鍨氱€涙顑侀崹?
+    GmatrixLRC <- merge(refm, GmatrixLR, by.x = 'GID', by.y = 'colL', all = TRUE)   # 閸栧綊鍘ょ粭顑跨癌閸掓绱濋惄绋跨秼娴滃骸缂撳Ο锛勫參娴�?
+    GmatrixLRC$GID <- as.character(GmatrixLRC$GID)   # GID鏉烆剚宕查幋鎰摟缁楋箑鐎�
+    names(GmatrixLRC) <- c('TST', 'TSTpop', 'TRN', 'TRNpop', 'GRM')   # 缂佹瑦鐖ｆ０?
     ##Subset only the pairwise combination of the Testing set(TSTpop) and the Training set
-    tmp <- subset(GmatrixLRC, TSTpop == 1 & TRN%in%x)   # 鎻愬彇娴嬭瘯缇や綋涓?1锛屽缓妯＄兢浣撲负2鐨勩€?
+    tmp <- subset(GmatrixLRC, TSTpop == 1 & TRN%in%x)   # 閹绘劕褰囧ù瀣槸缂囥倓缍嬫稉?1閿涘苯缂撳Ο锛勫參娴ｆ挷璐�2閻ㄥ嫨鈧�?
     
-    AVG <- mean(tmp$GRM)   # GRM鐨勫潎鍊?
+    AVG <- mean(tmp$GRM)   # GRM閻ㄥ嫬娼庨崐?
     
   })
   
@@ -347,11 +347,15 @@ if(optimization=="avgGRM"&paste0("avgGRM_",test_pop,".csv") %in% dir("optimizati
   Result <- GBIT.readFile(header = F,choose = F,fname = paste0("optimization\\avgGRM_",test_pop,".csv"))
   names(Result) <- c("id","X1")
   Result <- Result[1:NTrn.Optmize,]
-    tst <- sommerPheno[which(sommerPheno$group==test_pop),taxa_name_in_Pheno]
-  sommerPheno <- sommerPheno[c(tst,Result[,1]),]
-  row.names(sommerPheno) <- sommerPheno[,taxa_name_in_Pheno]
-  cat("Pheno:", length(unique(sommerPheno[, taxa_name_in_Pheno])), "\nGeno:", length(row.names(markers_imputed)),"\n")
-  index <- intersect(unique(sommerPheno[, taxa_name_in_Pheno]), row.names(markers_imputed))
+  tst <- sommerPheno[which(sommerPheno$group==test_pop),taxa_name_in_Pheno]
+  sommerPheno2 <- sommerPheno
+  # sommerPheno2 <- sommerPheno[,c(taxa_name_in_Pheno,traitName)]
+  # sommerPheno2 <- sommerPheno2[which(tst %in% sommerPheno2[,taxa_name_in_Pheno]),]
+  # 
+  # sommerPheno3 <- sommerPheno2[,c(taxa_name_in_Pheno,traitName)]
+  # row.names(sommerPheno3) <- sommerPheno2[,taxa_name_in_Pheno]
+  cat("Pheno:", length(unique(sommerPheno2[, taxa_name_in_Pheno])), "\nGeno:", length(row.names(markers_imputed)),"\n")
+  index <- intersect(unique(sommerPheno2[, taxa_name_in_Pheno]), row.names(markers_imputed))
   cat("Intersection:", length(index),"\n")
   sommerPheno <-  sommerPheno[which(sommerPheno[, taxa_name_in_Pheno] %in% index), ]
   markers_imputed <-  markers_imputed[which(row.names(markers_imputed) %in% index), ]
@@ -388,143 +392,144 @@ GS_cor_rrBLUP <- NULL
 GS_cor_GbyEMean <- NULL
 GS_cor_GbyEDG <- NULL
 GS_cor_rrBLUPr <- NULL
-  for(i in 1:cycles){
-    if (exists("Result")&!is.null(train_pop)&!is.null(test_pop)&(optimization=="CDmean"|optimization=="avgGRM")){
-      # CDmean or avgGRM
-      vv <- sommerPheno[sommerPheno$group == test_pop,taxa_name_in_Pheno]   # test_pop for CDmean
-      y.trn <- sommerPheno[sommerPheno$id %in% c(vv,Result[,1]),]
-      row.names(y.trn) <- y.trn$id
-      y.trn$id <- as.factor(as.character(y.trn$id))
-      y.trn[vv,"X1"] <- NA
-      head(y.trn)
-      if (is.unsorted(K))
-      K <- K[sort(c(vv,Result[,1])),sort(c(vv,Result[,1]))]
-    }else if (!is.null(group)&!is.null(train_pop)&!is.null(test_pop)){
-      # A pre B
-      # 建模群体抽样
-      vv <- sommerPheno[sommerPheno$group==test_pop,taxa_name_in_Pheno]   # test_pop as a testing population
-      # 预测群体
-      y.trn <- sommerPheno
-      row.names(y.trn) <- y.trn$id
-      y.trn$id <- as.factor(as.character(y.trn$id))
-      y.trn[vv,"X1"] <- NA
-      head(y.trn)
-    }else if(is.null(Env)){
-      # NoGbyE
-      # 建模群体抽样
-      vv <- sample(rownames(sommerPheno),round(nrow(sommerPheno)/K_fold))   # 抽取20%作为验证群体（被预测）
-      # 预测群体
-      y.trn <- sommerPheno
-      y.trn[vv,"X1"] <- NA
-      head(y.trn)
+for(i in 1:cycles){
+  if (exists("Result")&!is.null(train_pop)&!is.null(test_pop)&(optimization=="CDmean"|optimization=="avgGRM")){
+    # CDmean or avgGRM
+    vv <- sommerPheno[sommerPheno$group == test_pop,taxa_name_in_Pheno]   # test_pop for CDmean
+    y.trn <- sommerPheno[sommerPheno$id %in% c(vv,Result[,1]),]
+    row.names(y.trn) <- y.trn$id
+    y.trn$id <- as.factor(as.character(y.trn$id))
+    y.trn[vv,"X1"] <- NA
+    head(y.trn)
+    # if (is.unsorted(K))
+    #   K <- K[sort(c(vv,Result[,1])),sort(c(vv,Result[,1]))]
+  }else if (!is.null(group)&!is.null(train_pop)&!is.null(test_pop)){
+    # A pre B
+    # 寤烘ā缇や綋鎶芥牱
+    vv <- sommerPheno[sommerPheno$group==test_pop,taxa_name_in_Pheno]   # test_pop as a testing population
+    # 棰勬祴缇や綋
+    y.trn <- sommerPheno
+    row.names(y.trn) <- y.trn$id
+    y.trn$id <- as.factor(as.character(y.trn$id))
+    y.trn[vv,"X1"] <- NA
+    head(y.trn)
+  }else if(is.null(Env)){
+    # NoGbyE
+    # 寤烘ā缇や綋鎶芥牱
+    vv <- sample(rownames(sommerPheno),round(nrow(sommerPheno)/K_fold))   # 鎶藉彇20%浣滀负楠岃瘉缇や綋锛堣棰勬祴锛�
+    # 棰勬祴缇や綋
+    y.trn <- sommerPheno
+    y.trn[vv,"X1"] <- NA
+    head(y.trn)
+  }else{
+    # GbyE
+    sommerPheno_mean <- data.frame('X1'=tapply(sommerPheno$X1,sommerPheno$id,mean))
+    sommerPheno_mean$id <- row.names(sommerPheno_mean)
+    y.trn <- sommerPheno_mean
+    vv <- sample(rownames(sommerPheno_mean),round(nrow(sommerPheno_mean)/K_fold))
+    y.trn[vv,"X1"] <- NA
+    y.trn2 <- sommerPheno   # 澶氱幆澧冩暟鎹�
+    y.trn2[which(sommerPheno$id %in% vv),"X1"] <- NA
+    head(y.trn2)
+  }
+  
+  
+  # Write testing population
+  if (get.train_test==TRUE){
+    write.table(t(vv),"GBIT/GS_testPop.csv",append = T,row.names = F,col.names = F,sep = ",",quote=F)
+  }
+  ## GBLUP
+  if(GBLUP&is.null(Env)){
+    ans_GBLUP <- mmer(X1~1,
+                      random=~vs(id,Gu=K),
+                      rcov=~units,
+                      data=y.trn, verbose = FALSE) # kinship based
+    ans_GBLUP$U$`u:id`$X1 <- as.data.frame(ans_GBLUP$U$`u:id`$X1)
+    GS_cor_GBLUP <- c(GS_cor_GBLUP,cor(ans_GBLUP$U$`u:id`$X1[vv,],sommerPheno[vv,"X1"], use="complete"))
+    
+    if (length(optimization)>0){
+      write.table(GS_cor_GBLUP,paste0("GBIT/GBLUP_",optimization,"_",NTrn.Optmize,"_",test_pop,".cor.csv"),row.names = F,col.names = F,sep = ",",quote=F)
     }else{
-      # GbyE
-      sommerPheno_mean <- data.frame('X1'=tapply(sommerPheno$X1,sommerPheno$id,mean))
-      sommerPheno_mean$id <- row.names(sommerPheno_mean)
-      y.trn <- sommerPheno_mean
-      vv <- sample(rownames(sommerPheno_mean),round(nrow(sommerPheno_mean)/K_fold))
-      y.trn[vv,"X1"] <- NA
-      y.trn2 <- sommerPheno   # 多环境数据
-      y.trn2[which(sommerPheno$id %in% vv),"X1"] <- NA
-      head(y.trn2)
+      write.table(GS_cor_GBLUP,paste0("GBIT/GBLUP_",optimization,"_",NTrn.Optmize,".cor.csv"),row.names = F,col.names = F,sep = ",",quote=F)
     }
     
-    
-    # Write testing population
-    if (get.train_test==TRUE){
-      write.table(t(vv),"GBIT/GS_testPop.csv",append = T,row.names = F,col.names = F,sep = ",",quote=F)
-    }
-    ## GBLUP
-    if(GBLUP&is.null(Env)){
-      ans_GBLUP <- mmer(X1~1,
-                        random=~vs(id,Gu=K),
-                        rcov=~units,
-                        data=y.trn, verbose = FALSE) # kinship based
-      ans_GBLUP$U$`u:id`$X1 <- as.data.frame(ans_GBLUP$U$`u:id`$X1)
-      GS_cor_GBLUP <- c(GS_cor_GBLUP,cor(ans_GBLUP$U$`u:id`$X1[vv,],sommerPheno[vv,"X1"], use="complete"))
-      
-      if (length(optimization)>0){
-        write.table(GS_cor_GBLUP,paste0("GBIT/GBLUP_",optimization,"_",NTrn.Optmize,"_",test_pop,".cor.csv"),row.names = F,col.names = F,sep = ",",quote=F)
-      }else{
-        write.table(GS_cor_GBLUP,paste0("GBIT/GBLUP_",optimization,"_",NTrn.Optmize,".cor.csv"),row.names = F,col.names = F,sep = ",",quote=F)
-      }
-      
-      if(i==cycles){
-        cat("GBLUP:",GS_cor_GBLUP,"\n")
-      }
-    }
-    
-    
-    
-    ## rrBLUP
-    if(rrBLUP&is.null(Env)){
-      ans_rrBLUP <- mmer(X1~1,
-                         random=~vs(list(markers_imputed)),
-                         rcov=~units,
-                         data=y.trn, verbose = FALSE) # kinship based
-      u <- markers_imputed %*% as.matrix(ans_rrBLUP$U$`u:markers_imputed`$X1) # BLUPs for individuals
-      rownames(u) <- rownames(markers_imputed)
-      GS_cor_rrBLUP <- c(GS_cor_rrBLUP,cor(u[vv,],sommerPheno[vv,"X1"])) # same correlation
-      if (length(optimization)>0){
-        write.table(ans_rrBLUP,paste0("GBIT/rrBLUP_",optimization,"_",NTrn.Optmize,"_",test_pop,".cor.csv"),row.names = F,col.names = F,sep = ",",quote=F)
-      }else{
-        write.table(ans_rrBLUP,paste0("GBIT/rrBLUP_",optimization,"_",NTrn.Optmize,".cor.csv"),row.names = F,col.names = F,sep = ",",quote=F)
-      }
-      if(i==cycles){
-        cat("rrBLUP:",GS_cor_rrBLUP,"\n")
-      }
-    }
-    
-    ## rrBLUP using rrBLUP package
-    if(rrBLUPr&is.null(Env)){
-      GBIT.library("rrBLUP")
-      ww <- setdiff(y.trn$id,vv)
-      y <- y.trn$X1
-      names(y) <- y.trn$id
-      Pheno_train <- as.matrix(y[ww])
-      m_train <- markers_imputed[ww,]
-      Pheno_valid <- as.matrix(sommerPheno[vv,"X1"])
-      m_valid <- markers_imputed[vv,]
-      ans_rrBLUPr <- mixed.solve(Pheno_train, Z=m_train, K=NULL, SE = FALSE, return.Hinv=FALSE)
-      e <- as.matrix(ans_rrBLUPr$u)
-      rrBLUPr_valid <- m_valid %*% e
-      GS_cor_rrBLUPr <- c(GS_cor_rrBLUPr,cor(rrBLUPr_valid, Pheno_valid, use="complete"))
-      if (length(optimization)>0){
-        write.table(GS_cor_rrBLUPr,paste0("GBIT/rrBLUPr_",optimization,"_",NTrn.Optmize,"_",test_pop,".cor.csv"),row.names = F,col.names = F,sep = ",",quote=F)
-      }else{
-        write.table(GS_cor_rrBLUPr,paste0("GBIT/rrBLUPr_",optimization,"_",NTrn.Optmize,".cor.csv"),row.names = F,col.names = F,sep = ",",quote=F)
-      }
-      if(i==cycles){
-        cat("rrBLUPr:",GS_cor_rrBLUPr,"\n")
-      }
-    }
-    ## GbyEMain
-    if(!is.null(Env)&GbyEMain){
-      ansMain <- mmer(X1~Env,
-                      random= ~ vs(id, Gu=K),
-                      rcov= ~ units,
-                      data=y.trn2, verbose = FALSE)
-      ansMain$U$`u:id`$X1 <- as.data.frame(ansMain$U$`u:id`$X1)
-      write.table(data.frame(ansMain$U$`u:id`$X1,i=i),"GBIT/GbyE_GEBV.csv",append=T,row.names = T,col.names = F,sep = ",",quote=F)
-      GS_cor_GbyEMean <- c(GS_cor_GbyEMean,cor(ansMain$U$`u:id`$X1[vv,],sommerPheno_mean[vv,"X1"], use="complete"))
-      write.table(GS_cor_GbyEMean,"GBIT/GbyEMean.cor.csv",row.names = F,col.names = F,sep = ",",quote=F)
-      if (i ==cycles){
-        cat("GbyEMean:",GS_cor_GbyEMean)
-      }
-    }
-    
-    # GbyEDG
-    if(!is.null(Env)&GbyEDG){
-      ansDG <- mmer(X1~Env,
-                    random= ~ vs(ds(Env),id, Gu=K),
-                    rcov= ~ units,
-                    data=y.trn2, verbose = FALSE)
-      summary(ansDG)
-      as.data.frame(ansDG$U$`u:id`$X1)
-    }
-    
-    if (A_pred_B==TRUE){
-      break
+    if(i==cycles){
+      cat("GBLUP:",GS_cor_GBLUP,"\n")
     }
   }
+  
+  
+  
+  ## rrBLUP
+  if(rrBLUP&is.null(Env)){
+    ans_rrBLUP <- mmer(X1~1,
+                       random=~vs(list(markers_imputed)),
+                       rcov=~units,
+                       data=y.trn, verbose = FALSE) # kinship based
+    u <- markers_imputed %*% as.matrix(ans_rrBLUP$U$`u:markers_imputed`$X1) # BLUPs for individuals
+    rownames(u) <- rownames(markers_imputed)
+    GS_cor_rrBLUP <- c(GS_cor_rrBLUP,cor(u[vv,],sommerPheno[vv,"X1"])) # same correlation
+    if (length(optimization)>0){
+      write.table(ans_rrBLUP,paste0("GBIT/rrBLUP_",optimization,"_",NTrn.Optmize,"_",test_pop,".cor.csv"),row.names = F,col.names = F,sep = ",",quote=F)
+    }else{
+      write.table(ans_rrBLUP,paste0("GBIT/rrBLUP_",optimization,"_",NTrn.Optmize,".cor.csv"),row.names = F,col.names = F,sep = ",",quote=F)
+    }
+    if(i==cycles){
+      cat("rrBLUP:",GS_cor_rrBLUP,"\n")
+    }
+  }
+  
+  ## rrBLUP using rrBLUP package
+  if(rrBLUPr&is.null(Env)){
+    GBIT.library("rrBLUP")
+    ww <- setdiff(y.trn$id,vv)
+    y <- y.trn$X1
+    names(y) <- y.trn$id
+    Pheno_train <- as.matrix(y[ww])
+    m_train <- markers_imputed[ww,]
+    Pheno_valid <- as.matrix(sommerPheno[vv,"X1"])
+    m_valid <- markers_imputed[vv,]
+    ans_rrBLUPr <- mixed.solve(Pheno_train, Z=m_train, K=NULL, SE = FALSE, return.Hinv=FALSE)
+    e <- as.matrix(ans_rrBLUPr$u)
+    rrBLUPr_valid <- m_valid %*% e
+    GS_cor_rrBLUPr <- c(GS_cor_rrBLUPr,cor(rrBLUPr_valid, Pheno_valid, use="complete"))
+    if (length(optimization)>0){
+      write.table(GS_cor_rrBLUPr,paste0("GBIT/rrBLUPr_",optimization,"_",NTrn.Optmize,"_",test_pop,".cor.csv"),row.names = F,col.names = F,sep = ",",quote=F)
+    }else{
+      write.table(GS_cor_rrBLUPr,paste0("GBIT/rrBLUPr_",optimization,"_",NTrn.Optmize,".cor.csv"),row.names = F,col.names = F,sep = ",",quote=F)
+    }
+    if(i==cycles){
+      cat("rrBLUPr:",GS_cor_rrBLUPr,"\n")
+    }
+  }
+  ## GbyEMain
+  if(!is.null(Env)&GbyEMain){
+    ansMain <- mmer(X1~Env,
+                    random= ~ vs(id, Gu=K),
+                    rcov= ~ units,
+                    data=y.trn2, verbose = FALSE)
+    ansMain$U$`u:id`$X1 <- as.data.frame(ansMain$U$`u:id`$X1)
+    write.table(data.frame(ansMain$U$`u:id`$X1,i=i),"GBIT/GbyE_GEBV.csv",append=T,row.names = T,col.names = F,sep = ",",quote=F)
+    GS_cor_GbyEMean <- c(GS_cor_GbyEMean,cor(ansMain$U$`u:id`$X1[vv,],sommerPheno_mean[vv,"X1"], use="complete"))
+    write.table(GS_cor_GbyEMean,"GBIT/GbyEMean.cor.csv",row.names = F,col.names = F,sep = ",",quote=F)
+    if (i ==cycles){
+      cat("GbyEMean:",GS_cor_GbyEMean)
+    }
+  }
+  
+  # GbyEDG
+  if(!is.null(Env)&GbyEDG){
+    ansDG <- mmer(X1~Env,
+                  random= ~ vs(ds(Env),id, Gu=K),
+                  rcov= ~ units,
+                  data=y.trn2, verbose = FALSE)
+    summary(ansDG)
+    as.data.frame(ansDG$U$`u:id`$X1)
+  }
+  
+  if (A_pred_B==TRUE){
+    break
+  }
+}
 cat("Done!\n")
+
