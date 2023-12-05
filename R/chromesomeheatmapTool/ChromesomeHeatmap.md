@@ -120,8 +120,8 @@ source("https://dataholdcn.cn/R/chromesomeheatmapTool/chromesomeheatmap.r")   # 
 
 ## 讨论/Help&Bugs
 
-国内用户请提交Bug或使用中有任何问题，请发邮件到张敖的邮箱。海外用户请在[chromesomeheatmapTool - lecent.wang](
-https://www.lecent.wang/d/9-yuan-chuang-ji-yin-zu-biao-ji-mi-du-re-tu-hui-zhi-chromesomeheatmaptool)上讨论，我们定期查看。
+国内用户请提交Bug或使用中有任何问题，请发邮件到张敖的邮箱。或者在[chromesomeheatmapTool - lecent.wang](
+https://www.lecent.wang/d/9-yuan-chuang-ji-yin-zu-biao-ji-mi-du-re-tu-hui-zhi-chromesomeheatmaptool) 上讨论，我们定期查看。
 
-User in China, please send an e-mail to Ao Zhang to submit a bug. Overseas users please to reply this post ([https://www.lecent.wang/d/9-yuan-chuang-ji-yin-zu-biao-ji-mi-du-re-tu-hui-zhi-chromesomeheatmaptool](
-https://lecent.wang/d/69-chromesomeheatmaptool))to discuss any questions about the linkage disequilibrium decay and plot.
+User in China, please send an e-mail to Ao Zhang to submit a bug. Or please to reply this post [chromesomeheatmapTool - lecent.wang](
+https://www.lecent.wang/d/9-yuan-chuang-ji-yin-zu-biao-ji-mi-du-re-tu-hui-zhi-chromesomeheatmaptool) to discuss any questions about the linkage disequilibrium decay and plot.
