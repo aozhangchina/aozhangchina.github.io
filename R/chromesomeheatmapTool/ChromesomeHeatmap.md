@@ -13,7 +13,23 @@ Xuecai Zhang, CIMMYT, guide
 陈珊，沈阳农业大学，英文翻译
 Shan Chen, Shenyang Agricultral University, Translate to English
 
+## 引用/References
+
+The customized R scripts to plot the heatmap of the SNP distribution on maize chromosomes using the HapMap format input dataset were provided by Zhang et al (2022). (https://aozhangchina.github.io/R/chromesomeheatmapTool/ChromesomeHeatmap.html).
+
+Zhang, A., Chen, S., Cui, Z. *et al.* Genomic prediction of drought tolerance during seedling stage in maize using low-cost molecular markers. *Euphytica* **218**, 154 (2022). https://doi.org/10.1007/s10681-022-03103-y
+
 ## 最新更新/Updates
+
+【2023-12-05】
+
+增加了引用部分。
+
+Added citations section.
+
+更新问题讨论网址。
+
+Fixed bug report URL.
 
 【2022-05-31】
 
@@ -105,7 +121,7 @@ source("https://dataholdcn.cn/R/chromesomeheatmapTool/chromesomeheatmap.r")   # 
 ## 讨论/Help&Bugs
 
 国内用户请提交Bug或使用中有任何问题，请发邮件到张敖的邮箱。海外用户请在[chromesomeheatmapTool - lecent.wang](
-https://lecent.wang/d/69-chromesomeheatmaptool)上讨论，我们定期查看。
+https://www.lecent.wang/d/9-yuan-chuang-ji-yin-zu-biao-ji-mi-du-re-tu-hui-zhi-chromesomeheatmaptool)上讨论，我们定期查看。
 
-User in China, please send an e-mail to Ao Zhang to submit a bug. Overseas users please to reply this post ([chromesomeheatmapTool - lecent.wang](
+User in China, please send an e-mail to Ao Zhang to submit a bug. Overseas users please to reply this post ([https://www.lecent.wang/d/9-yuan-chuang-ji-yin-zu-biao-ji-mi-du-re-tu-hui-zhi-chromesomeheatmaptool](
 https://lecent.wang/d/69-chromesomeheatmaptool))to discuss any questions about the linkage disequilibrium decay and plot.
