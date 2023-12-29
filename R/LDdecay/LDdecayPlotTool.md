@@ -31,7 +31,7 @@ Jingtao Qu, Shanghai Academy of Agricultural Sciences, testing waxy maize and sw
 
 ## 引用/Citation
 
-LD linkage disequilibrium analysis was performed using TASSEL software and then the visualization of LD decay was ploted by the R programing integrated script provided by Zhang et al (2022).
+Linkage disequilibrium analysis was performed using TASSEL software and then the visualization of LD decay was ploted by the R programing integrated script provided by Zhang et al (2022).
 
 Zhang, A., Chen, S., Cui, Z. *et al.* Genomic prediction of drought tolerance during seedling stage in maize using low-cost molecular markers. *Euphytica* **218**, 154 (2022). https://doi.org/10.1007/s10681-022-03103-y
 
