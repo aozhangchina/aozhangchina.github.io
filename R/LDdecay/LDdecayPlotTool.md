@@ -238,7 +238,7 @@ source("https://dataholdcn.cn/R/LDdecay/LDdecayV4.r",encoding = "utf-8")   # 加
 
 ## 讨论/Help&Bugs
 
-国内用户请提交Bug或使用中有任何问题，请发邮件到张敖的邮箱。海外用户请在[LDdecayPlotTool - lecent.wang](https://lecent.wang/d/68-lddecayplottool)上讨论，我们定期查看。
+用户请提交Bug或使用中有任何问题，请在[lecent.wang](https://www.lecent.wang/d/12-yuan-chuang-ldshuai-jian-tu-hui-zhi)上讨论，我们定期查看。
 
-User in China, please send an e-mail to Ao Zhang to submit a bug. Overseas users please to reply this post ([LDdecayPlotTool - lecent.wang](https://lecent.wang/d/68-lddecayplottool)) to discuss any questions about the linkage disequilibrium decay and plot.
+Users please to reply this post ([lecent.wang](https://www.lecent.wang/d/12-yuan-chuang-ldshuai-jian-tu-hui-zhi)) to discuss any questions about the linkage disequilibrium decay and plot.
 
