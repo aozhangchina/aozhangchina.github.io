@@ -26,7 +26,6 @@ Rahul, India Agricultrual Research Institute, testing wheat genome
 Shan Chen, Shenyang Agruicultural University, translate into English
 
 瞿静涛，上海农业科学院，测试特种玉米基因组
-
 Jingtao Qu, Shanghai Academy of Agricultural Sciences, testing waxy maize and sweet m;aize genomes
 
 ## 引用/Citation
