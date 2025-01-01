@@ -388,6 +388,7 @@ if(is.null(Env)){
 
 set.seed(12345)
 GS_cor_GBLUP <- NULL
+GS_cor_GBLUPr <- NULL
 GS_cor_rrBLUP <- NULL
 GS_cor_GbyEMean <- NULL
 GS_cor_GbyEDG <- NULL
@@ -489,7 +490,7 @@ for(i in 1:cycles){
     m_train <- markers_imputed[ww,]
     Pheno_valid <- as.matrix(sommerPheno[vv,"X1"])
     m_valid <- markers_imputed[vv,]
-    ans_rrBLUPr <- mixed.solve(Pheno_train, Z=m_train, K=NULL, SE = FALSE, return.Hinv=FALSE)
+    ans_rrBLUPr <- mixed.solve(Pheno_train, Z=NULL, K=m_train, SE = FALSE, return.Hinv=FALSE)
     e <- as.matrix(ans_rrBLUPr$u)
     rrBLUPr_valid <- m_valid %*% e
     GS_cor_rrBLUPr <- c(GS_cor_rrBLUPr,cor(rrBLUPr_valid, Pheno_valid, use="complete"))
@@ -502,6 +503,31 @@ for(i in 1:cycles){
       cat("rrBLUPr:",GS_cor_rrBLUPr,"\n")
     }
   }
+
+  ## GBLUP using rrBLUP package
+  if(GBLUPr&is.null(Env)){
+    GBIT.library("rrBLUP")
+    ww <- setdiff(y.trn$id,vv)
+    y <- y.trn$X1
+    names(y) <- y.trn$id
+    Pheno_train <- as.matrix(y[ww])
+    m_train <- markers_imputed[ww,]
+    Pheno_valid <- as.matrix(sommerPheno[vv,"X1"])
+    m_valid <- markers_imputed[vv,]
+    ans_GBLUPr <- mixed.solve(Pheno_train, Z=m_train, K=NULL, SE = FALSE, return.Hinv=FALSE)
+    e <- as.matrix(ans_GBLUPr$u)
+    GBLUPr_valid <- m_valid %*% e
+    GS_cor_GBLUPr <- c(GS_cor_GBLUPr,cor(GBLUPr_valid, Pheno_valid, use="complete"))
+    if (length(optimization)>0){
+      write.table(GS_cor_GBLUPr,paste0("GBIT/GBLUPr_",optimization,"_",NTrn.Optmize,"_",test_pop,".cor.csv"),row.names = F,col.names = F,sep = ",",quote=F)
+    }else{
+      write.table(GS_cor_GBLUPr,paste0("GBIT/GBLUPr_",optimization,"_",NTrn.Optmize,".cor.csv"),row.names = F,col.names = F,sep = ",",quote=F)
+    }
+    if(i==cycles){
+      cat("GBLUPr:",GS_cor_GBLUPr,"\n")
+    }
+  }
+
   ## GbyEMain
   if(!is.null(Env)&GbyEMain){
     ansMain <- mmer(X1~Env,

@@ -18,6 +18,10 @@
 
 ## 最新更新
 
+【20250101 10:30:08】
+
+1. 增加了rrBLUP包计算GBLUP模型。
+
 【2023-11-03 11:00:29】
 
 1. 修正了有时avgGRM无法计算预测精度的问题。
@@ -210,6 +214,7 @@ traitName <- "BLUE"   # 表型文件中，数据的列名
 taxa_name_in_Pheno <- "Genotype"   # 表型文件中，基因型名称的列名
 Env <- NULL   # 计算GbyE时，为表型文件的的环境名称，如"Environment"
 GBLUP <- TRUE   # 使用sommer包的GBLUP模型
+GBLUPr <- TRUE   # 使用rrBLUP包的GBLUP模型
 rrBLUP <- FALSE   # 使用sommer包的rrBLUP模型，数据量大时会出错
 rrBLUPr <- TRUE   # 使用rrBLUP包的rrBLUP模型
 GbyEMain <- FALSE   # 使用sommer包，环境作为固定效应
