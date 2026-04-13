@@ -1,0 +1,705 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-mermaid">:root { --mermaid-theme: default; --mermaid-sequence-numbers: off; --mermaid-flowchart-curve: linear; --mermaid--gantt-left-padding: 75; --sequence-theme: simple; }
+.privacy { display: none; }
+
+</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; white-space: nowrap; overflow: visible; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<style type='text/css'  id="style-codemirror">.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title>hybrid_combingAbility_predicting</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='hybridcombingabilitypredicting'><span>hybrid_combingAbility_predicting</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n0"><a class="md-toc-inner" href="#hybridcombingabilitypredicting">hybrid_combingAbility_predicting</a></span><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n4"><a class="md-toc-inner" href="#鸣谢">鸣谢</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n6"><a class="md-toc-inner" href="#最新更新">最新更新</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n28"><a class="md-toc-inner" href="#整体流程">整体流程</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n33"><a class="md-toc-inner" href="#功能">功能</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n59"><a class="md-toc-inner" href="#基因型数据示例">基因型数据示例</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n174"><a class="md-toc-inner" href="#表型数据示例">表型数据示例</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n214"><a class="md-toc-inner" href="#讨论">讨论</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n408"><a class="md-toc-inner" href="#使用方法">使用方法</a></span></p></div><p><strong><span>制作：张敖 </span><a href='https://datahold.cn/'><span>https://datahold.cn</span></a></strong></p><h1 id='鸣谢'><span>鸣谢</span></h1><p><span>张学才，CIMMYT，指导</span></p><h2 id='最新更新'><span>最新更新</span></h2><p><span>【2020-08-20 11:27:57】</span></p><p><span>完成群体间的预测。</span></p><p><span>【2020-08-14 16:29:29】</span></p><p><span>完成k-倍交叉验证的部分，同时，支持对表型分组抽取，避免抽样太偏。</span></p><p><span>【2020-08-13 21:26:49】</span></p><p><span>修改了A/a数值化的转换逻辑。</span></p><p><span>【2020-08-12 01:07:10】</span></p><p><span>rrBULP的留一法和百分比验证完成。</span></p><p><span>【2020-08-07 16:29:25】</span></p><p><span>重新构思验证流程，准备预测模块化，为BGLR预留位置。</span></p><p><span>【2020-08-06 01:01:31】</span></p><p><span>增加了输出筛选后的HMP文件（可选），可以用TASSEL打开。</span></p><p><span>增加了全基因组分析前的第二轮补缺失功能，支持最大似然、有限最大似然和概率方法。</span></p><p><span>【2020-08-05 00:21:41】</span></p><p><span>重写了杂交种合成部分，调换了文件筛</span></p><p><span>选逻辑。</span></p><p><span>修正了双碱基基因型NA为空的BUG。</span></p><p><span>【2020-07-17 14:36:44】</span></p><p><span>完成留一法和百分比法的预测框架。</span></p><p><span>【2020-07-08 16:59:48】</span></p><p><span>完成主要功能，基于rrBLUP对材料的预测。</span></p><h2 id='整体流程'><span>整体流程</span></h2><p>&nbsp;</p><div class="md-diagram-panel md-fences-adv-panel" lang="mermaid"><svg id="mermaidChart0" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="flowchart mermaid-svg" style="max-width: 604.6640625px;" viewBox="0 0 604.6640625 1214" role="graphics-document document" aria-roledescription="flowchart-v2"><style>#mermaidChart0{font-family:sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaidChart0 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaidChart0 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaidChart0 .error-icon{fill:#552222;}#mermaidChart0 .error-text{fill:#552222;stroke:#552222;}#mermaidChart0 .edge-thickness-normal{stroke-width:1px;}#mermaidChart0 .edge-thickness-thick{stroke-width:3.5px;}#mermaidChart0 .edge-pattern-solid{stroke-dasharray:0;}#mermaidChart0 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaidChart0 .edge-pattern-dashed{stroke-dasharray:3;}#mermaidChart0 .edge-pattern-dotted{stroke-dasharray:2;}#mermaidChart0 .marker{fill:#333333;stroke:#333333;}#mermaidChart0 .marker.cross{stroke:#333333;}#mermaidChart0 svg{font-family:sans-serif;font-size:16px;}#mermaidChart0 p{margin:0;}#mermaidChart0 .label{font-family:sans-serif;color:#333;}#mermaidChart0 .cluster-label text{fill:#333;}#mermaidChart0 .cluster-label span{color:#333;}#mermaidChart0 .cluster-label span p{background-color:transparent;}#mermaidChart0 .label text,#mermaidChart0 span{fill:#333;color:#333;}#mermaidChart0 .node rect,#mermaidChart0 .node circle,#mermaidChart0 .node ellipse,#mermaidChart0 .node polygon,#mermaidChart0 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaidChart0 .rough-node .label text,#mermaidChart0 .node .label text,#mermaidChart0 .image-shape .label,#mermaidChart0 .icon-shape .label{text-anchor:middle;}#mermaidChart0 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaidChart0 .rough-node .label,#mermaidChart0 .node .label,#mermaidChart0 .image-shape .label,#mermaidChart0 .icon-shape .label{text-align:center;}#mermaidChart0 .node.clickable{cursor:pointer;}#mermaidChart0 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mermaidChart0 .arrowheadPath{fill:#333333;}#mermaidChart0 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaidChart0 .flowchart-link{stroke:#333333;fill:none;}#mermaidChart0 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaidChart0 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaidChart0 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaidChart0 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaidChart0 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaidChart0 .cluster text{fill:#333;}#mermaidChart0 .cluster span{color:#333;}#mermaidChart0 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaidChart0 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaidChart0 rect.text{fill:none;stroke-width:0;}#mermaidChart0 .icon-shape,#mermaidChart0 .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaidChart0 .icon-shape p,#mermaidChart0 .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#mermaidChart0 .icon-shape rect,#mermaidChart0 .image-shape rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaidChart0 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mermaidChart0 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mermaidChart0 :root{--mermaid-alt-font-family:sans-serif;}</style><g><marker id="mermaidChart0_flowchart-v2-pointEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaidChart0_flowchart-v2-pointStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaidChart0_flowchart-v2-circleEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mermaidChart0_flowchart-v2-circleStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mermaidChart0_flowchart-v2-crossEnd" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaidChart0_flowchart-v2-crossStart" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M149.766,62L149.766,87L221.186,110.738" id="L_读取HMP格式的基因型文件_包含所有亲本的基因型和表型_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart0_flowchart-v2-pointEnd)"></path><path d="M462.664,62L462.664,87L391.244,110.738" id="L_读取包含亲本信息的表型文件_包含所有亲本的基因型和表型_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart0_flowchart-v2-pointEnd)"></path><path d="M250.657,166L199.215,191L199.215,212" id="L_包含所有亲本的基因型和表型_有表型的基因型_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart0_flowchart-v2-pointEnd)"></path><path d="M395.218,166L477.629,191L477.629,243L477.629,295L477.629,347L477.629,399L477.629,451L477.629,503L477.629,555L477.629,607L477.629,659L477.629,711L477.629,763L477.629,815L477.629,867L477.629,919L477.629,940" id="L_包含所有亲本的基因型和表型_有基因型的表型_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart0_flowchart-v2-pointEnd)"></path><path d="M199.215,270L199.215,295L199.215,316" id="L_有表型的基因型_多态性_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart0_flowchart-v2-pointEnd)"></path><path d="M199.215,374L199.215,399L199.215,420" id="L_多态性_A/a_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart0_flowchart-v2-pointEnd)"></path><path d="M199.215,478L199.215,503L199.215,524" id="L_A/a_可选-NA筛选,MAF筛选,补缺失_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart0_flowchart-v2-pointEnd)"></path><path d="M142.199,582L89.406,607L89.406,628" id="L_可选-NA筛选,MAF筛选,补缺失_Lines的基因型_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart0_flowchart-v2-pointEnd)"></path><path d="M256.231,582L309.023,607L309.023,628" id="L_可选-NA筛选,MAF筛选,补缺失_Testers的基因型_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart0_flowchart-v2-pointEnd)"></path><path d="M89.406,686L89.406,711L138.584,734.288" id="L_Lines的基因型_杂交种基因型的合成_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart0_flowchart-v2-pointEnd)"></path><path d="M309.023,686L309.023,711L259.846,734.288" id="L_Testers的基因型_杂交种基因型的合成_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart0_flowchart-v2-pointEnd)"></path><path d="M199.215,790L199.215,815L199.215,836" id="L_杂交种基因型的合成_杂交种基因型数值化_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart0_flowchart-v2-pointEnd)"></path><path d="M199.215,894L199.215,919L199.215,940" id="L_杂交种基因型数值化_第二次补缺失_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart0_flowchart-v2-pointEnd)"></path><path d="M199.215,998L199.215,1023L247.059,1046.252" id="L_第二次补缺失_提取所需基因型基因型和表型_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart0_flowchart-v2-pointEnd)"></path><path d="M477.629,998L477.629,1023L399.046,1046.839" id="L_有基因型的表型_提取所需基因型基因型和表型_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart0_flowchart-v2-pointEnd)"></path><path d="M306.215,1102L306.215,1127L306.215,1148" id="L_提取所需基因型基因型和表型_全基因组预测_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart0_flowchart-v2-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default  " id="flowchart-读取HMP格式的基因型文件-0" transform="translate(149.765625, 35)"><rect class="basic label-container" style="" x="-128.8984375" y="-27" width="257.796875" height="54"></rect><g class="label" style="" transform="translate(-98.8984375, -12)"><rect></rect><foreignObject width="197.796875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>读取HMP格式的基因型文件</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-包含所有亲本的基因型和表型-1" transform="translate(306.21484375, 139)"><rect class="basic label-container" style="" x="-134" y="-27" width="268" height="54"></rect><g class="label" style="" transform="translate(-104, -12)"><rect></rect><foreignObject width="208" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="nodeLabel "><p>包含所有亲本的基因型和表型</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-读取包含亲本信息的表型文件-2" transform="translate(462.6640625, 35)"><rect class="basic label-container" style="" x="-134" y="-27" width="268" height="54"></rect><g class="label" style="" transform="translate(-104, -12)"><rect></rect><foreignObject width="208" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="nodeLabel "><p>读取包含亲本信息的表型文件</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-有表型的基因型-5" transform="translate(199.21484375, 243)"><rect class="basic label-container" style="" x="-86" y="-27" width="172" height="54"></rect><g class="label" style="" transform="translate(-56, -12)"><rect></rect><foreignObject width="112" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>有表型的基因型</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-有基因型的表型-7" transform="translate(477.62890625, 971)"><rect class="basic label-container" style="" x="-86" y="-27" width="172" height="54"></rect><g class="label" style="" transform="translate(-56, -12)"><rect></rect><foreignObject width="112" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>有基因型的表型</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-多态性-9" transform="translate(199.21484375, 347)"><rect class="basic label-container" style="" x="-126" y="-27" width="252" height="54"></rect><g class="label" style="" transform="translate(-96, -12)"><rect></rect><foreignObject width="192" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>检测并删除无多态性的位点</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-A/a-11" transform="translate(199.21484375, 451)"><rect class="basic label-container" style="" x="-171.46875" y="-27" width="342.9375" height="54"></rect><g class="label" style="" transform="translate(-141.46875, -12)"><rect></rect><foreignObject width="282.9375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="nodeLabel "><p>标记转换为双碱基形式再转变为A/a形式</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-可选-NA筛选,MAF筛选,补缺失-13" transform="translate(199.21484375, 555)"><rect class="basic label-container" style="" x="-139.140625" y="-27" width="278.28125" height="54"></rect><g class="label" style="" transform="translate(-109.140625, -12)"><rect></rect><foreignObject width="218.28125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="nodeLabel "><p>可选-NA筛选,MAF筛选,补缺失</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-Lines的基因型-15" transform="translate(89.40625, 659)"><rect class="basic label-container" style="" x="-81.40625" y="-27" width="162.8125" height="54"></rect><g class="label" style="" transform="translate(-51.40625, -12)"><rect></rect><foreignObject width="102.8125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>Lines的基因型</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-Testers的基因型-17" transform="translate(309.0234375, 659)"><rect class="basic label-container" style="" x="-88.2109375" y="-27" width="176.421875" height="54"></rect><g class="label" style="" transform="translate(-58.2109375, -12)"><rect></rect><foreignObject width="116.421875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>Testers的基因型</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-杂交种基因型的合成-19" transform="translate(199.21484375, 763)"><rect class="basic label-container" style="" x="-102" y="-27" width="204" height="54"></rect><g class="label" style="" transform="translate(-72, -12)"><rect></rect><foreignObject width="144" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>杂交种基因型的合成</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-杂交种基因型数值化-23" transform="translate(199.21484375, 867)"><rect class="basic label-container" style="" x="-102" y="-27" width="204" height="54"></rect><g class="label" style="" transform="translate(-72, -12)"><rect></rect><foreignObject width="144" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>杂交种基因型数值化</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-第二次补缺失-25" transform="translate(199.21484375, 971)"><rect class="basic label-container" style="" x="-78" y="-27" width="156" height="54"></rect><g class="label" style="" transform="translate(-48, -12)"><rect></rect><foreignObject width="96" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>第二次补缺失</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-提取所需基因型基因型和表型-27" transform="translate(306.21484375, 1075)"><rect class="basic label-container" style="" x="-134" y="-27" width="268" height="54"></rect><g class="label" style="" transform="translate(-104, -12)"><rect></rect><foreignObject width="208" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="nodeLabel "><p>提取所需基因型基因型和表型</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-全基因组预测-31" transform="translate(306.21484375, 1179)"><rect class="basic label-container" style="" x="-78" y="-27" width="156" height="54"></rect><g class="label" style="" transform="translate(-48, -12)"><rect></rect><foreignObject width="96" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>全基因组预测</p></span></div></foreignObject></g></g></g></g></g></svg></div><div class="md-diagram-panel md-fences-adv-panel" lang="mermaid"><svg id="mermaidChart1" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="flowchart mermaid-svg" style="max-width: 1343.125px;" viewBox="0 0 1343.125 694" role="graphics-document document" aria-roledescription="flowchart-v2"><style>#mermaidChart1{font-family:sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#mermaidChart1 .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#mermaidChart1 .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#mermaidChart1 .error-icon{fill:#552222;}#mermaidChart1 .error-text{fill:#552222;stroke:#552222;}#mermaidChart1 .edge-thickness-normal{stroke-width:1px;}#mermaidChart1 .edge-thickness-thick{stroke-width:3.5px;}#mermaidChart1 .edge-pattern-solid{stroke-dasharray:0;}#mermaidChart1 .edge-thickness-invisible{stroke-width:0;fill:none;}#mermaidChart1 .edge-pattern-dashed{stroke-dasharray:3;}#mermaidChart1 .edge-pattern-dotted{stroke-dasharray:2;}#mermaidChart1 .marker{fill:#333333;stroke:#333333;}#mermaidChart1 .marker.cross{stroke:#333333;}#mermaidChart1 svg{font-family:sans-serif;font-size:16px;}#mermaidChart1 p{margin:0;}#mermaidChart1 .label{font-family:sans-serif;color:#333;}#mermaidChart1 .cluster-label text{fill:#333;}#mermaidChart1 .cluster-label span{color:#333;}#mermaidChart1 .cluster-label span p{background-color:transparent;}#mermaidChart1 .label text,#mermaidChart1 span{fill:#333;color:#333;}#mermaidChart1 .node rect,#mermaidChart1 .node circle,#mermaidChart1 .node ellipse,#mermaidChart1 .node polygon,#mermaidChart1 .node path{fill:#ECECFF;stroke:#9370DB;stroke-width:1px;}#mermaidChart1 .rough-node .label text,#mermaidChart1 .node .label text,#mermaidChart1 .image-shape .label,#mermaidChart1 .icon-shape .label{text-anchor:middle;}#mermaidChart1 .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#mermaidChart1 .rough-node .label,#mermaidChart1 .node .label,#mermaidChart1 .image-shape .label,#mermaidChart1 .icon-shape .label{text-align:center;}#mermaidChart1 .node.clickable{cursor:pointer;}#mermaidChart1 .root .anchor path{fill:#333333!important;stroke-width:0;stroke:#333333;}#mermaidChart1 .arrowheadPath{fill:#333333;}#mermaidChart1 .edgePath .path{stroke:#333333;stroke-width:2.0px;}#mermaidChart1 .flowchart-link{stroke:#333333;fill:none;}#mermaidChart1 .edgeLabel{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaidChart1 .edgeLabel p{background-color:rgba(232,232,232, 0.8);}#mermaidChart1 .edgeLabel rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaidChart1 .labelBkg{background-color:rgba(232, 232, 232, 0.5);}#mermaidChart1 .cluster rect{fill:#ffffde;stroke:#aaaa33;stroke-width:1px;}#mermaidChart1 .cluster text{fill:#333;}#mermaidChart1 .cluster span{color:#333;}#mermaidChart1 div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:sans-serif;font-size:12px;background:hsl(80, 100%, 96.2745098039%);border:1px solid #aaaa33;border-radius:2px;pointer-events:none;z-index:100;}#mermaidChart1 .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#mermaidChart1 rect.text{fill:none;stroke-width:0;}#mermaidChart1 .icon-shape,#mermaidChart1 .image-shape{background-color:rgba(232,232,232, 0.8);text-align:center;}#mermaidChart1 .icon-shape p,#mermaidChart1 .image-shape p{background-color:rgba(232,232,232, 0.8);padding:2px;}#mermaidChart1 .icon-shape rect,#mermaidChart1 .image-shape rect{opacity:0.5;background-color:rgba(232,232,232, 0.8);fill:rgba(232,232,232, 0.8);}#mermaidChart1 .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#mermaidChart1 .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#mermaidChart1 :root{--mermaid-alt-font-family:sans-serif;}</style><g><marker id="mermaidChart1_flowchart-v2-pointEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaidChart1_flowchart-v2-pointStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaidChart1_flowchart-v2-circleEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mermaidChart1_flowchart-v2-circleStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="mermaidChart1_flowchart-v2-crossEnd" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker id="mermaidChart1_flowchart-v2-crossStart" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M772.926,46.646L502.66,87L502.66,108" id="L_全基因组预测_群体内预测_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M928.926,51.045L1103.723,87L1103.723,108" id="L_全基因组预测_群体间预测_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M432.66,152.702L237,191L237,212" id="L_群体内预测_内1_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M443.089,166L387.93,191L387.93,212" id="L_群体内预测_内2_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M521.456,166L538.859,191L538.859,212" id="L_群体内预测_内3_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M572.66,158.591L688.461,191L688.461,212" id="L_群体内预测_内4_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M237,270L237,295L269.987,317.73" id="L_内1_Line的基因型_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M387.93,270L387.93,295L354.942,317.73" id="L_内2_Line的基因型_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M538.859,270L538.859,295L571.537,317.717" id="L_内3_杂交种的基因型_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M688.461,270L688.461,295L655.783,317.717" id="L_内4_杂交种的基因型_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M312.465,374L312.465,399L483.823,436.556" id="L_Line的基因型_验证方法_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M613.66,374L613.66,399L586.028,421.476" id="L_杂交种的基因型_验证方法_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M487.73,466.982L348,503L348,524" id="L_验证方法_留一法_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M611.73,466.112L763.074,503L763.074,524" id="L_验证方法_K倍交叉验证_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M542.836,478L536.453,503L536.453,524" id="L_验证方法_百分比验证_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M763.074,582L763.074,607L763.074,628" id="L_K倍交叉验证_按表型分成n/k组_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M126,478L126,503L126,524" id="L_按表型分成k组_在每组随机抽取材料建模_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M126,582L126,607L212.406,636.523" id="L_在每组随机抽取材料建模_预测精度_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M348,582L348,607L317.646,629.61" id="L_留一法_预测精度_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M536.453,582L536.453,607L344.113,645.727" id="L_百分比验证_预测精度_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M1033.723,152.702L838.063,191L838.063,212" id="L_群体间预测_间1_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M1044.151,166L988.992,191L988.992,212" id="L_群体间预测_间2_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M1122.518,166L1139.922,191L1139.922,212" id="L_群体间预测_间3_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M1173.723,158.591L1289.523,191L1289.523,212" id="L_群体间预测_间4_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M838.063,270L838.063,295L871.05,317.73" id="L_间1_Line的基因型2_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M988.992,270L988.992,295L956.005,317.73" id="L_间2_Line的基因型2_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M1139.922,270L1139.922,295L1172.599,317.717" id="L_间3_杂交种的基因型2_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M1289.523,270L1289.523,295L1256.846,317.717" id="L_间4_杂交种的基因型2_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M913.527,374L913.527,399L1028.886,424.282" id="L_Line的基因型2_选择建模群体和预测群体_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M1214.723,374L1214.723,399L1187.09,421.476" id="L_杂交种的基因型2_选择建模群体和预测群体_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path><path d="M1150.793,478L1150.793,503L1150.793,524" id="L_选择建模群体和预测群体_获得预测结果_0" class=" edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style="" marker-end="url(#mermaidChart1_flowchart-v2-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel "></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default  " id="flowchart-全基因组预测-0" transform="translate(850.92578125, 35)"><rect class="basic label-container" style="" x="-78" y="-27" width="156" height="54"></rect><g class="label" style="" transform="translate(-48, -12)"><rect></rect><foreignObject width="96" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>全基因组预测</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-群体内预测-1" transform="translate(502.66015625, 139)"><rect class="basic label-container" style="" x="-70" y="-27" width="140" height="54"></rect><g class="label" style="" transform="translate(-40, -12)"><rect></rect><foreignObject width="80" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>群体内预测</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-群体间预测-3" transform="translate(1103.72265625, 139)"><rect class="basic label-container" style="" x="-70" y="-27" width="140" height="54"></rect><g class="label" style="" transform="translate(-40, -12)"><rect></rect><foreignObject width="80" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>群体间预测</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-内1-5" transform="translate(237, 243)"><rect class="basic label-container" style="" x="-54" y="-27" width="108" height="54"></rect><g class="label" style="" transform="translate(-24, -12)"><rect></rect><foreignObject width="48" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>自交系</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-内2-7" transform="translate(387.9296875, 243)"><rect class="basic label-container" style="" x="-46.9296875" y="-27" width="93.859375" height="54"></rect><g class="label" style="" transform="translate(-16.9296875, -12)"><rect></rect><foreignObject width="33.859375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>GCA</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-内3-9" transform="translate(538.859375, 243)"><rect class="basic label-container" style="" x="-54" y="-27" width="108" height="54"></rect><g class="label" style="" transform="translate(-24, -12)"><rect></rect><foreignObject width="48" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>杂交种</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-内4-11" transform="translate(688.4609375, 243)"><rect class="basic label-container" style="" x="-45.6015625" y="-27" width="91.203125" height="54"></rect><g class="label" style="" transform="translate(-15.6015625, -12)"><rect></rect><foreignObject width="31.203125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>SCA</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-Line的基因型-13" transform="translate(312.46484375, 347)"><rect class="basic label-container" style="" x="-77.703125" y="-27" width="155.40625" height="54"></rect><g class="label" style="" transform="translate(-47.703125, -12)"><rect></rect><foreignObject width="95.40625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>Line的基因型</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-杂交种的基因型-17" transform="translate(613.66015625, 347)"><rect class="basic label-container" style="" x="-86" y="-27" width="172" height="54"></rect><g class="label" style="" transform="translate(-56, -12)"><rect></rect><foreignObject width="112" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>杂交种的基因型</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-验证方法-21" transform="translate(549.73046875, 451)"><rect class="basic label-container" style="" x="-62" y="-27" width="124" height="54"></rect><g class="label" style="" transform="translate(-32, -12)"><rect></rect><foreignObject width="64" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>验证方法</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-留一法-25" transform="translate(348, 555)"><rect class="basic label-container" style="" x="-54" y="-27" width="108" height="54"></rect><g class="label" style="" transform="translate(-24, -12)"><rect></rect><foreignObject width="48" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>留一法</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-K倍交叉验证-27" transform="translate(763.07421875, 555)"><rect class="basic label-container" style="" x="-75.078125" y="-27" width="150.15625" height="54"></rect><g class="label" style="" transform="translate(-45.078125, -12)"><rect></rect><foreignObject width="90.15625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>K倍交叉验证</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-百分比验证-29" transform="translate(536.453125, 555)"><rect class="basic label-container" style="" x="-70" y="-27" width="140" height="54"></rect><g class="label" style="" transform="translate(-40, -12)"><rect></rect><foreignObject width="80" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>百分比验证</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-按表型分成n/k组-31" transform="translate(763.07421875, 659)"><rect class="basic label-container" style="" x="-90.703125" y="-27" width="181.40625" height="54"></rect><g class="label" style="" transform="translate(-60.703125, -12)"><rect></rect><foreignObject width="121.40625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>按表型分成n/k组</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-按表型分成k组-32" transform="translate(126, 451)"><rect class="basic label-container" style="" x="-82.359375" y="-27" width="164.71875" height="54"></rect><g class="label" style="" transform="translate(-52.359375, -12)"><rect></rect><foreignObject width="104.71875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>按表型分成k组</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-在每组随机抽取材料建模-33" transform="translate(126, 555)"><rect class="basic label-container" style="" x="-118" y="-27" width="236" height="54"></rect><g class="label" style="" transform="translate(-88, -12)"><rect></rect><foreignObject width="176" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>在每组随机抽取材料建模</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-预测精度-35" transform="translate(278.19140625, 659)"><rect class="basic label-container" style="" x="-62" y="-27" width="124" height="54"></rect><g class="label" style="" transform="translate(-32, -12)"><rect></rect><foreignObject width="64" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>预测精度</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-间1-41" transform="translate(838.0625, 243)"><rect class="basic label-container" style="" x="-54" y="-27" width="108" height="54"></rect><g class="label" style="" transform="translate(-24, -12)"><rect></rect><foreignObject width="48" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>自交系</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-间2-43" transform="translate(988.9921875, 243)"><rect class="basic label-container" style="" x="-46.9296875" y="-27" width="93.859375" height="54"></rect><g class="label" style="" transform="translate(-16.9296875, -12)"><rect></rect><foreignObject width="33.859375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>GCA</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-间3-45" transform="translate(1139.921875, 243)"><rect class="basic label-container" style="" x="-54" y="-27" width="108" height="54"></rect><g class="label" style="" transform="translate(-24, -12)"><rect></rect><foreignObject width="48" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>杂交种</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-间4-47" transform="translate(1289.5234375, 243)"><rect class="basic label-container" style="" x="-45.6015625" y="-27" width="91.203125" height="54"></rect><g class="label" style="" transform="translate(-15.6015625, -12)"><rect></rect><foreignObject width="31.203125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>SCA</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-Line的基因型2-49" transform="translate(913.52734375, 347)"><rect class="basic label-container" style="" x="-77.703125" y="-27" width="155.40625" height="54"></rect><g class="label" style="" transform="translate(-47.703125, -12)"><rect></rect><foreignObject width="95.40625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>Line的基因型</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-杂交种的基因型2-53" transform="translate(1214.72265625, 347)"><rect class="basic label-container" style="" x="-86" y="-27" width="172" height="54"></rect><g class="label" style="" transform="translate(-56, -12)"><rect></rect><foreignObject width="112" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>杂交种的基因型</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-选择建模群体和预测群体-57" transform="translate(1150.79296875, 451)"><rect class="basic label-container" style="" x="-118" y="-27" width="236" height="54"></rect><g class="label" style="" transform="translate(-88, -12)"><rect></rect><foreignObject width="176" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>选择建模群体和预测群体</p></span></div></foreignObject></g></g><g class="node default  " id="flowchart-获得预测结果-61" transform="translate(1150.79296875, 555)"><rect class="basic label-container" style="" x="-78" y="-27" width="156" height="54"></rect><g class="label" style="" transform="translate(-48, -12)"><rect></rect><foreignObject width="96" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel "><p>获得预测结果</p></span></div></foreignObject></g></g></g></g></g></svg></div><p>&nbsp;</p><h2 id='功能'><span>功能</span></h2><ol start='' ><li><p><span>基因型与表型自动对应（需一致的材料名称）。</span></p></li><li><p><span>自动删除无多态性位点&quot;polymorphism &lt;- TRUE&quot;。</span></p></li><li><p><span>自动按照最小等位基因频率筛选标记。</span></p></li><li><p><span>自动按照缺失值筛选标记。</span></p></li><li><p><span>三种方法补缺失。</span></p></li><li><p><span>输出补缺失前后的缺失频率直方图。【GenoInfo/freqNA.pdf】【GenoInfo/freqNA.pdf】</span></p></li><li><p><span>可以输出原本标记数量和最终使用的标记数量。</span></p></li><li><p><span>可以输出筛选后的HMP文件。</span></p></li><li><p><span>杂交种基因型的合成和输出【GenoInfo/hybrid_numeric_Geno.txt】。</span></p></li><li><p><span>可进行群体间的预测（实际应用）和群体内的验证&quot;predict_inpop &lt;- TRUE&quot;。</span></p></li><li><p><span>可以对自交系、杂交种、GCA和SCA预测。</span></p></li><li><p><span>可以输出每个材料的预测值，用于比较前10%或任意比例的材料重合性。可依据此指导实际生产。</span></p></li></ol><h2 id='基因型数据示例'><span>基因型数据示例</span></h2><p><span>基因型数据需要包含杂交种双亲的数据，材料名必须和表型数据中的材料名一致。缺失值N。</span></p><figure class='table-figure'><table><thead><tr><th><span>rs#</span></th><th><span>alleles</span></th><th><span>chrom</span></th><th><span>pos</span></th><th><span>strand</span></th><th><span>assembly#</span></th><th><span>center</span></th><th><span>protLSID</span></th><th><span>assayLSID</span></th><th><span>panelLSID</span></th><th><span>QCcode</span></th><th><span>Line1</span></th><th><span>Line2</span></th><th><span>Tester1</span></th><th><span>Tester2</span></th></tr></thead><tbody><tr><td><span>marker1</span></td><td><span>G/A</span></td><td><span>1</span></td><td><span>48976</span></td><td><span>+</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>G</span></td><td><span>G</span></td><td><span>G</span></td><td><span>G</span></td></tr><tr><td><span>marker2</span></td><td><span>A/C</span></td><td><span>1</span></td><td><span>419416</span></td><td><span>+</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>A</span></td><td><span>A</span></td><td><span>A</span></td><td><span>A</span></td></tr><tr><td><span>marker3</span></td><td><span>C/T</span></td><td><span>1</span></td><td><span>560744</span></td><td><span>+</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>C</span></td><td><span>C</span></td><td><span>C</span></td><td><span>C</span></td></tr><tr><td><span>marker4</span></td><td><span>G/T</span></td><td><span>1</span></td><td><span>560836</span></td><td><span>+</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>G</span></td><td><span>G</span></td><td><span>G</span></td><td><span>G</span></td></tr><tr><td><span>marker5</span></td><td><span>C/T</span></td><td><span>1</span></td><td><span>688505</span></td><td><span>+</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>C</span></td><td><span>C</span></td><td><span>N</span></td><td><span>T</span></td></tr><tr><td><span>marker6</span></td><td><span>A/G</span></td><td><span>1</span></td><td><span>1067033</span></td><td><span>+</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>NA</span></td><td><span>G</span></td><td><span>A</span></td><td><span>G</span></td><td><span>G</span></td></tr></tbody></table></figure><h2 id='表型数据示例'><span>表型数据示例</span></h2><p><span>表型数据包含LINE列和TESTER列，如果没有TESTER列可以为空。第三列为性状列，没有固定名称要求。当只有群体个体基因型而没有TESTER时，则TESTER列留空，只保留列名。若LINE或TESTER是杂交种，则以@隔开，如：Line1@Line2。多个性状可以在后面添加列。</span></p><figure class='table-figure'><table><thead><tr><th><span>LINE</span></th><th><span>TESTER</span></th><th><span>GY_A_CML576</span></th></tr></thead><tbody><tr><td><span>Line1</span></td><td><span>Tester1</span></td><td><span>6.326213</span></td></tr><tr><td><span>Line2</span></td><td><span>Tester1</span></td><td><span>6.710173</span></td></tr><tr><td><span>Line3</span></td><td><span>Tester1</span></td><td><span>6.430777</span></td></tr><tr><td><span>Line4</span></td><td><span>Tester1</span></td><td><span>6.060662</span></td></tr><tr><td><span>Line5</span></td><td><span>Tester2</span></td><td><span>5.813892</span></td></tr><tr><td><span>Line6</span></td><td><span>Tester2</span></td><td><span>6.355156</span></td></tr><tr><td><span>Line7</span></td><td><span>Tester2</span></td><td><span>5.708606</span></td></tr><tr><td><span>Line8</span></td><td><span>Tester2</span></td><td><span>6.172415</span></td></tr></tbody></table></figure><h2 id='讨论'><span>讨论</span></h2><ol start='' ><li><p><span>是否应该中心化和标准化基因型矩阵？</span></p><ul><li><p><span>中心化和标准化的作用是使数据的结果在0~1之间，通过Line和Tester相应位置的数值相乘合成杂交种基因型数据，而rrBLUP要求数据在-1到1之间，相乘将获得错误的基因组遗传信息，考虑不使用中心化和标准化过程。</span></p></li><li><p><span>经过合成，如果LINE的基因型是-1，而TESTER的基因型是1，则杂交种的基因型是-1，这显然是不对的。</span></p></li><li><p><span>HMP格式的文件，杂合等位基因采用IUPAC（International Union of Pure and Applied Chemistry，国际纯粹与应用化学联合会）命名法，双等位基因由单个字母表示。考虑应该先将HMP的杂合子（&quot;R&quot;,&quot;Y&quot;,&quot;S&quot;,&quot;W&quot;,&quot;K&quot;,&quot;M&quot;）转换为相应的双碱基形式，再合成四碱基形式。</span></p><ul><li><p><span>？最大等位基因和最小等位基因如何确定？</span></p><ul><li><p><span>等位基因频率计算需要0,1,2编码。然后根据公式rowMeans(GD2,na.rm=T)/2 计算。</span></p></li></ul></li></ul></li></ul></li><li><p><span>四个碱基的组合有多少种？</span></p><ul><li><p><span>双碱基组合有10种（不考虑顺序）：</span></p><blockquote><p><span>AA、TT、CC、GG、AT、AC、AG、TC、TG、CG</span></p></blockquote></li><li><p><span>四碱基组合有100种，去掉重复部分有35种：</span></p><p><img src="img\image-20200709221548541.png" alt="image-20200709221548541"></p><blockquote><p><span>要对35种组合进行编码，且保存必要的遗传信息确实很困难。因此，再次对基因型数据进行研究。</span></p><p><span>从每个位点看，应该不会这么复杂。假设每个位点只有2个等位基因。该假设符合实际，某一位点突变两次或以上并保留下来的情况比较罕见。</span></p></blockquote></li><li><p><span>对某一个位点，假设（G/A）,只有5种：</span></p><figure class='table-figure'><table><thead><tr><th>&nbsp;</th><th><span>GG</span></th><th><span>AA</span></th><th><span>AG</span></th></tr></thead><tbody><tr><td><span>GG</span></td><td><span>GGGG</span></td><td><del><span>AAGG</span></del></td><td><del><span>AGGG</span></del></td></tr><tr><td><span>AA</span></td><td><span>AAGG</span></td><td><span>AAAA</span></td><td><del><span>AAAG</span></del></td></tr><tr><td><span>AG</span></td><td><span>AGGG</span></td><td><span>AAAG</span></td><td><del><span>AAGG</span></del></td></tr></tbody></table></figure><blockquote><p><span>推荐编码：</span></p><ol start='' ><li><p><span>需要先合成杂交种的四碱基基因型；</span></p></li><li><p><span>只保留纯和字母型，得到最大等位基因；</span></p></li><li><p><span>根据最大等位基因，确定数值并将四碱基基因型转换为数值型；</span></p><ul><li><p><span>如果没有纯合情况如何处理？因此，应该先转换为A/a形式，再计算。</span></p></li></ul></li></ol></blockquote><figure class='table-figure'><table><thead><tr><th>&nbsp;</th><th>&nbsp;</th><th><span>&quot;-101&quot;</span></th><th><span>&quot;012&quot;</span></th></tr></thead><tbody><tr><td><span>最大等位基因</span></td><td><span>AAAA</span></td><td><span>1</span></td><td><span>2</span></td></tr><tr><td><span>最小等位基因</span></td><td><span>GGGG</span></td><td><span>-1</span></td><td><span>0</span></td></tr><tr><td><span>无偏杂合</span></td><td><span>AAGG</span></td><td><span>0</span></td><td><span>1</span></td></tr><tr><td><span>偏大杂合</span></td><td><span>AAAG</span></td><td><span>0.5</span></td><td><span>1.5</span></td></tr><tr><td><span>偏小杂合</span></td><td><span>AGGG</span></td><td><span>-0.5</span></td><td><span>0.5</span></td></tr></tbody></table></figure><blockquote><p><span>编码方式：</span></p><ol start='' ><li><p><span>将材料转换为数值型，用&quot;012&quot;编码，即，最大等位基因2，最小等位基因0，杂合1。</span></p></li><li><p><span>组合杂交种时，用对应位点用加法运算。</span></p></li><li><p><span>通过矩阵整体减1，变成&quot;-101&quot;的形式。</span></p></li></ol></blockquote><figure class='table-figure'><table><thead><tr><th>&nbsp;</th><th>&nbsp;</th><th><span>1</span></th><th><span>0</span></th><th><span>0.5</span></th></tr></thead><tbody><tr><td>&nbsp;</td><td>&nbsp;</td><td><strong><span>AA</span></strong></td><td><strong><span>GG</span></strong></td><td><strong><span>AG</span></strong></td></tr><tr><td><strong><span>1</span></strong></td><td><strong><span>AA</span></strong></td><td><span>2</span></td><td><span>1</span></td><td><span>1.5</span></td></tr><tr><td><strong><span>0</span></strong></td><td><strong><span>GG</span></strong></td><td><span>1</span></td><td><span>0</span></td><td><span>0.5</span></td></tr><tr><td><strong><span>0.5</span></strong></td><td><strong><span>AG</span></strong></td><td><span>1.5</span></td><td><span>0.5</span></td><td><span>1</span></td></tr></tbody></table></figure></li><li><p><span>最终敲定的合成形式：</span></p><blockquote><p><span>考虑到拓展性，即对三交种和双交种的支持。先将单碱基表示形式转变为双碱基表示形式，然后合成杂交种的四碱基形式。三交种为六碱基形式，双交种为八碱基形式。最后，利用每个材料在每个位点上A的比例赋值。</span></p><p><span>例如：</span></p><ol start='' ><li><p><span>HMP格式中，Line1的某个位点上的碱基是A，Tester1的是W，则先将A变为AA，W变为AT，杂交种为AAAT。</span></p></li><li><p><span>利用该位点所有材料获得最大等位基因和最小等位基因（碱基），假设最大等位基因（碱基）是A，最小等位基因（碱基）是T。变为A/a形式，AAAa。</span></p></li><li><p><span>根据最大等位基因的比率赋值，全为A：AAAA=1，全为a：aaaa=0，则AAAa=0.75。三交种和双交种同理。</span></p></li></ol></blockquote></li></ul></li><li><p><span>合成杂交种时，缺失值的处理？</span></p><ul><li><p><span>AA×NA→NA。</span></p><blockquote><p><span>按照缺失处理，三交种或双交种会有更多的NA出现，最后通过最大似然等方法补缺失以减少对结果的影响。</span></p></blockquote></li><li><p><span>AA×NA→AA。</span></p><blockquote><p><span>合成忽略缺失，不影响三交种和双交种的合成。一个位点造成的影响较小。</span></p></blockquote></li><li><p><span>严格筛选，无NA。</span></p><blockquote><p><span>标记数量较少。对全基因组预测结果影响较大，适合使用芯片等缺失值少的方法。</span></p></blockquote></li><li><p><span>不严格筛选，用概率方案补缺失。</span></p><blockquote><p><span>概率方案补缺失可能正确也可能错误。由于基于概率，补充正确的可能性应该高于错误的情况。</span></p></blockquote></li></ul></li><li><p><span>自交系预测、杂交种预测、GCA预测和SCA预测的基因型是什么？</span></p><ul><li><p><span>自交系预测，只考虑Line不考虑Tester，因此只使用Line的基因型。</span></p></li><li><p><span>杂交种预测使用合成的杂交种的基因型，不再使用个体基因型。</span></p></li><li><p><span>GCA预测是Line中每个材料与Tester材料杂交的平均表现，GCA的数量与Line的数量相等，使用Line的基因型。</span></p></li><li><p><span>SCA预测需考虑Line和Tester的基因型，用合成的杂交种基因型。</span></p></li></ul></li><li><p><span>留一法、K倍交叉验证和百分比验证的区别。</span></p><ul><li><p><span>留一法：按顺序预测每个材料的表现，只有被预测的材料作为验证群体，其余材料为建模群体，此方法适合材料数量特别少的情况。</span></p></li><li><p><span>K倍交叉验证：将整个群体平均分成若干份，每次预测一份（验证群体），其余部分为建模群体。</span></p></li><li><p><span>百分比验证：按照指定百分比抽取材料用于建模，未抽取到的材料作为验证群体。</span></p></li><li><p><span>K倍交叉验证和百分比验证的区别：K倍交叉验证每个循环会将所有材料进行一遍预测。百分比验证每个循环只会预测符合百分比的材料，多个循环后才能覆盖整个材料。</span></p></li></ul></li><li><p><span>更科学地验证方法。</span></p><ul><li><p><span>根据每个材料的平均预测表现排序，同时对这些材料的表型排序，查看前/后15%或任意百分比的材料重合性，用于材料的选择或剔除。</span></p></li></ul></li></ol><h2 id='使用方法'><span>使用方法</span></h2><ol start='' ><li><p><span>为减少运算量，推荐将HMP数据在TASSEL软件中进行质量控制。但是，为保证本程序能够正确运行，推荐用本程序再进行一次质量控制。</span></p></li><li><p><span>要进行三交种或者双交种的合并时，先两两进行合并，在合并成三/双交种基因型，只有最后一次使用质量控制。</span></p></li></ol><pre class="md-fences md-end-block md-fences-with-lineno ty-contain-cm md-focus" spellcheck="false" lang="R" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap CodeMirror-focused" lang="r"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 447.152px; left: 712.109px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 36px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><div class="CodeMirror-linenumber CodeMirror-gutter-elt"><div>20</div></div></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 27px;">1</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-comment"># rm(list=ls()) &nbsp; # 第一次运行或需要更换数据时，请运行这一行（去掉第一个#）</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">2</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">popType</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-string">"Line"</span> &nbsp; <span class="cm-comment"># 群体类型，自交系/杂交种填写"Line" or "hybrid"</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">3</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">polymorphism</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">TRUE</span> &nbsp; <span class="cm-comment"># TRUE进行多态性检测，FALSE不检测</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">4</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">frequency_NA</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-number">0.15</span> &nbsp; <span class="cm-comment"># 按照缺失值频率筛选（默认0.15)，设为1则不筛选</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">5</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">frequency_MAF</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-number">0.05</span> &nbsp; <span class="cm-comment"># 最小等位基因需要大于0.05（默认），设为0则不筛选</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">6</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">output_filter_HMP</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">TRUE</span> &nbsp; <span class="cm-comment"># 输出筛选后的基因型，默认为FALSE</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">7</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">Geno_Probability_imputation</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">FALSE</span> &nbsp; <span class="cm-comment"># 杂交种合成前用概率方法补缺失</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">8</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">Synthetic_ignore_gene</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">TRUE</span> &nbsp; <span class="cm-comment"># 合成忽略NA，如：AA与NA得到AA；若为FALSE，AA与NA得到NA</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">9</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">output_numeric_geno</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">TRUE</span> &nbsp; <span class="cm-comment"># 输出带有杂交种基因型的数值化基因型</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 27px;">10</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">11</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">Geno_before_imputation</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-string">"ML"</span> &nbsp; <span class="cm-comment"># 分析前的补缺失"ML"/"REML"/"Probability"</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">12</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">package_choose</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-string">"rrBLUP"</span> &nbsp; <span class="cm-comment"># 目前只支持rrBLUP</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">13</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">predict_type</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-string">"hybrid/SCA"</span> &nbsp; <span class="cm-comment"># "hybrid/SCA" or "Line/GCA" 杂交种/SCA或自交系/GCA</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">14</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">predict_inpop</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">TRUE</span> &nbsp; <span class="cm-comment"># 是否为群体内预测TRUE or FALSE </span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">15</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">method</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-string">"percentage"</span> &nbsp; <span class="cm-comment"># "percentage"/"leave_one"/"k-fold"</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">16</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">trainingSize</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-number">0.5</span> &nbsp; <span class="cm-comment">## training population size，method="percentage"时生效</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">17</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">k_fold</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-number">5</span> &nbsp; <span class="cm-comment">## 所有个体平均分成k份，每次预测其中的一份</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">18</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">k_fold_Phenogroup</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-variable">TRUE</span> &nbsp; <span class="cm-comment">### 将材料按照表型分成（材料数/k组），向上取整</span></span></pre></div><div style="position: relative;"><div class="CodeMirror-gutter-wrapper" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 27px;">19</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">cycles</span> <span class="cm-operator cm-arrow">&lt;-</span> <span class="cm-number">20</span> &nbsp; <span class="cm-comment">## 设置循环次数,method="percentage"或method="k-fold"时生效</span></span></pre></div><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: -36px; width: 36px;"></div><div class="CodeMirror-gutter-wrapper CodeMirror-activeline-gutter" style="left: -36px;"><div class="CodeMirror-linenumber CodeMirror-gutter-elt CodeMirror-linenumber-show" style="left: 0px; width: 27px;">20</div></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">source</span>(<span class="cm-string">"https://dataholdcn.cn/R/hybrid_predicting/rrBLUP_hybird_predicting.R"</span>) &nbsp; <span class="cm-comment"># 加载程序文件，需要联网</span></span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 484px;"></div><div class="CodeMirror-gutters" style="height: 484px; left: 0px;"><div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 35px;"></div></div></div></div></pre></div></div>
+</body>
+</html>
